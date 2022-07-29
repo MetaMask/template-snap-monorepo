@@ -1,0 +1,1 @@
+export { isFlask } from './metamask';
