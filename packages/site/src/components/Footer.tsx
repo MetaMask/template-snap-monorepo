@@ -1,17 +1,47 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
+import { MetaMask } from './MetaMask';
+import { MetaMaskFox } from './MetaMaskFox';
+import { PoweredBy } from './PoweredBy';
 
 const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   border-top: 1px solid ${(props) => props.theme.colors.border.default};
 `;
 
-export const Footer = () => (
-  <FooterWrapper>
-    <p>Text</p>
-  </FooterWrapper>
-);
+const PoweredByButton = styled.a`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: ${({ theme }) => theme.radii.button};
+  box-shadow: ${({ theme }) => theme.shadows.button};
+  background-color: ${({ theme }) => theme.colors.background.alternative};
+`;
+
+const PoweredByContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+`;
+
+export const Footer = () => {
+  const theme = useTheme();
+
+  return (
+    <FooterWrapper>
+      <PoweredByButton href="https://docs.metamask.io/" target="_blank">
+        <MetaMaskFox />
+        <PoweredByContainer>
+          <PoweredBy color={theme.colors.text.muted} />
+          <MetaMask color={theme.colors.text.default} />
+        </PoweredByContainer>
+      </PoweredByButton>
+    </FooterWrapper>
+  );
+};

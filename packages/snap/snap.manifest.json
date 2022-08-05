@@ -1,18 +1,17 @@
 {
-  "version": "0.7.0",
-  "proposedName": "MetaMask Template Snap",
-  "description": "A MetaMask Snap template.",
+  "version": "0.18.1",
+  "description": "An example Snap written in TypeScript.",
+  "proposedName": "TypeScript Example Snap",
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaMask/snap-template.git"
   },
   "source": {
-    "shasum": "ugRI+2ippw2w2gNSGWpvCRu5L1LD2j4FWQ+KcO/1dIE=",
+    "shasum": "ZowWdJLCOijpOFAdPXlXnzpqIq2L0pM3m+E/zgCKs/k=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
-        "iconPath": "images/icon.svg",
-        "packageName": "@metamask/template-snap",
+        "packageName": "snap",
         "registry": "https://registry.npmjs.org/"
       }
     }

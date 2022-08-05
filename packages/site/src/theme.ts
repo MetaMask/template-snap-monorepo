@@ -27,6 +27,7 @@ const theme = {
   },
   shadows: {
     default: '0px 7px 42px rgba(0, 0, 0, 0.1)',
+    button: '0px 0px 16.1786px rgba(0, 0, 0, 0.15);',
   },
 };
 
@@ -43,6 +44,7 @@ export const light: DefaultTheme = {
     },
     text: {
       default: '#24272A',
+      muted: '#6A737D',
       alternative: '#535A61',
       inverse: '#FFFFFF',
     },
@@ -52,6 +54,14 @@ export const light: DefaultTheme = {
     primary: {
       default: '#6F4CFF',
       inverse: '#FFFFFF',
+    },
+    card: {
+      default: '#FFFFFF',
+    },
+    error: {
+      default: '#d73a49',
+      alternative: '#b92534',
+      muted: '#d73a4919',
     },
   },
   ...theme,
@@ -70,6 +80,7 @@ export const dark: DefaultTheme = {
     },
     text: {
       default: '#FFFFFF',
+      muted: '#FFFFFF',
       alternative: '#D6D9DC',
       inverse: '#24272A',
     },
@@ -79,6 +90,14 @@ export const dark: DefaultTheme = {
     primary: {
       default: '#6F4CFF',
       inverse: '#FFFFFF',
+    },
+    card: {
+      default: '#141618',
+    },
+    error: {
+      default: '#d73a49',
+      alternative: '#b92534',
+      muted: '#d73a4919',
     },
   },
   ...theme,
@@ -91,6 +110,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${(props) => props.theme.fonts.default};
     font-size: ${(props) => props.theme.fontSizes.default};
     margin: 0;
+  }
+
+  * {
+    transition: background-color .1s linear;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -108,7 +131,32 @@ export const GlobalStyle = createGlobalStyle`
   button {
     font-size: ${(props) => props.theme.fontSizes.small};
     border-radius: ${(props) => props.theme.radii.button};
+    background-color: ${(props) => props.theme.colors.background.inverse};
+    color: ${(props) => props.theme.colors.text.inverse};
+    border: 1px solid ${(props) => props.theme.colors.background.inverse};
     font-weight: bold;
-    padding: 12px;
+    padding: 10px;
+    min-height: 42px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid ${(props) => props.theme.colors.background.inverse};
+      color: ${(props) => props.theme.colors.text.default};
+    }
+
+    &:disabled,
+    &[disabled] {
+      border: 1px solid ${(props) => props.theme.colors.background.inverse};
+      cursor: not-allowed;
+    }
+
+    &:disabled:hover,
+    &[disabled]:hover {
+      background-color: ${(props) => props.theme.colors.background.inverse};
+      color: ${(props) => props.theme.colors.text.inverse};
+      border: 1px solid ${(props) => props.theme.colors.background.inverse};
+    }
   }
 `;

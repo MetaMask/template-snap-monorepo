@@ -1,1 +1,1 @@
-export { MetaMaskProvider } from './MetamaskContext';
+export * from './MetamaskContext';

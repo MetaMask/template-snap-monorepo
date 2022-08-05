@@ -1,13 +1,11 @@
-import detectEthereumProvider from '@metamask/detect-provider';
-
 export const isFlask = async () => {
-  const provider = await detectEthereumProvider();
-  // @ts-expect-error no provider type
+  const provider = window.ethereum;
+
   const clientVersion = await provider?.request({
     method: 'web3_clientVersion',
   });
 
-  const isFlaskDetected = clientVersion?.includes('flask');
+  const isFlaskDetected = (clientVersion as string[])?.includes('flask');
 
   return Boolean(provider && isFlaskDetected);
 };

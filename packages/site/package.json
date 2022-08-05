@@ -21,8 +21,8 @@
     ]
   },
   "dependencies": {
-    "@metamask/detect-provider": "^1.2.0",
     "@metamask/eslint-config": "^9.0.0",
+    "@metamask/providers": "^9.0.0",
     "eslint": "^8.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

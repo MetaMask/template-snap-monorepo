@@ -6,24 +6,18 @@ import {
   useEffect,
   useReducer,
 } from 'react';
-import { isFlask } from '../utils';
-
-type ISnap = {
-  isInstalled: boolean;
-  message: string;
-};
+import { isFlask, isSnapInstalled } from '../utils';
 
 export type MetamaskState = {
-  filecoinSnap: ISnap;
+  isSnapInstalled: boolean;
   isFlask: boolean;
+  error: Error | undefined;
 };
 
 const initialState: MetamaskState = {
-  filecoinSnap: {
-    isInstalled: false,
-    message: '',
-  },
+  isSnapInstalled: false,
   isFlask: false,
+  error: undefined,
 };
 type MetamaskDispatch = { type: MetamaskActions; payload: any };
 
@@ -37,16 +31,17 @@ export const MetaMaskContext = createContext<
 ]);
 
 export enum MetamaskActions {
-  SET_INSTALLED_STATUS,
+  SET_INSTALLED,
   SET_FLASK_DETECTED,
+  SET_ERROR,
 }
 
 const reducer: Reducer<MetamaskState, MetamaskDispatch> = (state, action) => {
   switch (action.type) {
-    case MetamaskActions.SET_INSTALLED_STATUS: {
+    case MetamaskActions.SET_INSTALLED: {
       return {
         ...state,
-        snap: action.payload,
+        isSnapInstalled: action.payload,
       };
     }
 
@@ -54,6 +49,13 @@ const reducer: Reducer<MetamaskState, MetamaskDispatch> = (state, action) => {
       return {
         ...state,
         isFlask: action.payload,
+      };
+    }
+
+    case MetamaskActions.SET_ERROR: {
+      return {
+        ...state,
+        error: action.payload,
       };
     }
 
@@ -67,17 +69,45 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const detectFlask = async () => {
+    async function detectFlask() {
       const isFlaskDetected = await isFlask();
-      console.log(isFlaskDetected);
+
       dispatch({
         type: MetamaskActions.SET_FLASK_DETECTED,
         payload: isFlaskDetected,
       });
-    };
+    }
+
+    async function detectSnapInstalled() {
+      const snapInstalled = await isSnapInstalled();
+      dispatch({
+        type: MetamaskActions.SET_INSTALLED,
+        payload: snapInstalled,
+      });
+    }
 
     detectFlask();
-  }, []);
+
+    if (state.isFlask) {
+      detectSnapInstalled();
+    }
+  }, [state.isFlask]);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    if (state.error) {
+      timeoutId = setTimeout(() => {
+        console.log('plop');
+        dispatch({
+          type: MetamaskActions.SET_ERROR,
+          payload: undefined,
+        });
+      }, 10000);
+    }
+
+    return () => timeoutId && clearTimeout(timeoutId);
+  }, [state.error]);
 
   return (
     <MetaMaskContext.Provider value={[state, dispatch]}>

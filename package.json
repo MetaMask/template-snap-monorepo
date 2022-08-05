@@ -17,10 +17,14 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "yarn workspaces build",
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:eslint": "eslint . --cache --ext js,ts",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!**/CHANGELOG.md' '**/*.yml' --ignore-path .gitignore",
+    "start": "concurrently \"yarn start:site\" \"yarn start:snap\"",
+    "start:site": "yarn workspace site run start",
+    "start:snap": "yarn workspace snap run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -30,6 +34,7 @@
     "@metamask/eslint-config-typescript": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
+    "concurrently": "^7.3.0",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -40,6 +45,6 @@
     "prettier-plugin-packagejson": "^2.2.18"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   }
 }
