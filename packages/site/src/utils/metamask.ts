@@ -1,3 +1,6 @@
+/**
+ * Detect if the wallet injecting the ethereum object is Flask.
+ */
 export const isFlask = async () => {
   const provider = window.ethereum;
 

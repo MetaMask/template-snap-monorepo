@@ -2,7 +2,7 @@
 
 import 'styled-components';
 
-/*
+/**
  * styled-component default theme extension
  */
 declare module 'styled-components' {

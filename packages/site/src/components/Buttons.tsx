@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react';
 import styled from 'styled-components';
 import { MetamaskState } from '../hooks';
-import { FlaskFox } from './FlaskFox';
+import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
 
 const SLink = styled.a`
   display: flex;

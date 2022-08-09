@@ -1,6 +1,6 @@
 import styled, { useTheme } from 'styled-components';
+import { ReactComponent as MetaMaskFox } from '../assets/metamask_fox.svg';
 import { MetaMask } from './MetaMask';
-import { MetaMaskFox } from './MetaMaskFox';
 import { PoweredBy } from './PoweredBy';
 
 const FooterWrapper = styled.footer`
