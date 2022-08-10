@@ -2,6 +2,9 @@ import { createGlobalStyle, DefaultTheme } from 'styled-components';
 
 const breakpoints = ['40em', '52em', '64em'];
 
+/**
+ * Common theme properties.
+ */
 const theme = {
   fonts: {
     default:
@@ -31,6 +34,9 @@ const theme = {
   },
 };
 
+/**
+ * Light theme color properties.
+ */
 export const light: DefaultTheme = {
   colors: {
     background: {
@@ -67,6 +73,9 @@ export const light: DefaultTheme = {
   ...theme,
 };
 
+/**
+ * Dark theme color properties
+ */
 export const dark: DefaultTheme = {
   colors: {
     background: {
@@ -103,6 +112,12 @@ export const dark: DefaultTheme = {
   ...theme,
 };
 
+/**
+ * Default style applied to the app.
+ *
+ * @param props - Styled Components props.
+ * @returns Global style React component.
+ */
 export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.colors.background.default};

@@ -19,6 +19,7 @@ const initialState: MetamaskState = {
   isFlask: false,
   error: undefined,
 };
+
 type MetamaskDispatch = { type: MetamaskActions; payload: any };
 
 export const MetaMaskContext = createContext<
@@ -65,6 +66,13 @@ const reducer: Reducer<MetamaskState, MetamaskDispatch> = (state, action) => {
   }
 };
 
+/**
+ * MetaMask context provider to handle MetaMask and snap status.
+ *
+ * @param param0 - React Props.
+ * @param param0.children - React component to be wrapped by the Provider.
+ * @returns JSX.
+ */
 export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
