@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Footer, Header, Home } from './components';
 import { MetaMaskProvider } from './hooks';
 
-import { light, dark, GlobalStyle } from './theme';
+import { light, dark, GlobalStyle } from './config/theme';
 import { setLocalStorage, getThemePreference } from './utils';
 
 const Wrapper = styled.div`
