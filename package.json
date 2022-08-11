@@ -17,7 +17,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces build",
+    "build": "yarn workspaces foreach --parallel --topological --verbose run build",
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:eslint": "eslint . --cache --ext js,ts",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
@@ -46,5 +46,6 @@
   },
   "engines": {
     "node": ">=16.0.0"
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }
