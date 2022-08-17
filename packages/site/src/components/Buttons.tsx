@@ -15,7 +15,7 @@ const SLink = styled.a`
   color: ${(props) => props.theme.colors.text.inverse};
   text-decoration: none;
   font-weight: bold;
-  padding: 12px;
+  padding: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -24,6 +24,11 @@ const SLink = styled.a`
     border: 1px solid ${(props) => props.theme.colors.background.inverse};
     color: ${(props) => props.theme.colors.text.default};
   }
+
+  ${({ theme }) => theme.mediaQueries.small} {
+    width: 100%;
+    box-sizing: border-box;
+  }
 `;
 
 const SButton = styled.button`
@@ -31,6 +36,9 @@ const SButton = styled.button`
   align-self: flex-start;
   align-items: center;
   justify-content: center;
+  ${({ theme }) => theme.mediaQueries.small} {
+    width: 100%;
+  }
 `;
 
 const ButtonText = styled.span`

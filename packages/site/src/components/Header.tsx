@@ -20,6 +20,9 @@ const Title = styled.p`
   font-weight: bold;
   margin: 0;
   margin-left: 12px;
+  ${({ theme }) => theme.mediaQueries.small} {
+    display: none;
+  }
 `;
 
 const LogoWrapper = styled.div`

@@ -1,6 +1,6 @@
 import { createGlobalStyle, DefaultTheme } from 'styled-components';
 
-const breakpoints = ['40em', '52em', '64em'];
+const breakpoints = ['600px', '768px', '992px'];
 
 /**
  * Common theme properties.
@@ -13,6 +13,7 @@ const theme = {
   },
   fontSizes: {
     heading: '52px',
+    mobileHeading: '36px',
     title: '24px',
     large: '20px',
     default: '16px',
@@ -24,7 +25,7 @@ const theme = {
   },
   breakpoints,
   mediaQueries: {
-    small: `@media screen and (min-width: ${breakpoints[0]})`,
+    small: `@media screen and (max-width: ${breakpoints[0]})`,
     medium: `@media screen and (min-width: ${breakpoints[1]})`,
     large: `@media screen and (min-width: ${breakpoints[2]})`,
   },
@@ -133,6 +134,9 @@ export const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     font-size: ${(props) => props.theme.fontSizes.heading};
+    ${(props) => props.theme.mediaQueries.small} {
+      font-size: ${(props) => props.theme.fontSizes.mobileHeading};
+    }
   }
 
   code {

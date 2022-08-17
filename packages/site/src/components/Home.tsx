@@ -10,14 +10,21 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
-  width: 100%;
   margin-top: 76px;
   margin-bottom: 76px;
+  ${({ theme }) => theme.mediaQueries.small} {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: auto;
+  }
 `;
 
 const Heading = styled.h1`
   margin-top: 0;
   margin-bottom: 24px;
+  text-align: center;
 `;
 
 const SSpan = styled.span`
@@ -29,6 +36,9 @@ const Subtitle = styled.p`
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
+  ${({ theme }) => theme.mediaQueries.small} {
+    font-size: ${({ theme }) => theme.fontSizes.default};
+  }
 `;
 
 const CardContainer = styled.div`
@@ -38,6 +48,7 @@ const CardContainer = styled.div`
   justify-content: space-between;
   max-width: 648px;
   width: 100%;
+  height: 100%;
   margin-top: 24px;
 `;
 
@@ -50,8 +61,13 @@ const Notice = styled.div`
   margin-top: 24px;
   max-width: 600px;
   width: 100%;
+
   & > * {
     margin: 0;
+  }
+  ${({ theme }) => theme.mediaQueries.small} {
+    margin-top: 12px;
+    padding: 16px;
   }
 `;
 
@@ -65,6 +81,12 @@ const SError = styled.div`
   margin-top: 24px;
   max-width: 600px;
   width: 100%;
+  ${({ theme }) => theme.mediaQueries.small} {
+    padding: 16px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    max-width: 100%;
+  }
 `;
 
 export const Home = () => {

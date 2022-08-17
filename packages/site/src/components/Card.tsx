@@ -24,11 +24,20 @@ const SCard = styled.div<{ fullWidth?: boolean; disabled: boolean }>`
   box-shadow: ${({ theme }) => theme.shadows.default};
   filter: opacity(${({ disabled }) => (disabled ? '.4' : '1')});
   align-self: stretch;
+  ${({ theme }) => theme.mediaQueries.small} {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 16px;
+  }
 `;
 
 const Title = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.large};
   margin: 0;
+  ${({ theme }) => theme.mediaQueries.small} {
+    font-size: 16px;
+  }
 `;
 
 const Description = styled.p`

@@ -20,6 +20,9 @@ const SToggle = styled.div`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   margin-right: 24px;
+  ${({ theme }) => theme.mediaQueries.small} {
+    margin-right: 12px;
+  }
 `;
 
 const ToggleInput = styled.input`
