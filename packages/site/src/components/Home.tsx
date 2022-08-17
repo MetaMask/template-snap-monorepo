@@ -135,7 +135,7 @@ export const Home = () => {
             content={{
               title: 'Install',
               description:
-                'Short and sweet description of what’s happening when installing. Ipsum dolor sit amet nonconformism idealism, abstraction.',
+                'Snaps is pre-release software only available in MetaMask Flask, a canary distribution for developers with access to upcoming features.',
               button: <InstallFlaskButton />,
             }}
             fullWidth
@@ -146,7 +146,7 @@ export const Home = () => {
             content={{
               title: 'Connect',
               description:
-                'Short and sweet description of what’s happening when connect to a snap.',
+                'Get started by connecting to and installing the example snap.',
               button: (
                 <ConnectButton
                   onClick={handleConnectClick}
@@ -161,7 +161,7 @@ export const Home = () => {
           content={{
             title: 'Send Hello message',
             description:
-              'Modernipsum dolor sit amet nonconformism idealism, abstraction.',
+              'Display a custom message within a confirmation screen in MetaMask.',
             button: (
               <SendHelloButton
                 onClick={handleSendHelloClick}
