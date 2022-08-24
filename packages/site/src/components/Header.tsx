@@ -51,12 +51,12 @@ export const Header = ({
       const snapInstalled = await isSnapInstalled();
 
       dispatch({
-        type: MetamaskActions.SET_INSTALLED,
+        type: MetamaskActions.SetInstalled,
         payload: snapInstalled,
       });
     } catch (e) {
       console.error(e);
-      dispatch({ type: MetamaskActions.SET_ERROR, payload: e });
+      dispatch({ type: MetamaskActions.SetError, payload: e });
     }
   };
   return (

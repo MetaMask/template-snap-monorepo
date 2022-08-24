@@ -9,7 +9,7 @@ import { GetSnapsResponse } from '../types';
 export const getSnaps = async (): Promise<GetSnapsResponse> => {
   return (await window.ethereum.request({
     method: 'wallet_getSnaps',
-  })) as unknown as Promise<GetSnapsResponse>;
+  })) as unknown as GetSnapsResponse;
 };
 
 /**
@@ -40,11 +40,13 @@ export const connectSnap = async (
  * Check if a snap is already installed in MetaMask.
  *
  * @param version - The version of the snap to install (optional).
- * @returns A boolean representing if the snap is intalled in MetaMask.
+ * @returns A boolean representing if the snap is installed in MetaMask.
  */
 export const isSnapInstalled = async (version?: string): Promise<boolean> => {
   try {
     const snaps = await getSnaps();
+
+    console.log(snaps);
 
     return Boolean(
       Object.values(snaps).find(

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { MetamaskState } from '../hooks';
 import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
 
-const SLink = styled.a`
+const Link = styled.a`
   display: flex;
   align-self: flex-start;
   align-items: center;
@@ -31,7 +31,7 @@ const SLink = styled.a`
   }
 `;
 
-const SButton = styled.button`
+const Button = styled.button`
   display: flex;
   align-self: flex-start;
   align-items: center;
@@ -68,23 +68,23 @@ const ConnectedIndicator = styled.div`
 `;
 
 export const InstallFlaskButton = () => (
-  <SLink href="https://metamask.io/flask/" target="_blank">
+  <Link href="https://metamask.io/flask/" target="_blank">
     <FlaskFox />
     <ButtonText>Install MetaMask Flask</ButtonText>
-  </SLink>
+  </Link>
 );
 
-export const ConnectButton = (props: ComponentProps<typeof SButton>) => {
+export const ConnectButton = (props: ComponentProps<typeof Button>) => {
   return (
-    <SButton {...props}>
+    <Button {...props}>
       <FlaskFox />
       <ButtonText>Connect</ButtonText>
-    </SButton>
+    </Button>
   );
 };
 
-export const SendHelloButton = (props: ComponentProps<typeof SButton>) => {
-  return <SButton {...props}>Send message</SButton>;
+export const SendHelloButton = (props: ComponentProps<typeof Button>) => {
+  return <Button {...props}>Send message</Button>;
 };
 
 export const HeaderButtons = ({
@@ -96,9 +96,12 @@ export const HeaderButtons = ({
 }) => {
   if (!state.isFlask && !state.isSnapInstalled) {
     return <InstallFlaskButton />;
-  } else if (!state.isSnapInstalled) {
+  }
+
+  if (!state.isSnapInstalled) {
     return <ConnectButton onClick={onConnectClick} />;
   }
+
   return (
     <ConnectedContainer>
       <ConnectedIndicator />

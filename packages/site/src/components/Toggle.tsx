@@ -5,7 +5,7 @@ type CheckedProps = {
   readonly checked: boolean;
 };
 
-const SToggle = styled.div`
+const ToggleWrapper = styled.div`
   touch-action: pan-x;
   display: inline-block;
   position: relative;
@@ -104,7 +104,7 @@ export const Toggle = ({
   };
 
   return (
-    <SToggle onClick={handleChange}>
+    <ToggleWrapper onClick={handleChange}>
       <ToggleContainer>
         <CheckedContainer checked={checked}>
           <span>🌞</span>
@@ -115,6 +115,6 @@ export const Toggle = ({
       </ToggleContainer>
       <ToggleCircle checked={checked} />
       <ToggleInput type="checkbox" aria-label="Toggle Button" />
-    </SToggle>
+    </ToggleWrapper>
   );
 };

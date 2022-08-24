@@ -11,7 +11,7 @@ type CardProps = {
   fullWidth?: boolean;
 };
 
-const SCard = styled.div<{ fullWidth?: boolean; disabled: boolean }>`
+const CardWrapper = styled.div<{ fullWidth?: boolean; disabled: boolean }>`
   display: flex;
   flex-direction: column;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : '250px')};
@@ -48,10 +48,10 @@ const Description = styled.p`
 export const Card = ({ content, disabled = false, fullWidth }: CardProps) => {
   const { title, description, button } = content;
   return (
-    <SCard fullWidth={fullWidth} disabled={disabled}>
+    <CardWrapper fullWidth={fullWidth} disabled={disabled}>
       <Title>{title}</Title>
       <Description>{description}</Description>
       {button}
-    </SCard>
+    </CardWrapper>
   );
 };

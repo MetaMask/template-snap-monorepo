@@ -11,7 +11,7 @@ import { isFlask, isSnapInstalled } from '../utils';
 export type MetamaskState = {
   isSnapInstalled: boolean;
   isFlask: boolean;
-  error: Error | undefined;
+  error?: Error;
 };
 
 const initialState: MetamaskState = {
@@ -32,45 +32,41 @@ export const MetaMaskContext = createContext<
 ]);
 
 export enum MetamaskActions {
-  SET_INSTALLED,
-  SET_FLASK_DETECTED,
-  SET_ERROR,
+  SetInstalled = 'SetInstalled',
+  SetFlaskDetected = 'SetFlaskDetected',
+  SetError = 'SetError',
 }
 
 const reducer: Reducer<MetamaskState, MetamaskDispatch> = (state, action) => {
   switch (action.type) {
-    case MetamaskActions.SET_INSTALLED: {
+    case MetamaskActions.SetInstalled:
       return {
         ...state,
         isSnapInstalled: action.payload,
       };
-    }
 
-    case MetamaskActions.SET_FLASK_DETECTED: {
+    case MetamaskActions.SetFlaskDetected:
       return {
         ...state,
         isFlask: action.payload,
       };
-    }
 
-    case MetamaskActions.SET_ERROR: {
+    case MetamaskActions.SetError:
       return {
         ...state,
         error: action.payload,
       };
-    }
 
-    default: {
+    default:
       return state;
-    }
   }
 };
 
 /**
  * MetaMask context provider to handle MetaMask and snap status.
  *
- * @param param0 - React Props.
- * @param param0.children - React component to be wrapped by the Provider.
+ * @param props - React Props.
+ * @param props.children - React component to be wrapped by the Provider.
  * @returns JSX.
  */
 export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
@@ -81,7 +77,7 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
       const isFlaskDetected = await isFlask();
 
       dispatch({
-        type: MetamaskActions.SET_FLASK_DETECTED,
+        type: MetamaskActions.SetFlaskDetected,
         payload: isFlaskDetected,
       });
     }
@@ -89,7 +85,7 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
     async function detectSnapInstalled() {
       const snapInstalled = await isSnapInstalled();
       dispatch({
-        type: MetamaskActions.SET_INSTALLED,
+        type: MetamaskActions.SetInstalled,
         payload: snapInstalled,
       });
     }
@@ -102,19 +98,22 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
   }, [state.isFlask]);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: number;
 
     if (state.error) {
-      timeoutId = setTimeout(() => {
-        console.log('plop');
+      timeoutId = window.setTimeout(() => {
         dispatch({
-          type: MetamaskActions.SET_ERROR,
+          type: MetamaskActions.SetError,
           payload: undefined,
         });
       }, 10000);
     }
 
-    return () => timeoutId && clearTimeout(timeoutId);
+    return () => {
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+    };
   }, [state.error]);
 
   return (

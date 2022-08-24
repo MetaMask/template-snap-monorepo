@@ -27,7 +27,7 @@ const Heading = styled.h1`
   text-align: center;
 `;
 
-const SSpan = styled.span`
+const Span = styled.span`
   color: ${(props) => props.theme.colors.primary.default};
 `;
 
@@ -71,7 +71,7 @@ const Notice = styled.div`
   }
 `;
 
-const SError = styled.div`
+const ErrorMessage = styled.div`
   background-color: ${({ theme }) => theme.colors.error.muted};
   border: 1px solid ${({ theme }) => theme.colors.error.default};
   color: ${({ theme }) => theme.colors.error.alternative};
@@ -98,12 +98,12 @@ export const Home = () => {
       const snapInstalled = await isSnapInstalled();
 
       dispatch({
-        type: MetamaskActions.SET_INSTALLED,
+        type: MetamaskActions.SetInstalled,
         payload: snapInstalled,
       });
     } catch (e) {
       console.error(e);
-      dispatch({ type: MetamaskActions.SET_ERROR, payload: e });
+      dispatch({ type: MetamaskActions.SetError, payload: e });
     }
   };
 
@@ -112,23 +112,23 @@ export const Home = () => {
       await sendHello();
     } catch (e) {
       console.error(e);
-      dispatch({ type: MetamaskActions.SET_ERROR, payload: e });
+      dispatch({ type: MetamaskActions.SetError, payload: e });
     }
   };
 
   return (
     <Container>
       <Heading>
-        Welcome to <SSpan>template-snap</SSpan>
+        Welcome to <Span>template-snap</Span>
       </Heading>
       <Subtitle>
-        Get started by editing <code>src/index.js</code>
+        Get started by editing <code>src/index.ts</code>
       </Subtitle>
       <CardContainer>
         {state.error && (
-          <SError>
-            <b>An error appened :</b> {state.error.message}
-          </SError>
+          <ErrorMessage>
+            <b>An error happened:</b> {state.error.message}
+          </ErrorMessage>
         )}
         {!state.isFlask && (
           <Card
