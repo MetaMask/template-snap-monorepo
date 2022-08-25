@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/MetaMask/template-snap-monorepo.git"
   },
-  "license": "MIT",
+  "license": "(MIT-0 AND Apache-2.0)",
   "author": "",
   "workspaces": [
     "packages/*"
