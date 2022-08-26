@@ -46,7 +46,6 @@ export const isSnapInstalled = async (version?: string): Promise<boolean> => {
   try {
     const snaps = await getSnaps();
 
-    console.log(snaps);
 
     return Boolean(
       Object.values(snaps).find(

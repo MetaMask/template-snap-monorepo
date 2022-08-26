@@ -95,7 +95,7 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
     if (state.isFlask) {
       detectSnapInstalled();
     }
-  }, [state.isFlask]);
+  }, [state.isFlask, window.ethereum]);
 
   useEffect(() => {
     let timeoutId: number;
