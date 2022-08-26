@@ -2,7 +2,7 @@
 
 This repository demonstrates how to develop a Snap with TypeScript. For detailed instructions, see [the MetaMask documentation](https://docs.metamask.io/guide/snaps.html#serving-a-snap-to-your-local-environment).
 
-MetaMaskSnaps is a system that allows anyone to safely expand the capabilities of MetaMask. A "snap" is a program that we run in an isolated environment that can customize the wallet experience.
+MetaMask Snaps is a system that allows anyone to safely expand the capabilities of MetaMask. A "snap" is a program that we run in an isolated environment that can customize the wallet experience.
 
 ## Snaps is pre-release software
 
