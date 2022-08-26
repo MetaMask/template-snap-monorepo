@@ -1,0 +1,46 @@
+name: Publish Release
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  publish-release:
+    permissions:
+      contents: write
+    if: |
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # We check out the release pull request's base branch, which will be
+          # used as the base branch for all git operations.
+          ref: ${{ github.event.pull_request.base.ref }}
+      - name: Get Node.js version
+        id: nvm
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+      - uses: MetaMask/action-publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get Yarn cache directory
+        run: echo "::set-output name=YARN_CACHE_DIR::$(yarn cache dir)"
+        id: yarn-cache-dir
+      - name: Get Yarn version
+        run: echo "::set-output name=YARN_VERSION::$(yarn --version)"
+        id: yarn-version
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.YARN_CACHE_DIR }}
+          key: yarn-cache-${{ runner.os }}-${{ steps.yarn-version.outputs.YARN_VERSION }}-${{ hashFiles('yarn.lock') }}
+      - run: yarn install --immutable
+      - run: yarn build:site
+      - name: Publish to GitHub Pages
+        uses: MetaMask/action-publish-gh-pages@v2
+        with:
+          source-directory: package/site/build
