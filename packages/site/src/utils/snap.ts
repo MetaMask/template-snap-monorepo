@@ -60,7 +60,7 @@ export const isSnapInstalled = async (version?: string): Promise<boolean> => {
 };
 
 /**
- * Invoke the "hello" method from the exemple snap.
+ * Invoke the "hello" method from the example snap.
  */
 
 export const sendHello = async () => {
