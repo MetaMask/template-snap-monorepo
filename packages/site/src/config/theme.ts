@@ -147,7 +147,7 @@ export const GlobalStyle = createGlobalStyle`
   code {
     background-color: ${(props) => props.theme.colors.background.alternative};
     font-family: ${(props) => props.theme.fonts.code};
-    padding: 0.75rem;
+    padding: 1.2rem;
     font-weight: normal;
     font-size: ${(props) => props.theme.fontSizes.text};
   }
@@ -159,8 +159,8 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.colors.text.inverse};
     border: 1px solid ${(props) => props.theme.colors.background.inverse};
     font-weight: bold;
-    padding: 0.625rem;
-    min-height: 42px;
+    padding: 1rem;
+    min-height: 4.2rem;
     cursor: pointer;
     transition: all .2s ease-in-out;
 
