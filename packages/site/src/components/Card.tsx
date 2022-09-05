@@ -16,9 +16,9 @@ const CardWrapper = styled.div<{ fullWidth?: boolean; disabled: boolean }>`
   flex-direction: column;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : '250px')};
   background-color: ${({ theme }) => theme.colors.card.default};
-  margin-top: 24px;
-  margin-bottom: 24px;
-  padding: 24px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
   border: 1px solid ${({ theme }) => theme.colors.border.default};
   border-radius: ${({ theme }) => theme.radii.default};
   box-shadow: ${({ theme }) => theme.shadows.default};
@@ -26,9 +26,9 @@ const CardWrapper = styled.div<{ fullWidth?: boolean; disabled: boolean }>`
   align-self: stretch;
   ${({ theme }) => theme.mediaQueries.small} {
     width: 100%;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    padding: 16px;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding: 1rem;
   }
 `;
 
@@ -36,13 +36,13 @@ const Title = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes.large};
   margin: 0;
   ${({ theme }) => theme.mediaQueries.small} {
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fontSizes.text};
   }
 `;
 
 const Description = styled.p`
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const Card = ({ content, disabled = false, fullWidth }: CardProps) => {

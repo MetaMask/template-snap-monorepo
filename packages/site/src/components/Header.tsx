@@ -11,7 +11,7 @@ const HeaderWrapper = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 24px;
+  padding: 1.5rem;
   border-bottom: 1px solid ${(props) => props.theme.colors.border.default};
 `;
 
@@ -19,7 +19,7 @@ const Title = styled.p`
   font-size: ${(props) => props.theme.fontSizes.title};
   font-weight: bold;
   margin: 0;
-  margin-left: 12px;
+  margin-left: 0.75rem;
   ${({ theme }) => theme.mediaQueries.small} {
     display: none;
   }

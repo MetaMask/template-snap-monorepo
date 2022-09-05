@@ -10,20 +10,20 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
-  margin-top: 76px;
-  margin-bottom: 76px;
+  margin-top: 4.75rem;
+  margin-bottom: 4.75rem;
   ${({ theme }) => theme.mediaQueries.small} {
-    padding-left: 24px;
-    padding-right: 24px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
     width: auto;
   }
 `;
 
 const Heading = styled.h1`
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   text-align: center;
 `;
 
@@ -32,12 +32,12 @@ const Span = styled.span`
 `;
 
 const Subtitle = styled.p`
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSizes.large};
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
   ${({ theme }) => theme.mediaQueries.small} {
-    font-size: ${({ theme }) => theme.fontSizes.default};
+    font-size: ${({ theme }) => theme.fontSizes.text};
   }
 `;
 
@@ -49,7 +49,7 @@ const CardContainer = styled.div`
   max-width: 648px;
   width: 100%;
   height: 100%;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 `;
 
 const Notice = styled.div`
@@ -57,8 +57,8 @@ const Notice = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border.default};
   color: ${({ theme }) => theme.colors.text.alternative};
   border-radius: ${({ theme }) => theme.radii.default};
-  padding: 24px;
-  margin-top: 24px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
   max-width: 600px;
   width: 100%;
 
@@ -66,7 +66,7 @@ const Notice = styled.div`
     margin: 0;
   }
   ${({ theme }) => theme.mediaQueries.small} {
-    margin-top: 12px;
+    margin-top: 0.75rem;
     padding: 16px;
   }
 `;
@@ -76,15 +76,15 @@ const ErrorMessage = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.error.default};
   color: ${({ theme }) => theme.colors.error.alternative};
   border-radius: ${({ theme }) => theme.radii.default};
-  padding: 24px;
-  margin-bottom: 24px;
-  margin-top: 24px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   max-width: 600px;
   width: 100%;
   ${({ theme }) => theme.mediaQueries.small} {
-    padding: 16px;
-    margin-bottom: 12px;
-    margin-top: 12px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
     max-width: 100%;
   }
 `;

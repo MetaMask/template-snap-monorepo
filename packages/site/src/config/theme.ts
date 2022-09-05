@@ -12,12 +12,13 @@ const theme = {
     code: 'ui-monospace,Menlo,Monaco,"Cascadia Mono","Segoe UI Mono","Roboto Mono","Oxygen Mono","Ubuntu Monospace","Source Code Pro","Fira Mono","Droid Sans Mono","Courier New", monospace',
   },
   fontSizes: {
-    heading: '52px',
-    mobileHeading: '36px',
-    title: '24px',
-    large: '20px',
+    heading: '3.25rem',
+    mobileHeading: '2.25rem',
+    title: '1.5rem',
+    large: '1.25rem',
     default: '16px',
-    small: '14px',
+    text: '1rem',
+    small: '0.875rem',
   },
   radii: {
     default: '24px',
@@ -128,6 +129,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
+  #root {
+    font-size: ${(props) => props.theme.fontSizes.text};
+  }
+
   * {
     transition: background-color .1s linear;
   }
@@ -142,9 +147,9 @@ export const GlobalStyle = createGlobalStyle`
   code {
     background-color: ${(props) => props.theme.colors.background.alternative};
     font-family: ${(props) => props.theme.fonts.code};
-    padding: 12px;
+    padding: 0.75rem;
     font-weight: normal;
-    font-size: ${(props) => props.theme.fontSizes.default};
+    font-size: ${(props) => props.theme.fontSizes.text};
   }
 
   button {
@@ -154,7 +159,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.colors.text.inverse};
     border: 1px solid ${(props) => props.theme.colors.background.inverse};
     font-weight: bold;
-    padding: 10px;
+    padding: 0.625rem;
     min-height: 42px;
     cursor: pointer;
     transition: all .2s ease-in-out;
