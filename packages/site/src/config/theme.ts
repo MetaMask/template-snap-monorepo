@@ -12,13 +12,12 @@ const theme = {
     code: 'ui-monospace,Menlo,Monaco,"Cascadia Mono","Segoe UI Mono","Roboto Mono","Oxygen Mono","Ubuntu Monospace","Source Code Pro","Fira Mono","Droid Sans Mono","Courier New", monospace',
   },
   fontSizes: {
-    heading: '3.25rem',
-    mobileHeading: '2.25rem',
-    title: '1.5rem',
-    large: '1.25rem',
-    default: '16px',
-    text: '1rem',
-    small: '0.875rem',
+    heading: '5.2rem',
+    mobileHeading: '3.6rem',
+    title: '2.4rem',
+    large: '2rem',
+    text: '1.6rem',
+    small: '1.4rem',
   },
   radii: {
     default: '24px',
@@ -121,16 +120,17 @@ export const dark: DefaultTheme = {
  * @returns Global style React component.
  */
 export const GlobalStyle = createGlobalStyle`
+  html {
+    /* 62.5% of the base size of 16px = 10px.*/
+    font-size: 62.5%;
+  }
+
   body {
     background-color: ${(props) => props.theme.colors.background.default};
     color: ${(props) => props.theme.colors.text.default};
     font-family: ${(props) => props.theme.fonts.default};
-    font-size: ${(props) => props.theme.fontSizes.default};
-    margin: 0;
-  }
-
-  #root {
     font-size: ${(props) => props.theme.fontSizes.text};
+    margin: 0;
   }
 
   * {

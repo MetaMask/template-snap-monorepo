@@ -10,20 +10,20 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
-  margin-top: 4.75rem;
-  margin-bottom: 4.75rem;
+  margin-top: 7.6rem;
+  margin-bottom: 7.6rem;
   ${({ theme }) => theme.mediaQueries.small} {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     width: auto;
   }
 `;
 
 const Heading = styled.h1`
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.4rem;
   text-align: center;
 `;
 
@@ -46,7 +46,7 @@ const CardContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 648px;
+  max-width: 64.8rem;
   width: 100%;
   height: 100%;
   margin-top: 1.5rem;
@@ -57,17 +57,17 @@ const Notice = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border.default};
   color: ${({ theme }) => theme.colors.text.alternative};
   border-radius: ${({ theme }) => theme.radii.default};
-  padding: 1.5rem;
-  margin-top: 1.5rem;
-  max-width: 600px;
+  padding: 2.4rem;
+  margin-top: 2.4rem;
+  max-width: 60rem;
   width: 100%;
 
   & > * {
     margin: 0;
   }
   ${({ theme }) => theme.mediaQueries.small} {
-    margin-top: 0.75rem;
-    padding: 16px;
+    margin-top: 1.2rem;
+    padding: 1.6rem;
   }
 `;
 
@@ -76,15 +76,15 @@ const ErrorMessage = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.error.default};
   color: ${({ theme }) => theme.colors.error.alternative};
   border-radius: ${({ theme }) => theme.radii.default};
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-  max-width: 600px;
+  padding: 2.4rem;
+  margin-bottom: 2.4rem;
+  margin-top: 2.4rem;
+  max-width: 60rem;
   width: 100%;
   ${({ theme }) => theme.mediaQueries.small} {
-    padding: 1rem;
-    margin-bottom: 0.75rem;
-    margin-top: 0.75rem;
+    padding: 1.6rem;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
     max-width: 100%;
   }
 `;
