@@ -15,7 +15,7 @@ const Link = styled.a`
   color: ${(props) => props.theme.colors.text.inverse};
   text-decoration: none;
   font-weight: bold;
-  padding: 10px;
+  padding: 1rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -42,7 +42,7 @@ const Button = styled.button`
 `;
 
 const ButtonText = styled.span`
-  margin-left: 10px;
+  margin-left: 1rem;
 `;
 
 const ConnectedContainer = styled.div`
@@ -56,7 +56,7 @@ const ConnectedContainer = styled.div`
   background-color: ${(props) => props.theme.colors.background.inverse};
   color: ${(props) => props.theme.colors.text.inverse};
   font-weight: bold;
-  padding: 12px;
+  padding: 1.2rem;
 `;
 
 const ConnectedIndicator = styled.div`

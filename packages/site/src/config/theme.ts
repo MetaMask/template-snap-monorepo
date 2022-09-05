@@ -12,12 +12,12 @@ const theme = {
     code: 'ui-monospace,Menlo,Monaco,"Cascadia Mono","Segoe UI Mono","Roboto Mono","Oxygen Mono","Ubuntu Monospace","Source Code Pro","Fira Mono","Droid Sans Mono","Courier New", monospace',
   },
   fontSizes: {
-    heading: '52px',
-    mobileHeading: '36px',
-    title: '24px',
-    large: '20px',
-    default: '16px',
-    small: '14px',
+    heading: '5.2rem',
+    mobileHeading: '3.6rem',
+    title: '2.4rem',
+    large: '2rem',
+    text: '1.6rem',
+    small: '1.4rem',
   },
   radii: {
     default: '24px',
@@ -120,11 +120,16 @@ export const dark: DefaultTheme = {
  * @returns Global style React component.
  */
 export const GlobalStyle = createGlobalStyle`
+  html {
+    /* 62.5% of the base size of 16px = 10px.*/
+    font-size: 62.5%;
+  }
+
   body {
     background-color: ${(props) => props.theme.colors.background.default};
     color: ${(props) => props.theme.colors.text.default};
     font-family: ${(props) => props.theme.fonts.default};
-    font-size: ${(props) => props.theme.fontSizes.default};
+    font-size: ${(props) => props.theme.fontSizes.text};
     margin: 0;
   }
 
@@ -142,9 +147,9 @@ export const GlobalStyle = createGlobalStyle`
   code {
     background-color: ${(props) => props.theme.colors.background.alternative};
     font-family: ${(props) => props.theme.fonts.code};
-    padding: 12px;
+    padding: 1.2rem;
     font-weight: normal;
-    font-size: ${(props) => props.theme.fontSizes.default};
+    font-size: ${(props) => props.theme.fontSizes.text};
   }
 
   button {
@@ -154,8 +159,8 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.colors.text.inverse};
     border: 1px solid ${(props) => props.theme.colors.background.inverse};
     font-weight: bold;
-    padding: 10px;
-    min-height: 42px;
+    padding: 1rem;
+    min-height: 4.2rem;
     cursor: pointer;
     transition: all .2s ease-in-out;
 
