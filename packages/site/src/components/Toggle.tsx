@@ -19,9 +19,9 @@ const ToggleWrapper = styled.div`
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
-  margin-right: 24px;
+  margin-right: 2.4rem;
   ${({ theme }) => theme.mediaQueries.small} {
-    margin-right: 12px;
+    margin-right: 2.4rem;
   }
 `;
 
