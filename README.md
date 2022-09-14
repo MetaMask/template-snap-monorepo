@@ -10,7 +10,8 @@ To interact with (your) Snaps, you will need to install [MetaMask Flask](https:/
 
 ## Getting Started
 
-Clone the template-snap repository [using this template](https://github.com/MetaMask/template-snap-monorepo/generate) and setup the development environment: 
+Clone the template-snap repository [using this template](https://github.com/MetaMask/template-snap-monorepo/generate) and setup the development environment:
+
 ```shell
 yarn install && yarn start
 ```
