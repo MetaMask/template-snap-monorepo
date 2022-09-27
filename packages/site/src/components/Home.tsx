@@ -2,7 +2,12 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import { MetamaskActions, MetaMaskContext } from '../hooks';
 import { connectSnap, isLocalSnap, getSnap, sendHello } from '../utils';
-import { ConnectButton, InstallFlaskButton, SendHelloButton } from './Buttons';
+import {
+  ConnectButton,
+  InstallFlaskButton,
+  ReconnectButton,
+  SendHelloButton,
+} from './Buttons';
 import { Card } from './Card';
 
 const Container = styled.div`
@@ -119,8 +124,8 @@ export const Home = () => {
     }
   };
 
-  const shouldDisplayConnectButton = () =>
-    state.snap ? isLocalSnap(state.snap?.id) || !state.isSnapInstalled : true;
+  const shouldDisplayReconnectButton = () =>
+    state.snap && isLocalSnap(state.snap?.id);
 
   return (
     <Container>
@@ -147,7 +152,7 @@ export const Home = () => {
             fullWidth
           />
         )}
-        {shouldDisplayConnectButton() && (
+        {!state.isSnapInstalled && (
           <Card
             content={{
               title: 'Connect',
@@ -163,6 +168,22 @@ export const Home = () => {
             disabled={!state.isFlask}
           />
         )}
+        {shouldDisplayReconnectButton() && (
+          <Card
+            content={{
+              title: 'Reconnect',
+              description:
+                'While connected to a local running snap this button will always be displayed in order to update the snap if a change is made.',
+              button: (
+                <ReconnectButton
+                  onClick={handleConnectClick}
+                  disabled={!state.isSnapInstalled}
+                />
+              ),
+            }}
+            disabled={!state.isSnapInstalled}
+          />
+        )}
         <Card
           content={{
             title: 'Send Hello message',
@@ -176,7 +197,12 @@ export const Home = () => {
             ),
           }}
           disabled={!state.isSnapInstalled}
-          fullWidth={state.isFlask && !shouldDisplayConnectButton()}
+          fullWidth={
+            state.isFlask &&
+            (state.snap && isLocalSnap(state.snap?.id)
+              ? !shouldDisplayReconnectButton()
+              : state.isSnapInstalled)
+          }
         />
         <Notice>
           <p>

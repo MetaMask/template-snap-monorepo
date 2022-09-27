@@ -85,6 +85,15 @@ export const ConnectButton = (props: ComponentProps<typeof Button>) => {
   );
 };
 
+export const ReconnectButton = (props: ComponentProps<typeof Button>) => {
+  return (
+    <Button {...props}>
+      <FlaskFox />
+      <ButtonText>Reconnect</ButtonText>
+    </Button>
+  );
+};
+
 export const SendHelloButton = (props: ComponentProps<typeof Button>) => {
   return <Button {...props}>Send message</Button>;
 };
@@ -100,8 +109,12 @@ export const HeaderButtons = ({
     return <InstallFlaskButton />;
   }
 
-  if (state.snap && (isLocalSnap(state.snap?.id) || !state.isSnapInstalled)) {
+  if (!state.isSnapInstalled) {
     return <ConnectButton onClick={onConnectClick} />;
+  }
+
+  if (state.snap && isLocalSnap(state.snap?.id)) {
+    return <ReconnectButton onClick={onConnectClick} />;
   }
 
   return (
