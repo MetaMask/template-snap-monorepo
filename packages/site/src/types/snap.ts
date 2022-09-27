@@ -1,8 +1,8 @@
-export type GetSnapsResponse = {
-  [k: string]: {
-    permissionName?: string;
-    id?: string;
-    version?: string;
-    initialPermissions?: { [k: string]: unknown };
-  };
+export type GetSnapsResponse = Record<string, Snap>;
+
+export type Snap = {
+  permissionName: string;
+  id: string;
+  version: string;
+  initialPermissions: Record<string, unknown>;
 };

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { MetamaskActions, MetaMaskContext } from '../hooks';
-import { connectSnap, getThemePreference, isSnapInstalled } from '../utils';
+import { connectSnap, getThemePreference, getSnap } from '../utils';
 import { HeaderButtons } from './Buttons';
 import { SnapLogo } from './SnapLogo';
 import { Toggle } from './Toggle';
@@ -48,11 +48,14 @@ export const Header = ({
   const handleConnectClick = async () => {
     try {
       await connectSnap();
-      const snapInstalled = await isSnapInstalled();
+      const installedSnap = await getSnap();
 
       dispatch({
         type: MetamaskActions.SetInstalled,
-        payload: snapInstalled,
+        payload: {
+          isSnapInstalled: Boolean(installedSnap),
+          snap: installedSnap,
+        },
       });
     } catch (e) {
       console.error(e);

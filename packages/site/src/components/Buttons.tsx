@@ -2,6 +2,7 @@ import { ComponentProps } from 'react';
 import styled from 'styled-components';
 import { MetamaskState } from '../hooks';
 import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
+import { isLocalSnap } from '../utils';
 
 const Link = styled.a`
   display: flex;
@@ -36,6 +37,7 @@ const Button = styled.button`
   align-self: flex-start;
   align-items: center;
   justify-content: center;
+  margin-top: auto;
   ${({ theme }) => theme.mediaQueries.small} {
     width: 100%;
   }
@@ -98,7 +100,7 @@ export const HeaderButtons = ({
     return <InstallFlaskButton />;
   }
 
-  if (!state.isSnapInstalled) {
+  if (state.snap && (isLocalSnap(state.snap?.id) || !state.isSnapInstalled)) {
     return <ConnectButton onClick={onConnectClick} />;
   }
 

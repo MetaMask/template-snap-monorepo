@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { MetamaskActions, MetaMaskContext } from '../hooks';
-import { connectSnap, isSnapInstalled, sendHello } from '../utils';
+import { connectSnap, isLocalSnap, getSnap, sendHello } from '../utils';
 import { ConnectButton, InstallFlaskButton, SendHelloButton } from './Buttons';
 import { Card } from './Card';
 
@@ -95,11 +95,14 @@ export const Home = () => {
   const handleConnectClick = async () => {
     try {
       await connectSnap();
-      const snapInstalled = await isSnapInstalled();
+      const installedSnap = await getSnap();
 
       dispatch({
         type: MetamaskActions.SetInstalled,
-        payload: snapInstalled,
+        payload: {
+          isSnapInstalled: Boolean(installedSnap),
+          snap: installedSnap,
+        },
       });
     } catch (e) {
       console.error(e);
@@ -115,6 +118,9 @@ export const Home = () => {
       dispatch({ type: MetamaskActions.SetError, payload: e });
     }
   };
+
+  const shouldDisplayConnectButton = () =>
+    state.snap ? isLocalSnap(state.snap?.id) || !state.isSnapInstalled : true;
 
   return (
     <Container>
@@ -141,7 +147,7 @@ export const Home = () => {
             fullWidth
           />
         )}
-        {!state.isSnapInstalled && (
+        {shouldDisplayConnectButton() && (
           <Card
             content={{
               title: 'Connect',
@@ -170,7 +176,7 @@ export const Home = () => {
             ),
           }}
           disabled={!state.isSnapInstalled}
-          fullWidth={state.isFlask && state.isSnapInstalled}
+          fullWidth={state.isFlask && !shouldDisplayConnectButton()}
         />
         <Notice>
           <p>

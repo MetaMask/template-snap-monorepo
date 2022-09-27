@@ -1,1 +1,1 @@
-export { type GetSnapsResponse } from './snap';
+export { type GetSnapsResponse, type Snap } from './snap';

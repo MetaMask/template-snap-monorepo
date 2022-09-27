@@ -6,16 +6,19 @@ import {
   useEffect,
   useReducer,
 } from 'react';
-import { isFlask, isSnapInstalled } from '../utils';
+import { Snap } from '../types';
+import { isFlask, getSnap } from '../utils';
 
 export type MetamaskState = {
   isSnapInstalled: boolean;
   isFlask: boolean;
+  snap?: Snap;
   error?: Error;
 };
 
 const initialState: MetamaskState = {
   isSnapInstalled: false,
+  snap: undefined,
   isFlask: false,
   error: undefined,
 };
@@ -42,7 +45,8 @@ const reducer: Reducer<MetamaskState, MetamaskDispatch> = (state, action) => {
     case MetamaskActions.SetInstalled:
       return {
         ...state,
-        isSnapInstalled: action.payload,
+        isSnapInstalled: action.payload.isSnapInstalled,
+        snap: action.payload.snap,
       };
 
     case MetamaskActions.SetFlaskDetected:
@@ -83,10 +87,10 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
     }
 
     async function detectSnapInstalled() {
-      const snapInstalled = await isSnapInstalled();
+      const snap = await getSnap();
       dispatch({
         type: MetamaskActions.SetInstalled,
-        payload: snapInstalled,
+        payload: { isSnapInstalled: Boolean(snap), snap },
       });
     }
 
