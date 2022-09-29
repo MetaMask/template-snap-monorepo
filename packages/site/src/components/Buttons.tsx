@@ -2,6 +2,7 @@ import { ComponentProps } from 'react';
 import styled from 'styled-components';
 import { MetamaskState } from '../hooks';
 import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
+import { shouldDisplayReconnectButton } from '../utils';
 
 const Link = styled.a`
   display: flex;
@@ -36,6 +37,7 @@ const Button = styled.button`
   align-self: flex-start;
   align-items: center;
   justify-content: center;
+  margin-top: auto;
   ${({ theme }) => theme.mediaQueries.small} {
     width: 100%;
   }
@@ -83,6 +85,15 @@ export const ConnectButton = (props: ComponentProps<typeof Button>) => {
   );
 };
 
+export const ReconnectButton = (props: ComponentProps<typeof Button>) => {
+  return (
+    <Button {...props}>
+      <FlaskFox />
+      <ButtonText>Reconnect</ButtonText>
+    </Button>
+  );
+};
+
 export const SendHelloButton = (props: ComponentProps<typeof Button>) => {
   return <Button {...props}>Send message</Button>;
 };
@@ -94,12 +105,16 @@ export const HeaderButtons = ({
   state: MetamaskState;
   onConnectClick(): unknown;
 }) => {
-  if (!state.isFlask && !state.isSnapInstalled) {
+  if (!state.isFlask && !state.installedSnap) {
     return <InstallFlaskButton />;
   }
 
-  if (!state.isSnapInstalled) {
+  if (!state.installedSnap) {
     return <ConnectButton onClick={onConnectClick} />;
+  }
+
+  if (shouldDisplayReconnectButton(state.installedSnap)) {
+    return <ReconnectButton onClick={onConnectClick} />;
   }
 
   return (

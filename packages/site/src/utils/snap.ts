@@ -1,5 +1,5 @@
 import { defaultSnapOrigin } from '../config';
-import { GetSnapsResponse } from '../types';
+import { GetSnapsResponse, Snap } from '../types';
 
 /**
  * Get the installed snaps in MetaMask.
@@ -37,25 +37,22 @@ export const connectSnap = async (
 };
 
 /**
- * Check if a snap is already installed in MetaMask.
+ * Get the snap from MetaMask.
  *
  * @param version - The version of the snap to install (optional).
- * @returns A boolean representing if the snap is installed in MetaMask.
+ * @returns The snap object returned by the extension.
  */
-export const isSnapInstalled = async (version?: string): Promise<boolean> => {
+export const getSnap = async (version?: string): Promise<Snap | undefined> => {
   try {
     const snaps = await getSnaps();
 
-    return Boolean(
-      Object.values(snaps).find(
-        (snap) =>
-          snap.id === defaultSnapOrigin &&
-          (!version || snap.version === version),
-      ),
+    return Object.values(snaps).find(
+      (snap) =>
+        snap.id === defaultSnapOrigin && (!version || snap.version === version),
     );
   } catch (e) {
-    console.log('Failed to obtain installed snaps', e);
-    return false;
+    console.log('Failed to obtain installed snap', e);
+    return undefined;
   }
 };
 
@@ -74,3 +71,5 @@ export const sendHello = async () => {
     ],
   });
 };
+
+export const isLocalSnap = (snapId: string) => snapId.startsWith('local:');

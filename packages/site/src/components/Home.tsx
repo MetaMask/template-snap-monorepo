@@ -1,8 +1,18 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { MetamaskActions, MetaMaskContext } from '../hooks';
-import { connectSnap, isSnapInstalled, sendHello } from '../utils';
-import { ConnectButton, InstallFlaskButton, SendHelloButton } from './Buttons';
+import {
+  connectSnap,
+  getSnap,
+  sendHello,
+  shouldDisplayReconnectButton,
+} from '../utils';
+import {
+  ConnectButton,
+  InstallFlaskButton,
+  ReconnectButton,
+  SendHelloButton,
+} from './Buttons';
 import { Card } from './Card';
 
 const Container = styled.div`
@@ -95,11 +105,11 @@ export const Home = () => {
   const handleConnectClick = async () => {
     try {
       await connectSnap();
-      const snapInstalled = await isSnapInstalled();
+      const installedSnap = await getSnap();
 
       dispatch({
         type: MetamaskActions.SetInstalled,
-        payload: snapInstalled,
+        payload: installedSnap,
       });
     } catch (e) {
       console.error(e);
@@ -141,7 +151,7 @@ export const Home = () => {
             fullWidth
           />
         )}
-        {!state.isSnapInstalled && (
+        {!state.installedSnap && (
           <Card
             content={{
               title: 'Connect',
@@ -157,6 +167,22 @@ export const Home = () => {
             disabled={!state.isFlask}
           />
         )}
+        {shouldDisplayReconnectButton(state.installedSnap) && (
+          <Card
+            content={{
+              title: 'Reconnect',
+              description:
+                'While connected to a local running snap this button will always be displayed in order to update the snap if a change is made.',
+              button: (
+                <ReconnectButton
+                  onClick={handleConnectClick}
+                  disabled={!state.installedSnap}
+                />
+              ),
+            }}
+            disabled={!state.installedSnap}
+          />
+        )}
         <Card
           content={{
             title: 'Send Hello message',
@@ -165,12 +191,16 @@ export const Home = () => {
             button: (
               <SendHelloButton
                 onClick={handleSendHelloClick}
-                disabled={!state.isSnapInstalled}
+                disabled={!state.installedSnap}
               />
             ),
           }}
-          disabled={!state.isSnapInstalled}
-          fullWidth={state.isFlask && state.isSnapInstalled}
+          disabled={!state.installedSnap}
+          fullWidth={
+            state.isFlask &&
+            Boolean(state.installedSnap) &&
+            !shouldDisplayReconnectButton(state.installedSnap)
+          }
         />
         <Notice>
           <p>
