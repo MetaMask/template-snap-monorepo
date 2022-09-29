@@ -198,9 +198,8 @@ export const Home = () => {
           disabled={!state.installedSnap}
           fullWidth={
             state.isFlask &&
-            (shouldDisplayReconnectButton(state.installedSnap)
-              ? !shouldDisplayReconnectButton(state.installedSnap)
-              : Boolean(state.installedSnap))
+            Boolean(state.installedSnap) &&
+            !shouldDisplayReconnectButton(state.installedSnap)
           }
         />
         <Notice>
