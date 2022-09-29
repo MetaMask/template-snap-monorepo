@@ -52,10 +52,7 @@ export const Header = ({
 
       dispatch({
         type: MetamaskActions.SetInstalled,
-        payload: {
-          isSnapInstalled: Boolean(installedSnap),
-          snap: installedSnap,
-        },
+        payload: installedSnap,
       });
     } catch (e) {
       console.error(e);

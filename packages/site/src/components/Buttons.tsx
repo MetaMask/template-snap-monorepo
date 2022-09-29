@@ -2,7 +2,7 @@ import { ComponentProps } from 'react';
 import styled from 'styled-components';
 import { MetamaskState } from '../hooks';
 import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
-import { isLocalSnap } from '../utils';
+import { shouldDisplayReconnectButton } from '../utils';
 
 const Link = styled.a`
   display: flex;
@@ -105,15 +105,15 @@ export const HeaderButtons = ({
   state: MetamaskState;
   onConnectClick(): unknown;
 }) => {
-  if (!state.isFlask && !state.isSnapInstalled) {
+  if (!state.isFlask && !state.installedSnap) {
     return <InstallFlaskButton />;
   }
 
-  if (!state.isSnapInstalled) {
+  if (!state.installedSnap) {
     return <ConnectButton onClick={onConnectClick} />;
   }
 
-  if (state.snap && isLocalSnap(state.snap?.id)) {
+  if (shouldDisplayReconnectButton(state.installedSnap)) {
     return <ReconnectButton onClick={onConnectClick} />;
   }
 

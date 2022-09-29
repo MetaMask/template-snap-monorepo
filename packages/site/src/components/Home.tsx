@@ -1,7 +1,12 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { MetamaskActions, MetaMaskContext } from '../hooks';
-import { connectSnap, isLocalSnap, getSnap, sendHello } from '../utils';
+import {
+  connectSnap,
+  getSnap,
+  sendHello,
+  shouldDisplayReconnectButton,
+} from '../utils';
 import {
   ConnectButton,
   InstallFlaskButton,
@@ -104,10 +109,7 @@ export const Home = () => {
 
       dispatch({
         type: MetamaskActions.SetInstalled,
-        payload: {
-          isSnapInstalled: Boolean(installedSnap),
-          snap: installedSnap,
-        },
+        payload: installedSnap,
       });
     } catch (e) {
       console.error(e);
@@ -123,9 +125,6 @@ export const Home = () => {
       dispatch({ type: MetamaskActions.SetError, payload: e });
     }
   };
-
-  const shouldDisplayReconnectButton = () =>
-    state.snap && isLocalSnap(state.snap?.id);
 
   return (
     <Container>
@@ -152,7 +151,7 @@ export const Home = () => {
             fullWidth
           />
         )}
-        {!state.isSnapInstalled && (
+        {!state.installedSnap && (
           <Card
             content={{
               title: 'Connect',
@@ -168,7 +167,7 @@ export const Home = () => {
             disabled={!state.isFlask}
           />
         )}
-        {shouldDisplayReconnectButton() && (
+        {shouldDisplayReconnectButton(state.installedSnap) && (
           <Card
             content={{
               title: 'Reconnect',
@@ -177,11 +176,11 @@ export const Home = () => {
               button: (
                 <ReconnectButton
                   onClick={handleConnectClick}
-                  disabled={!state.isSnapInstalled}
+                  disabled={!state.installedSnap}
                 />
               ),
             }}
-            disabled={!state.isSnapInstalled}
+            disabled={!state.installedSnap}
           />
         )}
         <Card
@@ -192,16 +191,16 @@ export const Home = () => {
             button: (
               <SendHelloButton
                 onClick={handleSendHelloClick}
-                disabled={!state.isSnapInstalled}
+                disabled={!state.installedSnap}
               />
             ),
           }}
-          disabled={!state.isSnapInstalled}
+          disabled={!state.installedSnap}
           fullWidth={
             state.isFlask &&
-            (state.snap && isLocalSnap(state.snap?.id)
-              ? !shouldDisplayReconnectButton()
-              : state.isSnapInstalled)
+            (shouldDisplayReconnectButton(state.installedSnap)
+              ? !shouldDisplayReconnectButton(state.installedSnap)
+              : Boolean(state.installedSnap))
           }
         />
         <Notice>
