@@ -22,9 +22,7 @@
     "lint:eslint": "eslint . --cache --ext js,ts",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!**/CHANGELOG.md' '**/*.yml' --ignore-path .gitignore",
-    "start": "concurrently \"yarn start:site\" \"yarn start:snap\"",
-    "start:site": "yarn workspace site run start",
-    "start:snap": "yarn workspace snap run start",
+    "start": "yarn workspaces foreach --parallel --interlaced --verbose run start",
     "test": "echo \"TODO\""
   },
   "devDependencies": {
@@ -34,7 +32,6 @@
     "@metamask/eslint-config-typescript": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
-    "concurrently": "^7.3.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.26.0",
