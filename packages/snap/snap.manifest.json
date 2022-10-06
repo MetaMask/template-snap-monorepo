@@ -12,7 +12,7 @@
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "images/icon.svg",
-        "packageName": "test-name",
+        "packageName": "snap",
         "registry": "https://registry.npmjs.org/"
       }
     }
