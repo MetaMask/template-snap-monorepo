@@ -191,16 +191,12 @@ export const Home = () => {
             button: (
               <SendHelloButton
                 onClick={handleSendHelloClick}
-                disabled={!state.installedSnap}
+                disabled={false}
               />
             ),
           }}
-          disabled={!state.installedSnap}
-          fullWidth={
-            state.isFlask &&
-            Boolean(state.installedSnap) &&
-            !shouldDisplayReconnectButton(state.installedSnap)
-          }
+          disabled={false}
+          fullWidth={false}
         />
         <Notice>
           <p>
