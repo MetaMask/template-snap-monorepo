@@ -2,6 +2,8 @@
 dist/
 build/
 coverage/
+.cache/
+public/
 
 # Logs
 logs
