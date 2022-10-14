@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-import { Footer, Header, Home } from './components';
-import { MetaMaskProvider } from './hooks';
+import { FunctionComponent, ReactNode, useContext } from 'react';
+import styled from 'styled-components';
+import { Footer, Header } from './components';
 
-import { light, dark, GlobalStyle } from './config/theme';
-import { setLocalStorage, getThemePreference } from './utils';
+import { GlobalStyle } from './config/theme';
+import { ToggleThemeContext } from './Root';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,26 +13,21 @@ const Wrapper = styled.div`
   max-width: 100vw;
 `;
 
-function App() {
-  const [darkTheme, setDarkTheme] = useState(getThemePreference());
+export type AppProps = {
+  children: ReactNode;
+};
 
-  const toggleTheme = () => {
-    setLocalStorage('theme', darkTheme ? 'light' : 'dark');
-    setDarkTheme(!darkTheme);
-  };
+export const App: FunctionComponent<AppProps> = ({ children }) => {
+  const toggleTheme = useContext(ToggleThemeContext);
 
   return (
-    <ThemeProvider theme={darkTheme ? dark : light}>
-      <MetaMaskProvider>
-        <GlobalStyle />
-        <Wrapper>
-          <Header handleToggleClick={toggleTheme} />
-          <Home />
-          <Footer />
-        </Wrapper>
-      </MetaMaskProvider>
-    </ThemeProvider>
+    <>
+      <GlobalStyle />
+      <Wrapper>
+        <Header handleToggleClick={toggleTheme} />
+        {children}
+        <Footer />
+      </Wrapper>
+    </>
   );
-}
-
-export default App;
+};

@@ -70,6 +70,10 @@ const reducer: Reducer<MetamaskState, MetamaskDispatch> = (state, action) => {
  * @returns JSX.
  */
 export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
+  if (typeof window === 'undefined') {
+    return <>{children}</>;
+  }
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
