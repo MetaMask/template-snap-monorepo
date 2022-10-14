@@ -37,5 +37,8 @@ module.exports = {
     '**/!.eslintrc.js',
     '**/dist*/',
     '**/*__GENERATED__*',
+    '**/build',
+    '**/public',
+    '**/.cache',
   ],
 };
