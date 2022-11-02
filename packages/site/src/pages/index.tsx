@@ -191,12 +191,16 @@ const Index = () => {
             button: (
               <SendHelloButton
                 onClick={handleSendHelloClick}
-                disabled={false}
+                disabled={!state.installedSnap}
               />
             ),
           }}
-          disabled={false}
-          fullWidth={false}
+          disabled={!state.installedSnap}
+          fullWidth={
+            state.isFlask &&
+            Boolean(state.installedSnap) &&
+            !shouldDisplayReconnectButton(state.installedSnap)
+          }
         />
         <Notice>
           <p>
