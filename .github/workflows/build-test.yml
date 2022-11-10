@@ -32,7 +32,7 @@ jobs:
       - run: yarn install --immutable
       - run: yarn build
       - run: yarn lint
-      - run: yarn test
+      - run: xvfb-run --auto-servernum  yarn test
       - name: Require clean working directory
         shell: bash
         run: |
