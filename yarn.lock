@@ -2840,16 +2840,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chainsafe/dappeteer@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@chainsafe/dappeteer@npm:3.0.0"
+"@chainsafe/dappeteer@npm:^4.0.0-rc.0":
+  version: 4.0.0-rc.0
+  resolution: "@chainsafe/dappeteer@npm:4.0.0-rc.0"
   dependencies:
-    "@types/chai-as-promised": ^7.1.5
-    chai-as-promised: ^7.1.1
+    "@metamask/providers": ^9.1.0
     node-stream-zip: ^1.13.0
+    serve-handler: 5.0.8
   peerDependencies:
+    playwright: ">=1"
     puppeteer: ">13"
-  checksum: 2a97011085c8bc2f57fec00611651cb0d42ec792cf13f87fa7deb59af48e60a7f5d94135035e0dba564238635b2f3710deed7faf52822ff6a96a2ebf0064b8d8
+  peerDependenciesMeta:
+    playwright:
+      optional: true
+    soy-puppeteer:
+      optional: true
+  checksum: 04346722c2fa1a46220e64c385835ae172770759b27e5ac6e5f1e955602da60829c94d40aa2ce1bd7ed5ae13c0f56d17c4d277d6c1e54550ae135345b1b5bb23
   languageName: node
   linkType: hard
 
@@ -3803,6 +3809,26 @@ __metadata:
     pump: ^3.0.0
     webextension-polyfill-ts: ^0.25.0
   checksum: c005742d0757b10bec9da66f077e364794ae306b5371155aa98f29fce2ba534c7d95637359a2caffca7c22abc3270ad69344fe1b6c9065aed50866d795c27336
+  languageName: node
+  linkType: hard
+
+"@metamask/providers@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "@metamask/providers@npm:9.1.0"
+  dependencies:
+    "@metamask/object-multiplex": ^1.1.0
+    "@metamask/safe-event-emitter": ^2.0.0
+    "@types/chrome": ^0.0.136
+    detect-browser: ^5.2.0
+    eth-rpc-errors: ^4.0.2
+    extension-port-stream: ^2.0.1
+    fast-deep-equal: ^2.0.1
+    is-stream: ^2.0.0
+    json-rpc-engine: ^6.1.0
+    json-rpc-middleware-stream: ^3.0.0
+    pump: ^3.0.0
+    webextension-polyfill-ts: ^0.25.0
+  checksum: b36fdd3eb6b7dd64eb8017fc32cc485327cd70f8448be1fa87109862db4ffe391a5936e78f1204ef6ff6a381436e185eafa3cfebdb499f0955fc724bde82a881
   languageName: node
   linkType: hard
 
@@ -4911,22 +4937,6 @@ __metadata:
     "@types/node": "*"
     "@types/responselike": "*"
   checksum: 667d25808dbf46fe104d6f029e0281ff56058d50c7c1b9182774b3e38bb9c1124f56e4c367ba54f92dbde2d1cc573f26eb0e9748710b2822bc0fd1e5498859c6
-  languageName: node
-  linkType: hard
-
-"@types/chai-as-promised@npm:^7.1.5":
-  version: 7.1.5
-  resolution: "@types/chai-as-promised@npm:7.1.5"
-  dependencies:
-    "@types/chai": "*"
-  checksum: 7c1345c6e32513d52d8e562ec173c23161648d6b792046525f18803a9932d7b3ad3dca8f0181e3c529ec42b106099f174e34edeb184d61dc93e32c98b5132fd4
-  languageName: node
-  linkType: hard
-
-"@types/chai@npm:*":
-  version: 4.3.4
-  resolution: "@types/chai@npm:4.3.4"
-  checksum: 571184967beb03bf64c4392a13a7d44e72da9af5a1e83077ff81c39cf59c0fda2a5c78d2005084601cf8f3d11726608574d8b5b4a0e3e9736792807afd926cd0
   languageName: node
   linkType: hard
 
@@ -7398,17 +7408,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chai-as-promised@npm:^7.1.1":
-  version: 7.1.1
-  resolution: "chai-as-promised@npm:7.1.1"
-  dependencies:
-    check-error: ^1.0.2
-  peerDependencies:
-    chai: ">= 2.1.2 < 5"
-  checksum: 7262868a5b51a12af4e432838ddf97a893109266a505808e1868ba63a12de7ee1166e9d43b5c501a190c377c1b11ecb9ff8e093c89f097ad96c397e8ec0f8d6a
-  languageName: node
-  linkType: hard
-
 "chalk@npm:^2.0.0, chalk@npm:^2.4.2":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
@@ -7489,13 +7488,6 @@ __metadata:
   version: 0.7.0
   resolution: "chardet@npm:0.7.0"
   checksum: 6fd5da1f5d18ff5712c1e0aed41da200d7c51c28f11b36ee3c7b483f3696dabc08927fc6b227735eb8f0e1215c9a8abd8154637f3eff8cada5959df7f58b024d
-  languageName: node
-  linkType: hard
-
-"check-error@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "check-error@npm:1.0.2"
-  checksum: d9d106504404b8addd1ee3f63f8c0eaa7cd962a1a28eb9c519b1c4a1dc7098be38007fc0060f045ee00f075fbb7a2a4f42abcf61d68323677e11ab98dc16042e
   languageName: node
   linkType: hard
 
@@ -17139,6 +17131,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"serve-handler@npm:5.0.8":
+  version: 5.0.8
+  resolution: "serve-handler@npm:5.0.8"
+  dependencies:
+    bytes: 3.0.0
+    content-disposition: 0.5.2
+    fast-url-parser: 1.1.3
+    mime-types: 2.1.18
+    minimatch: 3.0.4
+    path-is-inside: 1.0.2
+    path-to-regexp: 2.2.1
+    range-parser: 1.2.0
+  checksum: 627ec5ab6a4c8688a0dfde016010964ab7f763cd651da49dae809e39691a63f2661b0035cafab675c6d990dcb54c0f4640424d4abf2f7fe7aff6f38dc8ea2494
+  languageName: node
+  linkType: hard
+
 "serve-handler@npm:^6.1.1":
   version: 6.1.3
   resolution: "serve-handler@npm:6.1.3"
@@ -17457,7 +17465,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "snap@workspace:packages/snap"
   dependencies:
-    "@chainsafe/dappeteer": ^3.0.0
+    "@chainsafe/dappeteer": ^4.0.0-rc.0
     "@lavamoat/allow-scripts": ^2.0.3
     "@metamask/auto-changelog": ^2.6.0
     "@metamask/eslint-config": ^10.0.0
