@@ -25,7 +25,7 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
     "start": "mm-snap watch",
-    "test": "jest --silent --runInBand"
+    "test": "jest --silent --runInBand --coverage=false"
   },
   "devDependencies": {
     "@chainsafe/dappeteer": "^4.0.0-rc.0",
