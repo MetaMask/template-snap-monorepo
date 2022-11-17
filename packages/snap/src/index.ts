@@ -25,14 +25,15 @@ export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
     case 'hello':
       return snap.request({
         method: 'snap_confirm',
-        params:
-        {
-          prompt: getMessage(origin),
-          description:
-            'This custom confirmation is just for display purposes.',
-          textAreaContent:
-            'But you can edit the snap source code to make it do something, if you want to!',
-        },
+        params: [
+          {
+            prompt: getMessage(origin),
+            description:
+              'This custom confirmation is just for display purposes.',
+            textAreaContent:
+              'But you can edit the snap source code to make it do something, if you want to!',
+          },
+        ],
       });
     default:
       throw new Error('Method not found.');
