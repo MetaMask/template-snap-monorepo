@@ -79,6 +79,6 @@ The project follows the same release process as the other libraries in the MetaM
 - For the global `wallet` type to work, you have to add the following to your `tsconfig.json`:
   ```json
   {
-    "files": ["./node_modules/@metamask/snap-types/global.d.ts"]
+    "files": ["./node_modules/@metamask/snaps-types/global.d.ts"]
   }
   ```
