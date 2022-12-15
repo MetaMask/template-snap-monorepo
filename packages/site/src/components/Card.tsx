@@ -49,7 +49,9 @@ export const Card = ({ content, disabled = false, fullWidth }: CardProps) => {
   const { title, description, button } = content;
   return (
     <CardWrapper fullWidth={fullWidth} disabled={disabled}>
-      <Title>{title}</Title>
+      {title && (
+        <Title>{title}</Title>
+      )}
       <Description>{description}</Description>
       {button}
     </CardWrapper>
