@@ -4,7 +4,7 @@ import styled from 'styled-components';
 type CardProps = {
   content: {
     title?: string;
-    description: string | ReactNode;
+    description: ReactNode;
     button?: ReactNode;
   };
   disabled?: boolean;
