@@ -1,27 +1,30 @@
 import path from 'path';
 import {
   Dappeteer,
-  initSnapEnv,
-  DappeteerPage,
   DappeteerBrowser,
+  DappeteerPage,
+  initSnapEnv,
 } from '@chainsafe/dappeteer';
 
+const DAPP_PAGE = 'https://example.org';
+
 describe('snap', function () {
-  let dappeteer: Dappeteer;
+  let metaMask: Dappeteer;
   let browser: DappeteerBrowser;
   let connectedPage: DappeteerPage;
   let snapId: string;
 
   beforeAll(async function () {
-    ({ dappeteer, snapId, browser } = await initSnapEnv({
+    ({ metaMask, snapId, browser } = await initSnapEnv({
       automation: 'playwright',
       browser: 'chrome',
+      headless: true,
       snapIdOrLocation: path.resolve(__dirname, '../..'),
-      hasPermissions: true,
-      hasKeyPermissions: false,
+      installationSnapUrl: DAPP_PAGE,
     }));
-    connectedPage = await dappeteer.page.browser().newPage();
-    await connectedPage.goto('https://google.com');
+
+    connectedPage = await metaMask.page.browser().newPage();
+    await connectedPage.goto(DAPP_PAGE);
   });
 
   afterAll(async function () {
@@ -29,30 +32,30 @@ describe('snap', function () {
   });
 
   test('snap invoke should be true if dialog accepted', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'hello',
     );
-    await dappeteer.snaps.acceptDialog();
+    await metaMask.snaps.acceptDialog();
     const result = await resultPromise;
     expect(result).toBeTruthy();
   });
 
   test('snap invoke should be true if dialog accepted', async function () {
-    const resultPromise = dappeteer.snaps.invokeSnap(
+    const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
       'hello',
     );
-    await dappeteer.snaps.rejectDialog();
+    await metaMask.snaps.rejectDialog();
     const result = await resultPromise;
     expect(result).toBeFalsy();
   });
 
   test('snap invoke should error on non supported method', async function () {
     try {
-      await dappeteer.snaps.invokeSnap(connectedPage, snapId, 'invalid');
+      await metaMask.snaps.invokeSnap(connectedPage, snapId, 'invalid');
     } catch (e) {
       console.error(e);
       expect(e.message).toContain('Method not found.');

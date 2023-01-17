@@ -25,10 +25,10 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
     "start": "mm-snap watch",
-    "test": "jest --silent --runInBand --coverage=false"
+    "test": "jest --silent --verbose --runInBand --coverage=false"
   },
   "devDependencies": {
-    "@chainsafe/dappeteer": "^4.0.0-rc.0",
+    "@chainsafe/dappeteer": "^4.1.0",
     "@lavamoat/allow-scripts": "^2.0.3",
     "@metamask/auto-changelog": "^2.6.0",
     "@metamask/eslint-config": "^10.0.0",
