@@ -1,4 +1,4 @@
-import { OnRpcRequestHandler } from '@metamask/snap-types';
+import { OnRpcRequestHandler } from '@metamask/snaps-types';
 
 /**
  * Get a message from the origin. For demonstration purposes only.
@@ -23,7 +23,7 @@ export const getMessage = (originString: string): string =>
 export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
   switch (request.method) {
     case 'hello':
-      return wallet.request({
+      return snap.request({
         method: 'snap_confirm',
         params: [
           {
