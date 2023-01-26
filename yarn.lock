@@ -2651,6 +2651,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/types@npm:^7.18.7":
+  version: 7.20.7
+  resolution: "@babel/types@npm:7.20.7"
+  dependencies:
+    "@babel/helper-string-parser": ^7.19.4
+    "@babel/helper-validator-identifier": ^7.19.1
+    to-fast-properties: ^2.0.0
+  checksum: b39af241f0b72bba67fd6d0d23914f6faec8c0eba8015c181cbd5ea92e59fc91a52a1ab490d3520c7dbd19ddb9ebb76c476308f6388764f16d8201e37fae6811
+  languageName: node
+  linkType: hard
+
 "@babel/types@npm:^7.19.0":
   version: 7.19.0
   resolution: "@babel/types@npm:7.19.0"
@@ -3382,6 +3393,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/snap-types@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "@metamask/snap-types@npm:0.23.0"
+  dependencies:
+    "@metamask/providers": ^9.0.0
+    "@metamask/snap-utils": ^0.23.0
+    "@metamask/types": ^1.1.0
+  checksum: c84c3fe1b1a5a29e9297d2fed3efa6adf4f983c3a48f292afc07eb7d66bbed1d10924d5c42d58a3552cc2b7de601b22e207834982a46d535612a2e17d57246b7
+  languageName: node
+  linkType: hard
+
 "@metamask/snap-utils@npm:^0.22.0":
   version: 0.22.0
   resolution: "@metamask/snap-utils@npm:0.22.0"
@@ -3397,6 +3419,27 @@ __metadata:
     ses: ^0.15.17
     superstruct: ^0.16.5
   checksum: d22fa227236989e67fb93ca28a820191af7b5e6d04af2dacf300f2fd8e718b5d02c387c633a8286767df53ee5d33eacb160e9c176874bbe1a5e2415ad64bdc08
+  languageName: node
+  linkType: hard
+
+"@metamask/snap-utils@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "@metamask/snap-utils@npm:0.23.0"
+  dependencies:
+    "@babel/core": ^7.18.6
+    "@babel/types": ^7.18.7
+    "@metamask/snap-types": ^0.23.0
+    "@metamask/utils": ^3.3.0
+    "@noble/hashes": ^1.1.3
+    "@scure/base": ^1.1.1
+    cron-parser: ^4.5.0
+    eth-rpc-errors: ^4.0.3
+    fast-deep-equal: ^3.1.3
+    rfdc: ^1.3.0
+    semver: ^7.3.7
+    ses: ^0.17.0
+    superstruct: ^0.16.7
+  checksum: 8aa8401ff5a57bce1dfed68a1a9f9af71d77cbea83aa08e391a34f2d2b4a52c35150287ad938e2d7c7a125db1b1667d54338496221d5a0e36b7fb9aae1986edb
   languageName: node
   linkType: hard
 
@@ -3484,6 +3527,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/utils@npm:^3.3.0":
+  version: 3.4.1
+  resolution: "@metamask/utils@npm:3.4.1"
+  dependencies:
+    "@types/debug": ^4.1.7
+    debug: ^4.3.4
+    semver: ^7.3.8
+    superstruct: ^1.0.3
+  checksum: 0799cefc17effecba4b4cd34879113f9f826a7aff4d21bfdcca64ef31c117be3e6a30cdd49c0b91289f22efbf7e56901322f4ce1b4d638dd2fc3bc3e81e3c87d
+  languageName: node
+  linkType: hard
+
 "@mischnic/json-sourcemap@npm:^0.1.0":
   version: 0.1.0
   resolution: "@mischnic/json-sourcemap@npm:0.1.0"
@@ -3543,6 +3598,13 @@ __metadata:
   dependencies:
     eslint-scope: 5.1.1
   checksum: f2e3b2d6a6e2d9f163ca22105910c9f850dc4897af0aea3ef0a5886b63d8e1ba6505b71c99cb78a3bba24a09557d601eb21c8dede3f3213753fcfef364eb0e57
+  languageName: node
+  linkType: hard
+
+"@noble/hashes@npm:^1.1.3":
+  version: 1.1.5
+  resolution: "@noble/hashes@npm:1.1.5"
+  checksum: de3f095a7ac1cbf5b4b3d09f193288d4f2eec35fbadf2ed9fd7e47d8a3042fef410052ba62dc0296a185f994c11192f5357fdb1bd9178c905efd82e946c53b00
   languageName: node
   linkType: hard
 
@@ -4029,6 +4091,13 @@ __metadata:
     webpack-plugin-serve:
       optional: true
   checksum: 48d8b2813dfba7d482e58a2b0161b79e3a5d608603f1a3c34d709ecc2e6e08f8b14f79934c57849d06f153eb327f18e3d8e1539f978e40ca91539c342f27b8ae
+  languageName: node
+  linkType: hard
+
+"@scure/base@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@scure/base@npm:1.1.1"
+  checksum: b4fc810b492693e7e8d0107313ac74c3646970c198bbe26d7332820886fa4f09441991023ec9aa3a2a51246b74409ab5ebae2e8ef148bbc253da79ac49130309
   languageName: node
   linkType: hard
 
@@ -7402,6 +7471,15 @@ __metadata:
     safe-buffer: ^5.0.1
     sha.js: ^2.4.8
   checksum: ba12bb2257b585a0396108c72830e85f882ab659c3320c83584b1037f8ab72415095167ced80dc4ce8e446a8ecc4b2acf36d87befe0707d73b26cf9dc77440ed
+  languageName: node
+  linkType: hard
+
+"cron-parser@npm:^4.5.0":
+  version: 4.7.1
+  resolution: "cron-parser@npm:4.7.1"
+  dependencies:
+    luxon: ^3.2.1
+  checksum: 60642d4710c6ba202b781be6c905d68a47ac69fe1b9eaba06a3f7e9950ba58adbb21ae260452b2801d80b2a1f04f142bb847157c5a707fa4b01a5d2c8842828e
   languageName: node
   linkType: hard
 
@@ -12465,6 +12543,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"luxon@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "luxon@npm:3.2.1"
+  checksum: 3fa3def2c5f5d3032b4c46220c4da8aeb467ac979888fc9d2557adcd22195f93516b4ad5909a75862bec8dc6ddc0953b0f38e6d2f4a8ab8450ddc531a83cf20d
+  languageName: node
+  linkType: hard
+
 "lz-string@npm:^1.4.4":
   version: 1.4.4
   resolution: "lz-string@npm:1.4.4"
@@ -15667,7 +15752,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.2.1, semver@npm:^7.3.4":
+"semver@npm:^7.2.1, semver@npm:^7.3.4, semver@npm:^7.3.8":
   version: 7.3.8
   resolution: "semver@npm:7.3.8"
   dependencies:
@@ -15778,6 +15863,13 @@ __metadata:
   version: 0.15.21
   resolution: "ses@npm:0.15.21"
   checksum: 79c8478ec1bbba938367709d46e0a1547a0f0bed73b8d90dda833fdcaaa8a728b08502114898b493c22791c63df419854826d7c7945b3048a4881a7d69490756
+  languageName: node
+  linkType: hard
+
+"ses@npm:^0.17.0":
+  version: 0.17.0
+  resolution: "ses@npm:0.17.0"
+  checksum: c4c668de819b5366da7a9797d4ab0ec9c3efe4904ea64453cad5a48b659c77b817d589584019f5f7ca42802f640dcc706241543c1df00282473320a77397b641
   languageName: node
   linkType: hard
 
@@ -16063,7 +16155,7 @@ __metadata:
     "@metamask/eslint-config-jest": ^10.0.0
     "@metamask/eslint-config-nodejs": ^10.0.0
     "@metamask/eslint-config-typescript": ^10.0.0
-    "@metamask/snap-types": ^0.22.0
+    "@metamask/snap-types": ^0.23.0
     "@metamask/snaps-cli": ^0.22.0
     "@typescript-eslint/eslint-plugin": ^5.33.0
     "@typescript-eslint/parser": ^5.33.0
@@ -16692,6 +16784,20 @@ __metadata:
   version: 0.16.5
   resolution: "superstruct@npm:0.16.5"
   checksum: 9f843c38695b584a605ae9b028629de18a85bd0dca0e9449b4ab98bb7b9ac3d82599870acbab9fbd2ee454c6b187af7e61562e252dfadabd974191ab4ab2e3ce
+  languageName: node
+  linkType: hard
+
+"superstruct@npm:^0.16.7":
+  version: 0.16.7
+  resolution: "superstruct@npm:0.16.7"
+  checksum: c8c855ff6945da8a41048c6d236de7b1af5d4d9c31742b3ee54d65647c31597488620281f65e095d5efc9e2fbdaad529b8c8f2506c12569d428467c835a21477
+  languageName: node
+  linkType: hard
+
+"superstruct@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "superstruct@npm:1.0.3"
+  checksum: 761790bb111e6e21ddd608299c252f3be35df543263a7ebbc004e840d01fcf8046794c274bcb351bdf3eae4600f79d317d085cdbb19ca05803a4361840cc9bb1
   languageName: node
   linkType: hard
 
