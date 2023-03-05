@@ -32,7 +32,7 @@ In development, Gatsby will load environment variables from a file named `.env.d
 
 By default you can use the `SNAP_ORIGIN` variable (used in `src/config/snap.ts`) to define a production origin for you snap (eg. `npm:MyPackageName`). If not defined it will defaults to `local:http://localhost:8080`.
 
-A `.env` file template is avaible, to use it rename `.env.production.dist` to `.env.production`
+A `.env` file template is available, to use it rename `.env.production.dist` to `.env.production`
 
 To learn more visit [Gatsby documentation](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/)
 
