@@ -43,4 +43,6 @@ jobs:
       - name: Publish to GitHub Pages
         uses: MetaMask/action-publish-gh-pages@v2
         with:
-          source-directory: package/site/build
+          source-directory: packages/site/public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
