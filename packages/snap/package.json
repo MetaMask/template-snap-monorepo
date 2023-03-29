@@ -26,6 +26,9 @@
     "serve": "mm-snap serve",
     "start": "mm-snap watch"
   },
+  "dependencies": {
+    "buffer": "^6.0.3"
+  },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^2.0.3",
     "@metamask/auto-changelog": "^2.6.0",
@@ -57,8 +60,5 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  },
-  "dependencies": {
-    "buffer": "^6.0.3"
   }
 }
