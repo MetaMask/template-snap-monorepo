@@ -57,5 +57,8 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3"
   }
 }

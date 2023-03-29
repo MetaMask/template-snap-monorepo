@@ -1,3 +1,9 @@
+/**
+ * This side-effect import puts Buffer in the global scope before
+ * any other module or snap code is loaded.
+ */
+// eslint-disable-next-line import/no-unassigned-import
+import './buffer-fix';
 import { OnRpcRequestHandler } from '@metamask/snaps-types';
 import { panel, text } from '@metamask/snaps-ui';
 
