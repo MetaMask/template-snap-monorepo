@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 type CardProps = {
   content: {
-    title: string;
-    description: string;
-    button: ReactNode;
+    title?: string;
+    description: ReactNode;
+    button?: ReactNode;
   };
   disabled?: boolean;
   fullWidth?: boolean;
@@ -40,7 +40,7 @@ const Title = styled.h2`
   }
 `;
 
-const Description = styled.p`
+const Description = styled.div`
   margin-top: 2.4rem;
   margin-bottom: 2.4rem;
 `;
@@ -49,7 +49,9 @@ export const Card = ({ content, disabled = false, fullWidth }: CardProps) => {
   const { title, description, button } = content;
   return (
     <CardWrapper fullWidth={fullWidth} disabled={disabled}>
-      <Title>{title}</Title>
+      {title && (
+        <Title>{title}</Title>
+      )}
       <Description>{description}</Description>
       {button}
     </CardWrapper>
