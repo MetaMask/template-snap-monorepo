@@ -17,8 +17,6 @@ describe('snap', function () {
   beforeAll(async function () {
     ({ metaMask, snapId, browser } = await initSnapEnv({
       automation: 'playwright',
-      browser: 'chrome',
-      headless: true,
       snapIdOrLocation: path.resolve(__dirname, '../..'),
       installationSnapUrl: DAPP_PAGE,
     }));
@@ -37,7 +35,7 @@ describe('snap', function () {
       snapId,
       'hello',
     );
-    await metaMask.snaps.acceptDialog();
+    await metaMask.snaps.dialog.accept();
     const result = await resultPromise;
     expect(result).toBeTruthy();
   });
@@ -48,7 +46,7 @@ describe('snap', function () {
       snapId,
       'hello',
     );
-    await metaMask.snaps.rejectDialog();
+    await metaMask.snaps.dialog.reject();
     const result = await resultPromise;
     expect(result).toBeFalsy();
   });
