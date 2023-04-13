@@ -17,7 +17,7 @@ export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
       return snap.request({
         method: 'snap_dialog',
         params: {
-          type: 'Confirmation',
+          type: 'confirmation',
           content: panel([
             text(`Hello, **${origin}**!`),
             text('This custom confirmation is just for display purposes.'),
