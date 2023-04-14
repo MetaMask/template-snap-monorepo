@@ -26,7 +26,7 @@ describe('snap', function () {
   });
 
   afterAll(async function () {
-    browser.close();
+    await browser.close();
   });
 
   test('snap invoke should be true if dialog accepted', async function () {
