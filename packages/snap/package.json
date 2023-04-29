@@ -27,7 +27,9 @@
     "start": "mm-snap watch"
   },
   "dependencies": {
-    "buffer": "^6.0.3"
+    "buffer": "^6.0.3",
+    "@metamask/snaps-types": "^0.32.2",
+    "@metamask/snaps-ui": "^0.32.2"
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^2.0.3",
@@ -36,9 +38,7 @@
     "@metamask/eslint-config-jest": "^10.0.0",
     "@metamask/eslint-config-nodejs": "^10.0.0",
     "@metamask/eslint-config-typescript": "^10.0.0",
-    "@metamask/snaps-cli": "^0.27.1",
-    "@metamask/snaps-types": "^0.27.1",
-    "@metamask/snaps-ui": "^0.27.1",
+    "@metamask/snaps-cli": "^0.32.2",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "eslint": "^8.21.0",
