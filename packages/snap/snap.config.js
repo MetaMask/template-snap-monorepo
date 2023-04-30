@@ -13,10 +13,10 @@ module.exports = {
           data += buffer;
           callback();
         },
-        function (cb) {
+        function (callback) {
           this.push("globalThis.Buffer = require('buffer/').Buffer;");
           this.push(data);
-          cb();
+          callback();
         },
       );
     });
