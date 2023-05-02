@@ -40,7 +40,7 @@ describe('snap', function () {
     expect(result).toBeTruthy();
   });
 
-  test('snap invoke should be true if dialog accepted', async function () {
+  test('snap invoke should be true if dialog rejected', async function () {
     const resultPromise = metaMask.snaps.invokeSnap(
       connectedPage,
       snapId,
