@@ -18,13 +18,13 @@
     "build": "mm-snap build",
     "build:clean": "yarn clean && yarn build",
     "clean": "rimraf dist",
-    "test": "jest",
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:eslint": "eslint . --cache --ext js,ts",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
-    "start": "mm-snap watch"
+    "start": "mm-snap watch",
+    "test": "jest"
   },
   "dependencies": {
     "@metamask/snaps-types": "^0.32.2",
