@@ -54,6 +54,8 @@ jobs:
         with:
           path: ./packages/snap/dist
           key: snap-${{ runner.os }}-${{ github.sha }}
+      - name: Install Google Chrome
+        uses: yarn install-chrome
       - run: yarn install --immutable
       - name: Run e2e tests
         run: yarn workspace snap run test
