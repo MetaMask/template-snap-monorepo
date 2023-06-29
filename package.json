@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach --parallel --topological --verbose run build",
+    "install-chrome": "./scripts/install-chrome.sh",
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:eslint": "eslint . --cache --ext js,ts",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
