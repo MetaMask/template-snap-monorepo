@@ -1,5 +1,5 @@
-import type { SnapConfig } from '@metamask/snaps-cli';
 import { resolve } from 'path';
+import type { SnapConfig } from '@metamask/snaps-cli';
 
 const config: SnapConfig = {
   bundler: 'webpack',
@@ -8,8 +8,8 @@ const config: SnapConfig = {
     port: 8080,
   },
   polyfills: {
-    buffer: true
-  }
+    buffer: true,
+  },
 };
 
 export default config;
