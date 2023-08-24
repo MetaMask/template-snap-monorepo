@@ -1,17 +1,19 @@
+import { MetaMaskInpageProvider } from '@metamask/providers';
 import { defaultSnapOrigin } from '../config';
 import { GetSnapsResponse, Snap } from '../types';
 
 /**
  * Get the installed snaps in MetaMask.
  *
+ * @param provider - The MetaMask inpage provider.
  * @returns The snaps installed in MetaMask.
  */
-export const getSnaps = async (): Promise<GetSnapsResponse> => {
-  return (await window.ethereum.request({
+export const getSnaps = async (
+  provider?: MetaMaskInpageProvider,
+): Promise<GetSnapsResponse> =>
+  (await (provider ?? window.ethereum).request({
     method: 'wallet_getSnaps',
   })) as unknown as GetSnapsResponse;
-};
-
 /**
  * Connect a snap to MetaMask.
  *

@@ -4,6 +4,7 @@ import { MetamaskActions, MetaMaskContext } from '../hooks';
 import {
   connectSnap,
   getSnap,
+  isLocalSnap,
   sendHello,
   shouldDisplayReconnectButton,
 } from '../utils';
@@ -14,6 +15,7 @@ import {
   SendHelloButton,
   Card,
 } from '../components';
+import { defaultSnapOrigin } from '../config';
 
 const Container = styled.div`
   display: flex;
@@ -102,6 +104,10 @@ const ErrorMessage = styled.div`
 const Index = () => {
   const [state, dispatch] = useContext(MetaMaskContext);
 
+  const isMetaMaskReady = isLocalSnap(defaultSnapOrigin)
+    ? state.isFlask
+    : state.snapsDetected;
+
   const handleConnectClick = async () => {
     try {
       await connectSnap();
@@ -140,7 +146,7 @@ const Index = () => {
             <b>An error happened:</b> {state.error.message}
           </ErrorMessage>
         )}
-        {!state.isFlask && (
+        {!isMetaMaskReady && (
           <Card
             content={{
               title: 'Install',
@@ -160,11 +166,11 @@ const Index = () => {
               button: (
                 <ConnectButton
                   onClick={handleConnectClick}
-                  disabled={!state.isFlask}
+                  disabled={!isMetaMaskReady}
                 />
               ),
             }}
-            disabled={!state.isFlask}
+            disabled={!isMetaMaskReady}
           />
         )}
         {shouldDisplayReconnectButton(state.installedSnap) && (
@@ -197,7 +203,7 @@ const Index = () => {
           }}
           disabled={!state.installedSnap}
           fullWidth={
-            state.isFlask &&
+            isMetaMaskReady &&
             Boolean(state.installedSnap) &&
             !shouldDisplayReconnectButton(state.installedSnap)
           }
