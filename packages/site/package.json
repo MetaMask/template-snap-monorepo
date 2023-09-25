@@ -1,7 +1,6 @@
 {
   "name": "site",
   "version": "0.1.0",
-  "private": true,
   "license": "(MIT-0 OR Apache-2.0)",
   "scripts": {
     "build": "GATSBY_TELEMETRY_DISABLED=1 gatsby build",

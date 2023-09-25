@@ -1,7 +1,6 @@
 {
   "name": "snap",
   "version": "0.1.0",
-  "private": true,
   "description": "The 'Hello, world!' of MetaMask Snaps, now written in TypeScript.",
   "repository": {
     "type": "git",
