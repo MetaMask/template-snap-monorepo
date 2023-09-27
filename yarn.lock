@@ -3057,6 +3057,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@endo/env-options@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "@endo/env-options@npm:0.1.4"
+  checksum: 6099f0a6b700a60bee7b226aa2a39bb5748e22f25e9606d70e5a66a8e62cbd8c972b0fe578735a658f80bf2ebece62e28c20aa3f16417cbfe6c19a8689966dd3
+  languageName: node
+  linkType: hard
+
 "@es-joy/jsdoccomment@npm:~0.31.0":
   version: 0.31.0
   resolution: "@es-joy/jsdoccomment@npm:0.31.0"
@@ -4291,9 +4298,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/snaps-cli@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@metamask/snaps-cli@npm:2.0.0"
+"@metamask/snaps-cli@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@metamask/snaps-cli@npm:2.0.1"
   dependencies:
     "@babel/core": ^7.20.12
     "@babel/plugin-proposal-class-properties": ^7.16.7
@@ -4303,7 +4310,7 @@ __metadata:
     "@babel/plugin-transform-runtime": ^7.16.7
     "@babel/preset-env": ^7.20.12
     "@babel/preset-typescript": ^7.20.12
-    "@metamask/snaps-utils": ^2.0.0
+    "@metamask/snaps-utils": ^2.0.1
     "@metamask/snaps-webpack-plugin": ^2.0.0
     "@metamask/utils": ^8.1.0
     "@swc/core": 1.3.78
@@ -4344,7 +4351,7 @@ __metadata:
     yargs: ^17.7.1
   bin:
     mm-snap: ./dist/cjs/main.js
-  checksum: ac8297e74dfdcf9f300b135f767fa4b063b61e3c54b1bc70f8064df78d94619f61baa969a469bb72f5493e42b594cc7199ee27695a251bb2905f0a5134c5a0e9
+  checksum: 051ecbd14ead24ed804e720fd0758a22d690a51ef6cfad2818262dedf75ae9c1130784d8a6dc137741d83fc02df293b5720a9f49f71d1f82abdd43d20401057b
   languageName: node
   linkType: hard
 
@@ -4520,6 +4527,35 @@ __metadata:
     superstruct: ^1.0.3
     validate-npm-package-name: ^5.0.0
   checksum: d7cc6c7398f80d10824dcf429246fa7fb729accddad613703fa1cd46ac490e6afe7febf0183ddcddfa995fe9779df5386baa51e5cb7ca9a2a6c33b40293932ee
+  languageName: node
+  linkType: hard
+
+"@metamask/snaps-utils@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@metamask/snaps-utils@npm:2.0.1"
+  dependencies:
+    "@babel/core": ^7.20.12
+    "@babel/types": ^7.18.7
+    "@metamask/base-controller": ^3.2.0
+    "@metamask/key-tree": ^9.0.0
+    "@metamask/permission-controller": ^4.1.0
+    "@metamask/snaps-registry": ^2.0.0
+    "@metamask/snaps-ui": ^2.0.0
+    "@metamask/utils": ^8.1.0
+    "@noble/hashes": ^1.3.1
+    "@scure/base": ^1.1.1
+    chalk: ^4.1.2
+    cron-parser: ^4.5.0
+    eth-rpc-errors: ^4.0.3
+    fast-deep-equal: ^3.1.3
+    fast-json-stable-stringify: ^2.1.0
+    is-svg: ^4.4.0
+    rfdc: ^1.3.0
+    semver: ^7.5.4
+    ses: ^0.18.8
+    superstruct: ^1.0.3
+    validate-npm-package-name: ^5.0.0
+  checksum: 5f137febf59ea2fead2927e140fb0cefd63684ceec29e16ccc62326f0e77334c62d69df72596f4f030ec3bb9f8b2046b317378b20cb0736abd5760c0a2af9329
   languageName: node
   linkType: hard
 
@@ -20398,6 +20434,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ses@npm:^0.18.8":
+  version: 0.18.8
+  resolution: "ses@npm:0.18.8"
+  dependencies:
+    "@endo/env-options": ^0.1.4
+  checksum: d7976d2ee218baec021c5cfdfb193d63b52bf2b6cbdbbb90c19d835915a1872b6924910f7fd42bc849eb2de78fc7bdd6e7b4667e1df3c79244cc92d4ede48aa6
+  languageName: node
+  linkType: hard
+
 "set-blocking@npm:^2.0.0, set-blocking@npm:~2.0.0":
   version: 2.0.0
   resolution: "set-blocking@npm:2.0.0"
@@ -20680,7 +20725,7 @@ __metadata:
     "@metamask/eslint-config-jest": ^10.0.0
     "@metamask/eslint-config-nodejs": ^10.0.0
     "@metamask/eslint-config-typescript": ^10.0.0
-    "@metamask/snaps-cli": ^2.0.0
+    "@metamask/snaps-cli": ^2.0.1
     "@metamask/snaps-jest": ^1.0.0
     "@metamask/snaps-types": ^2.0.0
     "@metamask/snaps-ui": ^2.0.0
