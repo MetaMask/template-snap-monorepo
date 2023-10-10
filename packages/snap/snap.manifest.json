@@ -1,28 +1,64 @@
 {
   "version": "0.1.0",
-  "description": "An example Snap written in TypeScript.",
-  "proposedName": "TypeScript Example",
+  "description": "A Sovereign SDK Metamask Snap",
+  "proposedName": "sov-snap",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "https://github.com/Sovereign-Labs/sov-snap.git"
   },
   "source": {
-    "shasum": "nW1/2r9/N2sDi0R2fm8wFoenu69wpC5fLbRrmztrWnc=",
+    "shasum": "ffF94Uc3L8/OZ4qDYWUAWbUDSs/a4v69Bg24WiT3Mvc=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "images/icon.svg",
-        "packageName": "snap",
+        "packageName": "sov-snap",
         "registry": "https://registry.npmjs.org/"
       }
     }
   },
   "initialPermissions": {
-    "snap_dialog": {},
     "endowment:rpc": {
       "dapps": true,
-      "snaps": false
-    }
+      "snaps": true
+    },
+    "snap_dialog": {},
+    "snap_getBip32Entropy": [
+      {
+        "path": [
+          "m",
+          "44'",
+          "1551'"
+        ],
+        "curve": "secp256k1"
+      },
+      {
+        "path": [
+          "m",
+          "44'",
+          "1551'"
+        ],
+        "curve": "ed25519"
+      }
+    ],
+    "snap_getBip32PublicKey": [
+      {
+        "path": [
+          "m",
+          "44'",
+          "1551'"
+        ],
+        "curve": "secp256k1"
+      },
+      {
+        "path": [
+          "m",
+          "44'",
+          "1551'"
+        ],
+        "curve": "ed25519"
+      }
+    ]
   },
   "manifestVersion": "0.1"
 }

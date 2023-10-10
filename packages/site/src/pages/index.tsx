@@ -1,19 +1,12 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { MetamaskActions, MetaMaskContext } from '../hooks';
-import {
-  connectSnap,
-  getSnap,
-  isLocalSnap,
-  sendHello,
-  shouldDisplayReconnectButton,
-} from '../utils';
+import { connectSnap, getSnap, isLocalSnap } from '../utils';
 import {
   ConnectButton,
   InstallFlaskButton,
-  ReconnectButton,
-  SendHelloButton,
   Card,
+  Sovereign,
 } from '../components';
 import { defaultSnapOrigin } from '../config';
 
@@ -64,25 +57,6 @@ const CardContainer = styled.div`
   margin-top: 1.5rem;
 `;
 
-const Notice = styled.div`
-  background-color: ${({ theme }) => theme.colors.background.alternative};
-  border: 1px solid ${({ theme }) => theme.colors.border.default};
-  color: ${({ theme }) => theme.colors.text.alternative};
-  border-radius: ${({ theme }) => theme.radii.default};
-  padding: 2.4rem;
-  margin-top: 2.4rem;
-  max-width: 60rem;
-  width: 100%;
-
-  & > * {
-    margin: 0;
-  }
-  ${({ theme }) => theme.mediaQueries.small} {
-    margin-top: 1.2rem;
-    padding: 1.6rem;
-  }
-`;
-
 const ErrorMessage = styled.div`
   background-color: ${({ theme }) => theme.colors.error.muted};
   border: 1px solid ${({ theme }) => theme.colors.error.default};
@@ -123,22 +97,13 @@ const Index = () => {
     }
   };
 
-  const handleSendHelloClick = async () => {
-    try {
-      await sendHello();
-    } catch (e) {
-      console.error(e);
-      dispatch({ type: MetamaskActions.SetError, payload: e });
-    }
-  };
-
   return (
     <Container>
       <Heading>
-        Welcome to <Span>template-snap</Span>
+        Welcome to <Span>sov-snap</Span>
       </Heading>
       <Subtitle>
-        Get started by editing <code>src/index.ts</code>
+        <Span>sov-snap</Span> is a snap for the Sovereign SDK.
       </Subtitle>
       <CardContainer>
         {state.error && (
@@ -162,7 +127,7 @@ const Index = () => {
             content={{
               title: 'Connect',
               description:
-                'Get started by connecting to and installing the example snap.',
+                'Get started by connecting to and installing the Sovereign SDK snap.',
               button: (
                 <ConnectButton
                   onClick={handleConnectClick}
@@ -173,49 +138,7 @@ const Index = () => {
             disabled={!isMetaMaskReady}
           />
         )}
-        {shouldDisplayReconnectButton(state.installedSnap) && (
-          <Card
-            content={{
-              title: 'Reconnect',
-              description:
-                'While connected to a local running snap this button will always be displayed in order to update the snap if a change is made.',
-              button: (
-                <ReconnectButton
-                  onClick={handleConnectClick}
-                  disabled={!state.installedSnap}
-                />
-              ),
-            }}
-            disabled={!state.installedSnap}
-          />
-        )}
-        <Card
-          content={{
-            title: 'Send Hello message',
-            description:
-              'Display a custom message within a confirmation screen in MetaMask.',
-            button: (
-              <SendHelloButton
-                onClick={handleSendHelloClick}
-                disabled={!state.installedSnap}
-              />
-            ),
-          }}
-          disabled={!state.installedSnap}
-          fullWidth={
-            isMetaMaskReady &&
-            Boolean(state.installedSnap) &&
-            !shouldDisplayReconnectButton(state.installedSnap)
-          }
-        />
-        <Notice>
-          <p>
-            Please note that the <b>snap.manifest.json</b> and{' '}
-            <b>package.json</b> must be located in the server root directory and
-            the bundle must be hosted at the location specified by the location
-            field.
-          </p>
-        </Notice>
+        <Sovereign />
       </CardContainer>
     </Container>
   );

@@ -9,7 +9,14 @@
     "useUnknownInCatchVariables": false,
     "sourceMap": true,
     "strict": true,
-    "target": "ES2020"
+    "target": "ES2020",
+    "noImplicitReturns": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "allowUnreachableCode": false,
+    "strictNullChecks": true
   },
   "exclude": ["**/__snapshots__/**", "**/test/**", "**/*.test.ts"]
 }

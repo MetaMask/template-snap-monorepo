@@ -58,7 +58,7 @@ jobs:
       - name: Install Google Chrome
         run: yarn install-chrome
       - name: Run e2e tests
-        run: yarn workspace snap run test
+        run: yarn workspace @sovereign-sdk/sov-snap run test
 
   all-jobs-pass:
     name: All jobs pass

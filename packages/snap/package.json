@@ -1,12 +1,12 @@
 {
-  "name": "snap",
+  "name": "sov-snap",
   "version": "0.1.0",
-  "description": "The 'Hello, world!' of MetaMask Snaps, now written in TypeScript.",
+  "description": "A Sovereign SDK Metamask Snap",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "https://github.com/Sovereign-Labs/sov-snap.git"
   },
-  "license": "(MIT-0 OR Apache-2.0)",
+  "license": "Apache-2.0",
   "main": "./dist/bundle.js",
   "files": [
     "dist/",
@@ -26,8 +26,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@metamask/key-tree": "^9.0.0",
+    "@metamask/rpc-errors": "^6.0.0",
     "@metamask/snaps-types": "^2.0.0",
     "@metamask/snaps-ui": "^2.0.0",
+    "@metamask/utils": "^8.1.0",
+    "@noble/ed25519": "^1.6.0",
+    "@noble/secp256k1": "^1.7.1",
     "buffer": "^6.0.3"
   },
   "devDependencies": {
