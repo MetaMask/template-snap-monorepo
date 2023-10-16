@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import { Schema } from 'borsh';
 import { defaultSnapOrigin } from '../config';
 import { ExecuteButton } from './Buttons';
 
-type MethodSelectorState = `signMessage` | `getPublicKey`;
+const callMessageSchema: Schema = {
+  struct: {
+    message: 'string',
+  },
+};
+
+type MethodSelectorState = `signTransaction` | `getPublicKey`;
 type CurveSelectorState = `secp256k1` | `ed25519`;
 
 type SovereignState = {
@@ -16,7 +23,7 @@ type SovereignState = {
 
 export const Sovereign = () => {
   const initialState: SovereignState = {
-    method: `signMessage`,
+    method: `signTransaction`,
     curve: `secp256k1`,
     keyId: 0,
     message: 'Some signature message...',
@@ -36,7 +43,7 @@ export const Sovereign = () => {
             })
           }
         >
-          <option value="signMessage">Sign Message</option>
+          <option value="signTransaction">Sign Transaction</option>
           <option value="getPublicKey">Get Public Key</option>
         </select>
       </div>
@@ -77,7 +84,7 @@ export const Sovereign = () => {
       <div>Signature message:</div>
       <div>
         <textarea
-          disabled={state.method !== `signMessage`}
+          disabled={state.method !== `signTransaction`}
           value={state.message}
           onChange={(ev) =>
             setState({
@@ -99,11 +106,14 @@ export const Sovereign = () => {
             path.push(keyId.toString());
 
             let params;
-            if (method === `signMessage`) {
+            if (method === `signTransaction`) {
               params = {
                 path,
                 curve,
-                message: message || '',
+                schema: callMessageSchema,
+                transaction: {
+                  message: message || '',
+                },
               };
             } else {
               params = {

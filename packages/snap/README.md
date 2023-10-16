@@ -33,7 +33,7 @@ if (
 }
 ```
 
-#### `signMessage`
+#### `signTransaction`
 
 Returns the signature of the message as hexadecimal string.
 
@@ -43,22 +43,59 @@ Will emit a confirmation dialog for the user.
 
 - `path`: The BIP-32 derivation path of the wallet (`string['m', "44'", "1551'", ...]`).
 - `curve`: The curve of the public key (`secp256k1` or `ed25519`).
-- `message`: The message to sign (`bigint | number | string | Uint8Array`).
+- `schema`: A [borsh](https://www.npmjs.com/package/borsh) schema for the transaction.
+- `transaction`: A transaction to be serialized using the provided schema. The signature will be performed over the serialized transaction.
 
 ##### Example
 
 ```typescript
+import { Schema } from 'borsh';
+
+const callMessageSchema: Schema = {
+  enum: [
+    {
+      struct: {
+        Invoke: {
+          struct: {
+            method: 'string',
+            payload: { array: { type: 'u8' } },
+          },
+        },
+      },
+    },
+    {
+      struct: {
+        Transfer: {
+          struct: {
+            from: { array: { type: 'u8', len: 32 } },
+            to: { array: { type: 'u8', len: 32 } },
+            amount: 'u64',
+          },
+        },
+      },
+    },
+  ],
+};
+
 const response = request({
-  method: 'signMessage',
+  method: 'signTransaction',
   params: {
-    path: ['m', "44'", "1551'", "1'"],
+    path: ['m', "44'", "1551'"],
     curve: 'ed25519',
-    message: 'some message',
+    schema: callMessageSchema,
+    transaction: {
+      Transfer: {
+        from: Array(32).fill(2),
+        to: Array(32).fill(3),
+        amount: 1582,
+      },
+    },
   },
 });
+
 if (
   !response ===
-  '0x10804459eef93e52f9f01f38775ce4a21eb818d70cb637c602267f48c4e129fb2f68bc24bf74c84a1950227ea76d7c1ce860e4867941ef793c83399621c69c0d'
+  '0xfd2e4b23a3e3f498664af355b341e833324276270a13f9647dd1f043248f92fccaa037d4cfc9d23f13a295f7d505ee13afb2b10cea548890678f9002947cbb0a'
 ) {
   throw new Error('Invalid signature');
 }

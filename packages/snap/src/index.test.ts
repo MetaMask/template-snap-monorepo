@@ -1,6 +1,33 @@
 import { installSnap } from '@metamask/snaps-jest';
 import { expect } from '@jest/globals';
 import { assert } from '@metamask/utils';
+import { Schema } from 'borsh';
+
+const callMessageSchema: Schema = {
+  enum: [
+    {
+      struct: {
+        Invoke: {
+          struct: {
+            method: 'string',
+            payload: { array: { type: 'u8' } },
+          },
+        },
+      },
+    },
+    {
+      struct: {
+        Transfer: {
+          struct: {
+            from: { array: { type: 'u8', len: 32 } },
+            to: { array: { type: 'u8', len: 32 } },
+            amount: 'u64',
+          },
+        },
+      },
+    },
+  ],
+};
 
 describe('onRpcRequest', () => {
   describe('getPublicKey', () => {
@@ -41,16 +68,22 @@ describe('onRpcRequest', () => {
     });
   });
 
-  describe('signMessage', () => {
+  describe('signTransaction', () => {
     it('returns a secp256k1 signature', async () => {
       const { request, close } = await installSnap();
 
       const response = request({
-        method: 'signMessage',
+        method: 'signTransaction',
         params: {
           path: ['m', "44'", "1551'"],
           curve: 'secp256k1',
-          message: 'some message',
+          schema: callMessageSchema,
+          transaction: {
+            Invoke: {
+              method: 'someMethod',
+              payload: Array(176).fill(5),
+            },
+          },
         },
       });
 
@@ -59,7 +92,7 @@ describe('onRpcRequest', () => {
       await ui.ok();
 
       expect(await response).toRespondWith(
-        '0x3044022037e40728bd555a0b18a9a60e56eb1c3ad3f691c13df947a95c177491a23e8a2f02206eb555dd3061ae3fb13292dc90f742111c4329397e2323746bfa2296a478e4f5',
+        '0x3044022037ed1abe499f6699943dc26299e5c24111002ad115e481d126868e68e73eebd40220552312cc86a09ba8160ffc496b24eb04319c6c25ad7f965b59a6938858f00ca5',
       );
 
       await close();
@@ -69,11 +102,18 @@ describe('onRpcRequest', () => {
       const { request, close } = await installSnap();
 
       const response = request({
-        method: 'signMessage',
+        method: 'signTransaction',
         params: {
           path: ['m', "44'", "1551'"],
           curve: 'ed25519',
-          message: 'some message',
+          schema: callMessageSchema,
+          transaction: {
+            Transfer: {
+              from: Array(32).fill(2),
+              to: Array(32).fill(3),
+              amount: 1582,
+            },
+          },
         },
       });
 
@@ -82,7 +122,7 @@ describe('onRpcRequest', () => {
       await ui.ok();
 
       expect(await response).toRespondWith(
-        '0x83207c0ef4117e2cb70fdf6bcce4ed0b54ec2047332205f81f480744375b14ba1239738d0883c21285f96d60259070988b1095e45d7cbb6782393eba2dfdd903',
+        '0xfd2e4b23a3e3f498664af355b341e833324276270a13f9647dd1f043248f92fccaa037d4cfc9d23f13a295f7d505ee13afb2b10cea548890678f9002947cbb0a',
       );
 
       await close();

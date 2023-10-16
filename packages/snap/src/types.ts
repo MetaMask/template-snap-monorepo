@@ -1,4 +1,4 @@
-import { Bytes } from '@metamask/utils';
+import { Schema } from 'borsh';
 
 /**
  * The parameters for calling the `getPublicKey` JSON-RPC method.
@@ -29,16 +29,21 @@ export type GetBip32PublicKeyParams = {
 };
 
 /**
- * The parameters for calling the `signMessage` JSON-RPC method.
+ * The parameters for calling the `signTransaction` JSON-RPC method.
  *
  * Note: For simplicity, these are not validated by the snap. In production, you
  * should validate that the request object matches this type before using it.
  */
-export type SignMessageParams = {
+export type SignTransactionParams = {
   /**
-   * The message to sign.
+   * The borsh schema of the transaction.
    */
-  message: Bytes;
+  schema: Schema;
+
+  /**
+   * The transaction to sign.
+   */
+  transaction: any;
 
   /**
    * The BIP-32 path to the account.

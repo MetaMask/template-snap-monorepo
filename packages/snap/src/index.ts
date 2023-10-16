@@ -2,17 +2,12 @@ import { providerErrors, rpcErrors } from '@metamask/rpc-errors';
 import { DialogType, OnRpcRequestHandler } from '@metamask/snaps-types';
 import { copyable, heading, panel, text } from '@metamask/snaps-ui';
 import { SLIP10Node } from '@metamask/key-tree';
-import {
-  add0x,
-  assert,
-  bytesToHex,
-  remove0x,
-  valueToBytes,
-} from '@metamask/utils';
+import { add0x, assert, bytesToHex, remove0x } from '@metamask/utils';
 import { sign as signEd25519 } from '@noble/ed25519';
 import { sign as signSecp256k1 } from '@noble/secp256k1';
+import { serialize } from 'borsh';
 
-import type { GetBip32PublicKeyParams, SignMessageParams } from './types';
+import type { GetBip32PublicKeyParams, SignTransactionParams } from './types';
 
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
@@ -32,8 +27,12 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
         params: request.params as unknown as GetBip32PublicKeyParams,
       });
 
-    case 'signMessage': {
-      const { message, curve, ...params } = request.params as SignMessageParams;
+    case 'signTransaction': {
+      const { schema, transaction, curve, ...params } =
+        request.params as SignTransactionParams;
+
+      const serializedTransaction = serialize(schema, transaction);
+
       const json = await snap.request({
         method: 'snap_getBip32Entropy',
         params: {
@@ -53,21 +52,15 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
       assert(node.privateKey);
       assert(curve === 'ed25519' || curve === 'secp256k1');
 
-      // assert the user's approval of the provided message. Note: this message will be a raw bytes
-      // representation. A human-friendly format is currently not supported by the API as the
-      // conversion is expected to be performed before the interaction with the Snap.
-      //
-      // For more information, refer to the tracking issue:
-      // https://github.com/Sovereign-Labs/sovereign-sdk/issues/982
       const approved = await snap.request({
         method: 'snap_dialog',
         params: {
           type: DialogType.Confirmation,
           content: panel([
             heading('Signature request'),
-            text(
-              `Do you want to ${curve} sign "${message}" with the following public key?`,
-            ),
+            text(`Do you want to ${curve} sign`),
+            copyable(JSON.stringify(transaction)),
+            text(`with the following public key?`),
             copyable(add0x(node.publicKey)),
           ]),
         },
@@ -77,16 +70,15 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
         throw providerErrors.userRejectedRequest();
       }
 
-      const messageBytes = valueToBytes(message);
       const privateKey = remove0x(node.privateKey);
 
       let signed;
       switch (curve) {
         case 'ed25519':
-          signed = await signEd25519(messageBytes, privateKey);
+          signed = await signEd25519(serializedTransaction, privateKey);
           break;
         case 'secp256k1':
-          signed = await signSecp256k1(messageBytes, privateKey);
+          signed = await signSecp256k1(serializedTransaction, privateKey);
           break;
         default:
           throw new Error(`Unsupported curve: ${String(curve)}.`);
