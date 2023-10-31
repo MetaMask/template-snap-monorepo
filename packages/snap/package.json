@@ -26,8 +26,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@metamask/snaps-types": "^2.0.0",
-    "@metamask/snaps-ui": "^2.0.0",
+    "@metamask/snaps-types": "^3.0.1",
+    "@metamask/snaps-ui": "^3.0.1",
     "buffer": "^6.0.3"
   },
   "devDependencies": {
@@ -38,8 +38,8 @@
     "@metamask/eslint-config-jest": "^10.0.0",
     "@metamask/eslint-config-nodejs": "^10.0.0",
     "@metamask/eslint-config-typescript": "^10.0.0",
-    "@metamask/snaps-cli": "^2.0.1",
-    "@metamask/snaps-jest": "^1.0.0",
+    "@metamask/snaps-cli": "^3.0.1",
+    "@metamask/snaps-jest": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "eslint": "^8.21.0",
