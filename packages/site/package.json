@@ -4,14 +4,14 @@
   "private": true,
   "license": "(MIT-0 OR Apache-2.0)",
   "scripts": {
+    "allow-scripts": "yarn workspace root allow-scripts",
     "build": "GATSBY_TELEMETRY_DISABLED=1 gatsby build",
     "clean": "rimraf public",
     "lint": "yarn lint:eslint && yarn lint:misc --check",
     "lint:eslint": "eslint . --cache --ext js,ts",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
-    "start": "GATSBY_TELEMETRY_DISABLED=1 gatsby develop",
-    "allow-scripts": "yarn workspace root allow-scripts"
+    "start": "GATSBY_TELEMETRY_DISABLED=1 gatsby develop"
   },
   "browserslist": {
     "production": [
