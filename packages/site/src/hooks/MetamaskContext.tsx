@@ -1,12 +1,7 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  Reducer,
-  useEffect,
-  useReducer,
-} from 'react';
-import { Snap } from '../types';
+import type { Dispatch, ReactNode, Reducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
+
+import type { Snap } from '../types';
 import { detectSnaps, getSnap, isFlask } from '../utils';
 
 export type MetamaskState = {
@@ -91,11 +86,14 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
       });
     };
 
-    setSnapsCompatibility();
+    setSnapsCompatibility().catch(console.error);
   }, [window.ethereum]);
 
   // Set installed snaps
   useEffect(() => {
+    /**
+     * Detect if a snap is installed and set it in the state.
+     */
     async function detectSnapInstalled() {
       dispatch({
         type: MetamaskActions.SetInstalled,
@@ -111,8 +109,8 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
     };
 
     if (state.snapsDetected) {
-      detectSnapInstalled();
-      checkIfFlask();
+      detectSnapInstalled().catch(console.error);
+      checkIfFlask().catch(console.error);
     }
   }, [state.snapsDetected]);
 

@@ -1,6 +1,7 @@
-import { MetaMaskInpageProvider } from '@metamask/providers';
+import type { MetaMaskInpageProvider } from '@metamask/providers';
+
 import { defaultSnapOrigin } from '../config';
-import { GetSnapsResponse, Snap } from '../types';
+import type { GetSnapsResponse, Snap } from '../types';
 
 /**
  * Get the installed snaps in MetaMask.
@@ -46,8 +47,8 @@ export const getSnap = async (version?: string): Promise<Snap | undefined> => {
       (snap) =>
         snap.id === defaultSnapOrigin && (!version || snap.version === version),
     );
-  } catch (e) {
-    console.log('Failed to obtain installed snap', e);
+  } catch (error) {
+    console.log('Failed to obtain installed snap', error);
     return undefined;
   }
 };

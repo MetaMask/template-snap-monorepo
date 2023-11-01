@@ -1,5 +1,5 @@
-import { installSnap } from '@metamask/snaps-jest';
 import { expect } from '@jest/globals';
+import { installSnap } from '@metamask/snaps-jest';
 import { panel, text } from '@metamask/snaps-ui';
 
 describe('onRpcRequest', () => {
@@ -40,13 +40,8 @@ describe('onRpcRequest', () => {
 
     expect(response).toRespondWithError({
       code: -32603,
-      message: 'Internal JSON-RPC error.',
-      data: {
-        cause: {
-          message: 'Method not found.',
-          stack: expect.any(String),
-        },
-      },
+      message: 'Method not found.',
+      stack: expect.any(String),
     });
 
     await close();

@@ -1,7 +1,8 @@
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import styled from 'styled-components';
-import { MetamaskState } from '../hooks';
+
 import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
+import type { MetamaskState } from '../hooks';
 import { shouldDisplayReconnectButton } from '../utils';
 
 const Link = styled.a`
@@ -11,9 +12,9 @@ const Link = styled.a`
   justify-content: center;
   font-size: ${(props) => props.theme.fontSizes.small};
   border-radius: ${(props) => props.theme.radii.button};
-  border: 1px solid ${(props) => props.theme.colors.background.inverse};
-  background-color: ${(props) => props.theme.colors.background.inverse};
-  color: ${(props) => props.theme.colors.text.inverse};
+  border: 1px solid ${(props) => props.theme.colors.background?.inverse};
+  background-color: ${(props) => props.theme.colors.background?.inverse};
+  color: ${(props) => props.theme.colors.text?.inverse};
   text-decoration: none;
   font-weight: bold;
   padding: 1rem;
@@ -22,8 +23,8 @@ const Link = styled.a`
 
   &:hover {
     background-color: transparent;
-    border: 1px solid ${(props) => props.theme.colors.background.inverse};
-    color: ${(props) => props.theme.colors.text.default};
+    border: 1px solid ${(props) => props.theme.colors.background?.inverse};
+    color: ${(props) => props.theme.colors.text?.default};
   }
 
   ${({ theme }) => theme.mediaQueries.small} {
@@ -54,9 +55,9 @@ const ConnectedContainer = styled.div`
   justify-content: center;
   font-size: ${(props) => props.theme.fontSizes.small};
   border-radius: ${(props) => props.theme.radii.button};
-  border: 1px solid ${(props) => props.theme.colors.background.inverse};
-  background-color: ${(props) => props.theme.colors.background.inverse};
-  color: ${(props) => props.theme.colors.text.inverse};
+  border: 1px solid ${(props) => props.theme.colors.background?.inverse};
+  background-color: ${(props) => props.theme.colors.background?.inverse};
+  color: ${(props) => props.theme.colors.text?.inverse};
   font-weight: bold;
   padding: 1.2rem;
 `;
