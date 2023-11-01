@@ -1,11 +1,12 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve"
   },
-  "include": ["src"]
+  "include": ["src", "gatsby-browser.tsx", "gatsby-config.ts", "gatsby-ssr.tsx"]
 }

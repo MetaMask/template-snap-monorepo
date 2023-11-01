@@ -4028,7 +4028,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/eslint-config-jest@npm:^12.0.0":
+"@metamask/eslint-config-browser@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "@metamask/eslint-config-browser@npm:12.1.0"
+  peerDependencies:
+    "@metamask/eslint-config": ^12.0.0
+    eslint: ^8.27.0
+  checksum: a1d3035b0dd82aa66397e9c8916c45e1dc2d339c13dac385f7c90de09df943c313801538c0d955c2abf44a57008100874f8615d70f19188d8893b653cfe15485
+  languageName: node
+  linkType: hard
+
+"@metamask/eslint-config-jest@npm:^12.0.0, @metamask/eslint-config-jest@npm:^12.1.0":
   version: 12.1.0
   resolution: "@metamask/eslint-config-jest@npm:12.1.0"
   peerDependencies:
@@ -4039,7 +4049,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/eslint-config-nodejs@npm:^12.0.0":
+"@metamask/eslint-config-nodejs@npm:^12.0.0, @metamask/eslint-config-nodejs@npm:^12.1.0":
   version: 12.1.0
   resolution: "@metamask/eslint-config-nodejs@npm:12.1.0"
   peerDependencies:
@@ -4050,7 +4060,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/eslint-config-typescript@npm:^12.0.0":
+"@metamask/eslint-config-typescript@npm:^12.0.0, @metamask/eslint-config-typescript@npm:^12.1.0":
   version: 12.1.0
   resolution: "@metamask/eslint-config-typescript@npm:12.1.0"
   peerDependencies:
@@ -4063,7 +4073,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/eslint-config@npm:^12.0.0":
+"@metamask/eslint-config@npm:^12.0.0, @metamask/eslint-config@npm:^12.2.0":
   version: 12.2.0
   resolution: "@metamask/eslint-config@npm:12.2.0"
   peerDependencies:
@@ -20224,10 +20234,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "site@workspace:packages/site"
   dependencies:
-    "@metamask/eslint-config": ^12.0.0
-    "@metamask/eslint-config-jest": ^12.0.0
-    "@metamask/eslint-config-nodejs": ^12.0.0
-    "@metamask/eslint-config-typescript": ^12.0.0
+    "@metamask/eslint-config": ^12.2.0
+    "@metamask/eslint-config-browser": ^12.1.0
+    "@metamask/eslint-config-jest": ^12.1.0
+    "@metamask/eslint-config-nodejs": ^12.1.0
+    "@metamask/eslint-config-typescript": ^12.1.0
     "@metamask/providers": ^13.1.0
     "@svgr/webpack": ^6.4.0
     "@testing-library/dom": ^8.17.1
