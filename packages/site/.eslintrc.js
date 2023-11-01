@@ -8,9 +8,7 @@ module.exports = {
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
-      extends: [
-        '@metamask/eslint-config-browser',
-      ],
+      extends: ['@metamask/eslint-config-browser'],
     },
   ],
 

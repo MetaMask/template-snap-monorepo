@@ -8,10 +8,8 @@ module.exports = {
   overrides: [
     {
       files: ['snap.config.ts'],
-      extends: [
-        '@metamask/eslint-config-nodejs',
-      ],
-    }
+      extends: ['@metamask/eslint-config-nodejs'],
+    },
   ],
 
   ignorePatterns: ['!.eslintrc.js', 'dist/'],

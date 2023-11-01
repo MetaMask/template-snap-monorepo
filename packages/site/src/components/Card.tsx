@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import styled from 'styled-components';
 
 type CardProps = {
@@ -49,9 +49,7 @@ export const Card = ({ content, disabled = false, fullWidth }: CardProps) => {
   const { title, description, button } = content;
   return (
     <CardWrapper fullWidth={fullWidth} disabled={disabled}>
-      {title && (
-        <Title>{title}</Title>
-      )}
+      {title && <Title>{title}</Title>}
       <Description>{description}</Description>
       {button}
     </CardWrapper>

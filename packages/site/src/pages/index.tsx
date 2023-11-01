@@ -1,13 +1,6 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { MetamaskActions, MetaMaskContext } from '../hooks';
-import {
-  connectSnap,
-  getSnap,
-  isLocalSnap,
-  sendHello,
-  shouldDisplayReconnectButton,
-} from '../utils';
+
 import {
   ConnectButton,
   InstallFlaskButton,
@@ -16,6 +9,14 @@ import {
   Card,
 } from '../components';
 import { defaultSnapOrigin } from '../config';
+import { MetamaskActions, MetaMaskContext } from '../hooks';
+import {
+  connectSnap,
+  getSnap,
+  isLocalSnap,
+  sendHello,
+  shouldDisplayReconnectButton,
+} from '../utils';
 
 const Container = styled.div`
   display: flex;

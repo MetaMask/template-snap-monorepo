@@ -1,12 +1,7 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  Reducer,
-  useEffect,
-  useReducer,
-} from 'react';
-import { Snap } from '../types';
+import type { Dispatch, ReactNode, Reducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
+
+import type { Snap } from '../types';
 import { detectSnaps, getSnap, isFlask } from '../utils';
 
 export type MetamaskState = {
@@ -96,6 +91,9 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
 
   // Set installed snaps
   useEffect(() => {
+    /**
+     *
+     */
     async function detectSnapInstalled() {
       dispatch({
         type: MetamaskActions.SetInstalled,

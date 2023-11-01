@@ -1,4 +1,4 @@
-import { OnRpcRequestHandler } from '@metamask/snaps-types';
+import type { OnRpcRequestHandler } from '@metamask/snaps-types';
 import { panel, text } from '@metamask/snaps-ui';
 
 /**

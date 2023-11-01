@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import styled, { useTheme } from 'styled-components';
+
 import { MetamaskActions, MetaMaskContext } from '../hooks';
 import { connectSnap, getThemePreference, getSnap } from '../utils';
 import { HeaderButtons } from './Buttons';

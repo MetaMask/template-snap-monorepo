@@ -1,7 +1,8 @@
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import styled from 'styled-components';
-import { MetamaskState } from '../hooks';
+
 import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
+import type { MetamaskState } from '../hooks';
 import { shouldDisplayReconnectButton } from '../utils';
 
 const Link = styled.a`

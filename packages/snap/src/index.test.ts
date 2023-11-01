@@ -1,5 +1,5 @@
-import { installSnap } from '@metamask/snaps-jest';
 import { expect } from '@jest/globals';
+import { installSnap } from '@metamask/snaps-jest';
 import { panel, text } from '@metamask/snaps-ui';
 
 describe('onRpcRequest', () => {
