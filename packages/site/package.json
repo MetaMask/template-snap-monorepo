@@ -4,6 +4,7 @@
   "private": true,
   "license": "(MIT-0 OR Apache-2.0)",
   "scripts": {
+    "allow-scripts": "yarn workspace root allow-scripts",
     "build": "GATSBY_TELEMETRY_DISABLED=1 gatsby build",
     "clean": "rimraf public",
     "lint": "yarn lint:eslint && yarn lint:misc --check",
