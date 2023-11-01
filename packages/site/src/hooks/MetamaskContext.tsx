@@ -86,13 +86,13 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
       });
     };
 
-    setSnapsCompatibility();
+    setSnapsCompatibility().catch(console.error);
   }, [window.ethereum]);
 
   // Set installed snaps
   useEffect(() => {
     /**
-     *
+     * Detect if a snap is installed and set it in the state.
      */
     async function detectSnapInstalled() {
       dispatch({
@@ -109,8 +109,8 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
     };
 
     if (state.snapsDetected) {
-      detectSnapInstalled();
-      checkIfFlask();
+      detectSnapInstalled().catch(console.error);
+      checkIfFlask().catch(console.error);
     }
   }, [state.snapsDetected]);
 
