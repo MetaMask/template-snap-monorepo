@@ -14,6 +14,7 @@
     "snap.manifest.json"
   ],
   "scripts": {
+    "allow-scripts": "yarn workspace root allow-scripts",
     "build": "mm-snap build",
     "build:clean": "yarn clean && yarn build",
     "clean": "rimraf dist",
@@ -23,8 +24,7 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
     "start": "mm-snap watch",
-    "test": "jest",
-    "allow-scripts": "yarn workspace root allow-scripts"
+    "test": "jest"
   },
   "dependencies": {
     "@metamask/snaps-types": "^3.0.1",
