@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import styled, { useTheme } from 'styled-components';
+
 import { MetamaskActions, MetaMaskContext } from '../hooks';
 import { connectSnap, getThemePreference, getSnap } from '../utils';
 import { HeaderButtons } from './Buttons';
@@ -12,7 +13,7 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 2.4rem;
-  border-bottom: 1px solid ${(props) => props.theme.colors.border.default};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border?.default};
 `;
 
 const Title = styled.p`
@@ -54,16 +55,16 @@ export const Header = ({
         type: MetamaskActions.SetInstalled,
         payload: installedSnap,
       });
-    } catch (e) {
-      console.error(e);
-      dispatch({ type: MetamaskActions.SetError, payload: e });
+    } catch (error) {
+      console.error(error);
+      dispatch({ type: MetamaskActions.SetError, payload: error });
     }
   };
   return (
     <HeaderWrapper>
       <LogoWrapper>
-        <SnapLogo color={theme.colors.icon.default} size={36} />
-        <Title>sov-snap</Title>
+        <SnapLogo color={theme.colors.icon?.default} size={36} />
+        <Title>sov-sdk-snap</Title>
       </LogoWrapper>
       <RightContainer>
         <Toggle

@@ -1,4 +1,4 @@
-import { GatsbyConfig } from 'gatsby';
+import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   // This is required to make use of the React 17+ JSX transform.
@@ -10,10 +10,12 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Sovereign SDK Snap',
+        name: 'Template Snap',
         icon: 'src/assets/logo.svg',
+        /* eslint-disable @typescript-eslint/naming-convention */
         theme_color: '#6F4CFF',
         background_color: '#FFFFFF',
+        /* eslint-enable @typescript-eslint/naming-convention */
         display: 'standalone',
       },
     },

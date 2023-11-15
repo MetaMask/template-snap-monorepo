@@ -1,6 +1,7 @@
-import { MetaMaskInpageProvider } from '@metamask/providers';
+import type { MetaMaskInpageProvider } from '@metamask/providers';
+
 import { defaultSnapOrigin } from '../config';
-import { GetSnapsResponse, Snap } from '../types';
+import type { GetSnapsResponse, Snap } from '../types';
 
 /**
  * Get the installed snaps in MetaMask.
@@ -46,72 +47,10 @@ export const getSnap = async (version?: string): Promise<Snap | undefined> => {
       (snap) =>
         snap.id === defaultSnapOrigin && (!version || snap.version === version),
     );
-  } catch (e) {
-    console.log('Failed to obtain installed snap', e);
+  } catch (error) {
+    console.log('Failed to obtain installed snap', error);
     return undefined;
   }
-};
-
-/**
- * Get the public key from the installed snap.
- */
-
-export const getPublicKey = async () => {
-  return await window.ethereum.request({
-    method: 'wallet_invokeSnap',
-    params: {
-      snapId: defaultSnapOrigin,
-      request: {
-        method: 'getPublicKey',
-        params: {
-          path: ['m', "44'", "1551'"],
-          curve: 'secp256k1',
-        },
-      },
-    },
-  });
-};
-
-/**
- * Sign a given message using secp256k1.
- */
-
-export const signMessageSecp256k1 = async (message: Uint8Array) => {
-  return await window.ethereum.request({
-    method: 'wallet_invokeSnap',
-    params: {
-      snapId: defaultSnapOrigin,
-      request: {
-        method: 'signMessage',
-        params: {
-          path: ['m', "44'", "1551'"],
-          curve: 'secp256k1',
-          message,
-        },
-      },
-    },
-  });
-};
-
-/**
- * Sign a given message using ed25519.
- */
-
-export const signMessageEd25519 = async (message: Uint8Array) => {
-  return await window.ethereum.request({
-    method: 'wallet_invokeSnap',
-    params: {
-      snapId: defaultSnapOrigin,
-      request: {
-        method: 'signMessage',
-        params: {
-          path: ['m', "44'", "1551'"],
-          curve: 'ed25519',
-          message,
-        },
-      },
-    },
-  });
 };
 
 export const isLocalSnap = (snapId: string) => snapId.startsWith('local:');

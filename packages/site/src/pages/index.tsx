@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { MetamaskActions, MetaMaskContext } from '../hooks';
-import { connectSnap, getSnap, isLocalSnap } from '../utils';
+
 import {
   ConnectButton,
   InstallFlaskButton,
@@ -9,13 +8,14 @@ import {
   Sovereign,
 } from '../components';
 import { defaultSnapOrigin } from '../config';
+import { MetamaskActions, MetaMaskContext } from '../hooks';
+import { connectSnap, getSnap, isLocalSnap } from '../utils';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
-  margin-top: 7.6rem;
   margin-bottom: 7.6rem;
   ${({ theme }) => theme.mediaQueries.small} {
     padding-left: 2.4rem;
@@ -23,26 +23,6 @@ const Container = styled.div`
     margin-top: 2rem;
     margin-bottom: 2rem;
     width: auto;
-  }
-`;
-
-const Heading = styled.h1`
-  margin-top: 0;
-  margin-bottom: 2.4rem;
-  text-align: center;
-`;
-
-const Span = styled.span`
-  color: ${(props) => props.theme.colors.primary.default};
-`;
-
-const Subtitle = styled.p`
-  font-size: ${({ theme }) => theme.fontSizes.large};
-  font-weight: 500;
-  margin-top: 0;
-  margin-bottom: 0;
-  ${({ theme }) => theme.mediaQueries.small} {
-    font-size: ${({ theme }) => theme.fontSizes.text};
   }
 `;
 
@@ -58,9 +38,9 @@ const CardContainer = styled.div`
 `;
 
 const ErrorMessage = styled.div`
-  background-color: ${({ theme }) => theme.colors.error.muted};
-  border: 1px solid ${({ theme }) => theme.colors.error.default};
-  color: ${({ theme }) => theme.colors.error.alternative};
+  background-color: ${({ theme }) => theme.colors.error?.muted};
+  border: 1px solid ${({ theme }) => theme.colors.error?.default};
+  color: ${({ theme }) => theme.colors.error?.alternative};
   border-radius: ${({ theme }) => theme.radii.default};
   padding: 2.4rem;
   margin-bottom: 2.4rem;
@@ -91,20 +71,14 @@ const Index = () => {
         type: MetamaskActions.SetInstalled,
         payload: installedSnap,
       });
-    } catch (e) {
-      console.error(e);
-      dispatch({ type: MetamaskActions.SetError, payload: e });
+    } catch (error) {
+      console.error(error);
+      dispatch({ type: MetamaskActions.SetError, payload: error });
     }
   };
 
   return (
     <Container>
-      <Heading>
-        Welcome to <Span>sov-snap</Span>
-      </Heading>
-      <Subtitle>
-        <Span>sov-snap</Span> is a snap for the Sovereign SDK.
-      </Subtitle>
       <CardContainer>
         {state.error && (
           <ErrorMessage>
@@ -127,7 +101,7 @@ const Index = () => {
             content={{
               title: 'Connect',
               description:
-                'Get started by connecting to and installing the Sovereign SDK snap.',
+                'Get started by connecting to and installing the example snap.',
               button: (
                 <ConnectButton
                   onClick={handleConnectClick}

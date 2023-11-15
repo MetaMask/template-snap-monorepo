@@ -1,5 +1,3 @@
-import { Schema } from 'borsh';
-
 /**
  * The parameters for calling the `getPublicKey` JSON-RPC method.
  *
@@ -13,11 +11,6 @@ export type GetBip32PublicKeyParams = {
   path: ['m', ...(`${number}` | `${number}'`)[]];
 
   /**
-   * The curve used to derive the account.
-   */
-  curve: 'secp256k1' | 'ed25519';
-
-  /**
    * Whether to return the public key in compressed form.
    */
   compressed?: boolean | undefined;
@@ -29,6 +22,24 @@ export type GetBip32PublicKeyParams = {
 };
 
 /**
+ * The transaction object to be submitted by the UI so the signature can be generated.
+ *
+ * Note: For simplicity, these are not validated by the snap. In production, you
+ * should validate that the request object matches this type before using it.
+ */
+export type Transaction = {
+  /**
+   * The JSON transaction to sign.
+   */
+  message: string;
+
+  /**
+   * The nonce for the transaction signature.
+   */
+  nonce: number;
+};
+
+/**
  * The parameters for calling the `signTransaction` JSON-RPC method.
  *
  * Note: For simplicity, these are not validated by the snap. In production, you
@@ -36,22 +47,57 @@ export type GetBip32PublicKeyParams = {
  */
 export type SignTransactionParams = {
   /**
-   * The borsh schema of the transaction.
+   * The JSON transaction to sign.
    */
-  schema: Schema;
-
-  /**
-   * The transaction to sign.
-   */
-  transaction: any;
+  transaction: Transaction;
 
   /**
    * The BIP-32 path to the account.
    */
   path: string[];
+};
+
+/**
+ * The expected WASM interface from the imported module.
+ */
+export type WasmInstance = {
+  /**
+   * Allocs `len` bytes and returns the pointer.
+   */
+  alloc: (len: number) => number;
 
   /**
-   * The curve used to derive the account.
+   * Deallocs `len` bytes from the address `ptr`.
    */
-  curve: 'secp256k1' | 'ed25519';
+  dealloc: (ptr: number, len: number) => void;
+
+  /**
+   * Serializes a call message into a signable message and returns its pointer.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  serialize_call: (txPtr: number, txLen: number, noncePtr: number) => number;
+
+  /**
+   * Serializes a transaction into a format that can be sent to a sequencer.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  serialize_transaction: (
+    pkPtr: number,
+    pkLen: number,
+    msgPtr: number,
+    msgLen: number,
+    signaturePtr: number,
+    signatureLen: number,
+  ) => number;
+
+  /**
+   * Validates the signature of a provided transaction.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  validate_transaction: (txPtr: number, txLen: number) => number;
+
+  /**
+   * The WASM memory.
+   */
+  memory: Uint8Array;
 };

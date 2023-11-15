@@ -1,4 +1,10 @@
-export const SnapLogo = ({ color, size }: { color: string; size: number }) => (
+export const SnapLogo = ({
+  color,
+  size,
+}: {
+  color?: string | undefined;
+  size: number;
+}) => (
   <svg
     width={size}
     height={size}
