@@ -29,7 +29,7 @@ wasm: ## Build the WASM files
 		$(PACKAGE_RESTORED_OPTIMIZED)
 	@mv $(PACKAGE_THIN) $(PACKAGE_SHORT)
 	@rm $(PACKAGE)
-	@echo "Package created: $(PACKAGE)"
+	@echo "Package created: $(PACKAGE_SHORT)"
 
 help: ## Display this help screen
 	@grep -h \

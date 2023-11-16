@@ -5042,7 +5042,6 @@ version = "0.1.0"
 dependencies = [
  "borsh",
  "demo-stf",
- "serde",
  "serde_json",
  "sov-mock-da",
  "sov-modules-api",

@@ -6,14 +6,13 @@ use alloc::vec::Vec;
 use core::{mem, slice};
 
 use borsh::{BorshDeserialize, BorshSerialize};
-use sov_mock_da::MockDaSpec;
-use sov_modules_api::default_context::ZkDefaultContext;
-use sov_modules_api::{Signature as _, Spec};
+use sov_modules_api::Signature as _;
 
-pub type Context = ZkDefaultContext;
-pub type RuntimeCall = demo_stf::runtime::RuntimeCall<Context, MockDaSpec>;
-pub type PublicKey = <Context as Spec>::PublicKey;
-pub type Signature = <Context as Spec>::Signature;
+mod definitions;
+use definitions::{Context, RuntimeCall};
+
+pub type PublicKey = <Context as sov_modules_api::Spec>::PublicKey;
+pub type Signature = <Context as sov_modules_api::Spec>::Signature;
 pub type Transaction = sov_modules_api::transaction::Transaction<Context>;
 
 #[cfg(test)]
