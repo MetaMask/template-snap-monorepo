@@ -4250,8 +4250,8 @@ __metadata:
   linkType: hard
 
 "@metamask/providers@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "@metamask/providers@npm:14.0.0"
+  version: 14.0.1
+  resolution: "@metamask/providers@npm:14.0.1"
   dependencies:
     "@metamask/json-rpc-engine": ^7.1.1
     "@metamask/object-multiplex": ^2.0.0
@@ -4265,7 +4265,7 @@ __metadata:
     json-rpc-middleware-stream: ^5.0.1
     readable-stream: ^3.6.2
     webextension-polyfill: ^0.10.0
-  checksum: 32c2695cf49ef6445c6e3bc8d6be30e64a16cf2b28d32369e315e841fbf29103dbb8e6da9d37b412ec119998feb1cce1fdc1f48ec46dfe96028018e69198c4e8
+  checksum: 3964165d1356433b5b1aac16f3359223569c11e22dcf018df546549a3e2fd3dd8db1f40667b919621d517d6ecfb8a08b55fb5bdc6df57b56e91f50305e2ebcfd
   languageName: node
   linkType: hard
 
