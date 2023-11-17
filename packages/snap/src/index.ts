@@ -16,18 +16,41 @@ const wasm = new SovWasm();
  *
  * @param args - The request handler args as object.
  * invoked the snap.
+ * @param args.origin - The origin of the request.
  * @param args.request - A validated JSON-RPC request object.
  * @returns The result of `snap_dialog`.
  * @throws If the request method is not valid for this snap.
  */
-export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
+export const onRpcRequest: OnRpcRequestHandler = async ({
+  origin,
+  request,
+}) => {
   switch (request.method) {
     // the return is a plain hex string
     // https://docs.metamask.io/snaps/reference/rpc-api/#returns-5
     case 'getPublicKey': {
       const { path, compressed } = request.params as GetBip32PublicKeyParams;
 
-      return snap.request({
+      // eslint-disable-next-line @typescript-eslint/await-thenable
+      const approved = await snap.request({
+        method: 'snap_dialog',
+        params: {
+          type: DialogType.Confirmation,
+          content: panel([
+            heading('Public key request'),
+            text(`The origin`),
+            copyable(origin),
+            text(`is requesting your public key.`),
+          ]),
+        },
+      });
+
+      if (!approved) {
+        throw providerErrors.userRejectedRequest();
+      }
+
+      // eslint-disable-next-line @typescript-eslint/await-thenable
+      return await snap.request({
         method: 'snap_getBip32PublicKey',
         params: {
           path,
@@ -55,17 +78,20 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
         const node = await SLIP10Node.fromJSON(entropy);
         assert(node.privateKey);
 
-        const approved = snap.request({
+        // eslint-disable-next-line @typescript-eslint/await-thenable
+        const approved = await snap.request({
           method: 'snap_dialog',
           params: {
             type: DialogType.Confirmation,
             content: panel([
               heading('Signature request'),
-              text(`Do you want to sign`),
+              text(`The origin`),
+              copyable(origin),
+              text(`is requesting a signature for the message`),
               copyable(transaction.message),
               text(`with nonce`),
               copyable(transaction.nonce.toString()),
-              text(`and the following public key?`),
+              text(`and the following public key`),
               copyable(add0x(node.publicKey)),
             ]),
           },

@@ -22,14 +22,19 @@ describe('onRpcRequest', () => {
     it('returns a public key', async () => {
       const { request, close } = await installSnap();
 
-      const response = await request({
+      const response = request({
         method: 'getPublicKey',
         params: {
           path: ['m', "44'", "1551'"],
         },
       });
 
-      expect(response).toRespondWith(
+      const ui = await response.getInterface();
+      expect(ui.type).toBe('confirmation');
+
+      await ui.ok();
+
+      expect(await response).toRespondWith(
         '0x00ff3c690d2a58db6d7f97e9ed0aa3455dd54a21246cf71492f36d60bb7c0a659f',
       );
 

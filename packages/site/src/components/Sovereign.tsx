@@ -11,6 +11,7 @@ type SovereignState = {
   keyId: number;
   nonce: number;
   message?: string;
+  pk?: string;
   tx?: string;
   sequencer?: string;
   status?: string;
@@ -86,6 +87,12 @@ export const Sovereign = () => {
       <div>
         <SignButton
           onClick={async () => {
+            setState({
+              ...state,
+              pk: '',
+              tx: '',
+            });
+
             try {
               const { keyId, nonce, message } = state;
               const path = ['m', "44'", "1551'", `${keyId}'`];
@@ -96,6 +103,22 @@ export const Sovereign = () => {
                   nonce,
                 },
               };
+
+              const pkRequest = {
+                method: 'wallet_invokeSnap',
+                params: {
+                  snapId: defaultSnapOrigin,
+                  request: {
+                    method: 'getPublicKey',
+                    params: {
+                      path,
+                      compressed: true,
+                    },
+                  },
+                },
+              };
+
+              const pk = await window.ethereum.request<string>(pkRequest);
 
               const request = {
                 method: 'wallet_invokeSnap',
@@ -111,6 +134,7 @@ export const Sovereign = () => {
               const response = await window.ethereum.request<string>(request);
               setState({
                 ...state,
+                pk: pk ?? '',
                 tx: response ?? '',
               });
             } catch (er) {
@@ -121,6 +145,10 @@ export const Sovereign = () => {
             }
           }}
         />
+      </div>
+      <div>Public Key:</div>
+      <div>
+        <input type="text" value={state.pk} readOnly />
       </div>
       <div>Transaction:</div>
       <div>
