@@ -4266,8 +4266,8 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-cli@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "@metamask/snaps-cli@npm:3.0.3"
+  version: 3.0.5
+  resolution: "@metamask/snaps-cli@npm:3.0.5"
   dependencies:
     "@babel/core": ^7.23.2
     "@babel/plugin-transform-class-properties": ^7.22.5
@@ -4320,7 +4320,7 @@ __metadata:
     yargs: ^17.7.1
   bin:
     mm-snap: ./dist/cjs/main.js
-  checksum: 13168d50b1b5901fdaa2659389ad4770785577e8b6f10ad30092acbd727320ca51b1dc3e106aaa0ca9eea3e37aee2a9badbbfd438c8fcb3b946a5f6058d39fd2
+  checksum: f49447ca6abd5c4672f3a059c955cb01ac85a8bca3348d5805b1dcc42e20f70e2361fb2cbfa0cdc23b9b07d1ea228d9293b214d4db94c3b9fc01a032db9151ee
   languageName: node
   linkType: hard
 
