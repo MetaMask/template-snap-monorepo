@@ -29,7 +29,9 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
     // the return is a plain hex string
     // https://docs.metamask.io/snaps/reference/rpc-api/#returns-5
     case 'getPublicKey': {
+      
       const { path, compressed } = request.params as GetBip32PublicKeyParams;
+
 
       // eslint-disable-next-line @typescript-eslint/await-thenable
       const approved = await snap.request({
@@ -44,6 +46,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
           ]),
         },
       });
+      
 
       if (!approved) {
         throw providerErrors.userRejectedRequest();
@@ -63,6 +66,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
     case 'signTransaction': {
       const { transaction, path } = request.params as SignTransactionParams;
 
+      
       try {
         const call = wasm.serializeCall(transaction.message, transaction.nonce);
         const entropy = await snap.request({
@@ -77,6 +81,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         // https://docs.metamask.io/snaps/reference/rpc-api/#returns-4
         const node = await SLIP10Node.fromJSON(entropy);
         assert(node.privateKey);
+
 
         // eslint-disable-next-line @typescript-eslint/await-thenable
         const approved = await snap.request({
@@ -113,7 +118,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         const txHex = bytesToHex(tx);
 
         wasm.dealloc();
-
         return txHex;
       } catch (er) {
         wasm.dealloc();

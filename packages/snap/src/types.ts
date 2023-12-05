@@ -1,61 +1,70 @@
+import { Bytes } from '@metamask/utils';
+import { Bip32PathStruct } from '@metamask/snaps-utils/*';
+import { Infer, boolean, enums, object, optional, type, string, number, array } from 'superstruct';
+
+
 /**
- * The parameters for calling the `getPublicKey` JSON-RPC method.
- *
- * Note: For simplicity, these are not validated by the snap. In production, you
- * should validate that the request object matches this type before using it.
+ * `type` is used instead of `object` to allow unknown properties.
  */
-export type GetBip32PublicKeyParams = {
+export const GetBip32PublicKeyParamsStruct = type({
   /**
    * The BIP-32 path to the account.
    */
-  path: ['m', ...(`${number}` | `${number}'`)[]];
-
+  path: Bip32PathStruct,
   /**
    * Whether to return the public key in compressed form.
    */
-  compressed?: boolean | undefined;
+  compressed: optional(boolean()),
+});
 
-  /**
-   * Miscellaneous parameters, which are passed to `snap_getBip32PublicKey`.
-   */
-  [key: string]: unknown;
-};
 
 /**
- * The transaction object to be submitted by the UI so the signature can be generated.
+ * The parameters for calling the `getPublicKey` JSON-RPC method.
  *
- * Note: For simplicity, these are not validated by the snap. In production, you
- * should validate that the request object matches this type before using it.
+ * Unknown properties are ignored and passed to `snap_getBip32PublicKey`.
  */
-export type Transaction = {
-  /**
+export type GetBip32PublicKeyParams = Infer<
+  typeof GetBip32PublicKeyParamsStruct
+>;
+
+
+/**
+* The transaction object to be submitted by the UI so the signature can be generated.
+*
+* Note: For simplicity, these are not validated by the snap. In production, you
+* should validate that the request object matches this type before using it.
+*/
+export const TransactionStruct = object({
+    /**
    * The JSON transaction to sign.
    */
-  message: string;
-
-  /**
-   * The nonce for the transaction signature.
-   */
-  nonce: number;
-};
+    message: string(),
+    /**
+     * The nonce for the transaction signature.
+     */
+    nonce: number(),
+})
 
 /**
  * The parameters for calling the `signTransaction` JSON-RPC method.
- *
- * Note: For simplicity, these are not validated by the snap. In production, you
- * should validate that the request object matches this type before using it.
- */
-export type SignTransactionParams = {
-  /**
+*
+* Note: For simplicity, these are not validated by the snap. In production, you
+* should validate that the request object matches this type before using it.
+*/
+export const SignTransactionStruct = object({
+   /**
    * The JSON transaction to sign.
    */
-  transaction: Transaction;
+   transaction: TransactionStruct,
 
-  /**
+   /**
    * The BIP-32 path to the account.
    */
-  path: string[];
-};
+   path: array(string()),
+})
+
+export type SignTransactionParams = Infer<typeof SignTransactionStruct>;
+
 
 /**
  * The expected WASM interface from the imported module.
