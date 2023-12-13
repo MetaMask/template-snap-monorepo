@@ -30,7 +30,7 @@ Gatsby has built-in support for loading environment variables into the browser a
 
 In development, Gatsby will load environment variables from a file named `.env.development`. For builds, it will load from `.env.production`.
 
-By default you can use the `SNAP_ORIGIN` variable (used in `src/config/snap.ts`) to define a production origin for you snap (eg. `npm:MyPackageName`). If not defined it will defaults to `local:http://localhost:8080`.
+By default you can use the `SNAP_ORIGIN` variable (used in `src/config/snap.ts`) to define a production origin for you snap (eg. `npm:MyPackageName`). If not defined it will default to `local:http://localhost:8080`.
 
 A `.env` file template is available, to use it rename `.env.production.dist` to `.env.production`
 
