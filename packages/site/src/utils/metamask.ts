@@ -1,5 +1,55 @@
+import { getSnaps } from './snap';
+
 /**
- * Detect if the wallet injecting the ethereum object is Flask.
+ * Tries to detect if one of the injected providers is MetaMask and checks if snaps is available in that MetaMask version.
+ *
+ * @returns True if the MetaMask version supports Snaps, false otherwise.
+ */
+export const detectSnaps = async () => {
+  if (window.ethereum?.detected) {
+    for (const provider of window.ethereum.detected) {
+      try {
+        // Detect snaps support
+        await getSnaps(provider);
+
+        // enforces MetaMask as provider
+        if (window.ethereum.setProvider) {
+          window.ethereum.setProvider(provider);
+        }
+
+        return true;
+      } catch {
+        // no-op
+      }
+    }
+  }
+
+  if (window.ethereum?.providers) {
+    for (const provider of window.ethereum.providers) {
+      try {
+        // Detect snaps support
+        await getSnaps(provider);
+
+        window.ethereum = provider;
+
+        return true;
+      } catch {
+        // no-op
+      }
+    }
+  }
+
+  try {
+    await getSnaps();
+
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+/**
+ * Detect if the wallet injecting the ethereum object is MetaMask Flask.
  *
  * @returns True if the MetaMask version is Flask, false otherwise.
  */
