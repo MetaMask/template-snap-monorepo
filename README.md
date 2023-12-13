@@ -2,7 +2,6 @@
 
 ---
 
-## ⚠️ **NOTE**: Do not clone this repository. It is meant to be used through the [Create snap CLI](github.com/metaMask/snaps-monorepo/packages/create-snap).
 
 This repository demonstrates how to develop a snap with TypeScript. For detailed instructions, see [the MetaMask Snaps quickstart documentation](https://docs.metamask.io/snaps/get-started/quickstart).
 
