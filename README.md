@@ -1,7 +1,9 @@
 # @metamask/template-snap-monorepo
 
-This repository demonstrates how to develop a snap with TypeScript. For detailed
-instructions, see [the MetaMask documentation](https://docs.metamask.io/guide/snaps.html#serving-a-snap-to-your-local-environment).
+---
+
+This repository demonstrates how to develop a snap with TypeScript. For detailed instructions,
+see [the MetaMask Snaps quickstart documentation](https://docs.metamask.io/snaps/get-started/quickstart).
 
 MetaMask Snaps is a system that allows anyone to safely expand the capabilities
 of MetaMask. A _snap_ is a program that we run in an isolated environment that
@@ -14,14 +16,17 @@ a canary distribution for developers that provides access to upcoming features.
 
 ## Getting Started
 
-Clone the template-snap repository [using this template](https://github.com/MetaMask/template-snap-monorepo/generate)
-and set up the development environment:
+To use this template, create a new snap project using the command line:
 
-```shell
-yarn install && yarn start
+```sh
+yarn create @metamask/snap your-snap-name
+# or...
+npm create @metamask/snap your-snap-name
 ```
 
-## Cloning
+For further instructions, consult [the MetaMask Snaps quickstart documentation](https://docs.metamask.io/snaps/get-started/quickstart).
+
+## GitHub Actions
 
 This repository contains GitHub Actions that you may find useful, see
 `.github/workflows` and [Releasing & Publishing](https://github.com/MetaMask/template-snap-monorepo/edit/main/README.md#releasing--publishing)

@@ -1,1 +1,1 @@
-export * from './MetamaskContext';
+export * from './MetaMaskContext';
