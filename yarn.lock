@@ -4390,8 +4390,8 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-cli@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@metamask/snaps-cli@npm:5.0.0"
+  version: 5.1.0
+  resolution: "@metamask/snaps-cli@npm:5.1.0"
   dependencies:
     "@babel/core": ^7.23.2
     "@babel/plugin-transform-class-properties": ^7.22.5
@@ -4401,9 +4401,9 @@ __metadata:
     "@babel/plugin-transform-runtime": ^7.13.2
     "@babel/preset-env": ^7.23.2
     "@babel/preset-typescript": ^7.23.2
-    "@metamask/snaps-sdk": ^2.0.0
-    "@metamask/snaps-utils": ^6.0.0
-    "@metamask/snaps-webpack-plugin": ^3.1.1
+    "@metamask/snaps-sdk": ^2.1.0
+    "@metamask/snaps-utils": ^6.1.0
+    "@metamask/snaps-webpack-plugin": ^3.2.0
     "@metamask/utils": ^8.3.0
     "@swc/core": 1.3.78
     assert: ^2.0.0
@@ -4431,6 +4431,7 @@ __metadata:
     stream-browserify: ^3.0.0
     stream-http: ^3.2.0
     string_decoder: ^1.3.0
+    strip-ansi: ^6.0.1
     superstruct: ^1.0.3
     swc-loader: ^0.2.3
     terser-webpack-plugin: ^5.3.9
@@ -4444,7 +4445,7 @@ __metadata:
     yargs: ^17.7.1
   bin:
     mm-snap: ./dist/cjs/main.js
-  checksum: 336e3be8cdbcb759aa66c6a58fcdc0db0532de08f1fa2dc728e8037849a58d1dd573a40a83f3c18167384b465ace3ded671034c53ac33af992faae12a5c430d3
+  checksum: 7ebed11481c02222169ae4c5d7516febed6be433a4f038025c59afa26ce5a956d9aec2d99d7a32c2e7b81532a2efc4dae2aa5a90e5f37537793bbad04a8e050e
   languageName: node
   linkType: hard
 
@@ -4593,6 +4594,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/snaps-sdk@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@metamask/snaps-sdk@npm:2.1.0"
+  dependencies:
+    "@metamask/key-tree": ^9.0.0
+    "@metamask/providers": ^14.0.2
+    "@metamask/rpc-errors": ^6.1.0
+    "@metamask/utils": ^8.3.0
+    fast-xml-parser: ^4.3.4
+    superstruct: ^1.0.3
+  checksum: 09cfc8b6f51b5895599474bfc9a6a36bef9a078ed3796d3db94dcf9abcc6d5e0c06d9e48193506ef5b757d8b9358877163cfe20c85442cc6986c2759975f2bac
+  languageName: node
+  linkType: hard
+
 "@metamask/snaps-simulator@npm:^2.4.1":
   version: 2.4.1
   resolution: "@metamask/snaps-simulator@npm:2.4.1"
@@ -4665,9 +4680,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/snaps-utils@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@metamask/snaps-utils@npm:6.0.0"
+"@metamask/snaps-utils@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "@metamask/snaps-utils@npm:6.1.0"
   dependencies:
     "@babel/core": ^7.23.2
     "@babel/types": ^7.23.0
@@ -4677,7 +4692,7 @@ __metadata:
     "@metamask/rpc-errors": ^6.1.0
     "@metamask/slip44": ^3.1.0
     "@metamask/snaps-registry": ^3.0.0
-    "@metamask/snaps-sdk": ^2.0.0
+    "@metamask/snaps-sdk": ^2.1.0
     "@metamask/utils": ^8.3.0
     "@noble/hashes": ^1.3.1
     "@scure/base": ^1.1.1
@@ -4685,25 +4700,24 @@ __metadata:
     cron-parser: ^4.5.0
     fast-deep-equal: ^3.1.3
     fast-json-stable-stringify: ^2.1.0
-    is-svg: ^4.4.0
     rfdc: ^1.3.0
     semver: ^7.5.4
     ses: ^1.1.0
     superstruct: ^1.0.3
     validate-npm-package-name: ^5.0.0
-  checksum: 3365da773583791cb0e663dab9349931460b4a161d3e2407426bbb7a8fe761ba4abcfbdc249bb0452a69831459c9fd640e0cb5c15772cd15303b929476933b6b
+  checksum: 1e6fcffe875ed7089bf103227bb5edf8b24503b1f959ddadd40f20b5c42e4d8b38633ad98fa794d643ccfd612a6ab0777f322398a50184d40b297d125576ff3a
   languageName: node
   linkType: hard
 
-"@metamask/snaps-webpack-plugin@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "@metamask/snaps-webpack-plugin@npm:3.1.1"
+"@metamask/snaps-webpack-plugin@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@metamask/snaps-webpack-plugin@npm:3.2.0"
   dependencies:
-    "@metamask/snaps-sdk": ^1.2.0
-    "@metamask/snaps-utils": ^5.0.0
-    "@metamask/utils": ^8.2.1
+    "@metamask/snaps-sdk": ^2.1.0
+    "@metamask/snaps-utils": ^6.1.0
+    "@metamask/utils": ^8.3.0
     webpack-sources: ^3.2.3
-  checksum: b18fd2fe1a0ec68b8ef529f5a57d88bf7a54ca108861ccce901cec562b0431e798beace18899b0112443ac6aef4b83a291f4ca013040944b10e3b2c374521324
+  checksum: 36164fde8b63816d5747a9332f84c09ae73a8d13bd25029d9087ad641f33885a40076cd741937f3f3be4c5bb53ed558d0d91ad1d8bb8512597fd69c3c9dd770b
   languageName: node
   linkType: hard
 
@@ -12254,6 +12268,17 @@ __metadata:
   bin:
     fxparser: src/cli/cli.js
   checksum: d32b22005504eeb207249bf40dc82d0994b5bb9ca9dcc731d335a1f425e47fe085b3cace3cf9d32172dd1a5544193c49e8615ca95b4bf95a4a4920a226b06d80
+  languageName: node
+  linkType: hard
+
+"fast-xml-parser@npm:^4.3.4":
+  version: 4.3.4
+  resolution: "fast-xml-parser@npm:4.3.4"
+  dependencies:
+    strnum: ^1.0.5
+  bin:
+    fxparser: src/cli/cli.js
+  checksum: ab88177343f6d3d971d53462db3011003a83eb8a8db704840127ddaaf27105ea90cdf7903a0f9b2e1279ccc4adfca8dfc0277b33bae6262406f10c16bd60ccf9
   languageName: node
   linkType: hard
 
