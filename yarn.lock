@@ -3066,22 +3066,8 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-sdk@npm:^1.2.0, @metamask/snaps-sdk@npm:^1.3.2":
-  version: 1.3.2
-  resolution: "@metamask/snaps-sdk@npm:1.3.2"
-  dependencies:
-    "@metamask/key-tree": ^9.0.0
-    "@metamask/providers": ^14.0.2
-    "@metamask/rpc-errors": ^6.1.0
-    "@metamask/utils": ^8.2.1
-    is-svg: ^4.4.0
-    superstruct: ^1.0.3
-  checksum: 6492e5aaa57ce3ccd057537890a57d2a1a1e3c442b7decb8bc734ba02c1eae172d58d27b8c4af449d57be6cfe55ba2ebe4f128d673b10baa2d5a32ed9e4181ff
-  languageName: node
-  linkType: hard
-
-"@metamask/snaps-sdk@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@metamask/snaps-sdk@npm:2.0.0"
+  version: 1.4.0
+  resolution: "@metamask/snaps-sdk@npm:1.4.0"
   dependencies:
     "@metamask/key-tree": ^9.0.0
     "@metamask/providers": ^14.0.2
@@ -3089,7 +3075,21 @@ __metadata:
     "@metamask/utils": ^8.3.0
     is-svg: ^4.4.0
     superstruct: ^1.0.3
-  checksum: af13dde4054a46ed5f827db641168a04039d11927f763134a5ce4fe81d57a3783b4739a252b642d8bdf03c0c5bb6146583b705e3dbf3866d23e1c188cea91d3b
+  checksum: faf3505add1d719bd9640beb5e67a84ed858198b06330d67d675a06e8b1e66250afc097b1a4c3af23bc8fc01bbc899af963bc056a4aafd09780ca59e1bb51917
+  languageName: node
+  linkType: hard
+
+"@metamask/snaps-sdk@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "@metamask/snaps-sdk@npm:2.1.0"
+  dependencies:
+    "@metamask/key-tree": ^9.0.0
+    "@metamask/providers": ^14.0.2
+    "@metamask/rpc-errors": ^6.1.0
+    "@metamask/utils": ^8.3.0
+    fast-xml-parser: ^4.3.4
+    superstruct: ^1.0.3
+  checksum: 09cfc8b6f51b5895599474bfc9a6a36bef9a078ed3796d3db94dcf9abcc6d5e0c06d9e48193506ef5b757d8b9358877163cfe20c85442cc6986c2759975f2bac
   languageName: node
   linkType: hard
 
@@ -9767,6 +9767,17 @@ __metadata:
   bin:
     fxparser: src/cli/cli.js
   checksum: d32b22005504eeb207249bf40dc82d0994b5bb9ca9dcc731d335a1f425e47fe085b3cace3cf9d32172dd1a5544193c49e8615ca95b4bf95a4a4920a226b06d80
+  languageName: node
+  linkType: hard
+
+"fast-xml-parser@npm:^4.3.4":
+  version: 4.3.4
+  resolution: "fast-xml-parser@npm:4.3.4"
+  dependencies:
+    strnum: ^1.0.5
+  bin:
+    fxparser: src/cli/cli.js
+  checksum: ab88177343f6d3d971d53462db3011003a83eb8a8db704840127ddaaf27105ea90cdf7903a0f9b2e1279ccc4adfca8dfc0277b33bae6262406f10c16bd60ccf9
   languageName: node
   linkType: hard
 
