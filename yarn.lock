@@ -4390,8 +4390,8 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-cli@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "@metamask/snaps-cli@npm:5.1.0"
+  version: 5.1.1
+  resolution: "@metamask/snaps-cli@npm:5.1.1"
   dependencies:
     "@babel/core": ^7.23.2
     "@babel/plugin-transform-class-properties": ^7.22.5
@@ -4445,7 +4445,7 @@ __metadata:
     yargs: ^17.7.1
   bin:
     mm-snap: ./dist/cjs/main.js
-  checksum: 7ebed11481c02222169ae4c5d7516febed6be433a4f038025c59afa26ce5a956d9aec2d99d7a32c2e7b81532a2efc4dae2aa5a90e5f37537793bbad04a8e050e
+  checksum: b6f238d388fa760c5cd2a555703374767df002821730fba0fe311e06dacb099ef446ab134a76e00506e976850eb4acb49bcd95c799097f76e618578c63a6dceb
   languageName: node
   linkType: hard
 
@@ -4580,21 +4580,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/snaps-sdk@npm:^2.0.0":
-  version: 2.1.0
-  resolution: "@metamask/snaps-sdk@npm:2.1.0"
-  dependencies:
-    "@metamask/key-tree": ^9.0.0
-    "@metamask/providers": ^14.0.2
-    "@metamask/rpc-errors": ^6.1.0
-    "@metamask/utils": ^8.3.0
-    fast-xml-parser: ^4.3.4
-    superstruct: ^1.0.3
-  checksum: 09cfc8b6f51b5895599474bfc9a6a36bef9a078ed3796d3db94dcf9abcc6d5e0c06d9e48193506ef5b757d8b9358877163cfe20c85442cc6986c2759975f2bac
-  languageName: node
-  linkType: hard
-
-"@metamask/snaps-sdk@npm:^2.1.0":
+"@metamask/snaps-sdk@npm:^2.0.0, @metamask/snaps-sdk@npm:^2.1.0":
   version: 2.1.0
   resolution: "@metamask/snaps-sdk@npm:2.1.0"
   dependencies:
