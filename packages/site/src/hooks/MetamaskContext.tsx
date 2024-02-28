@@ -1,8 +1,9 @@
 import type { Dispatch, ReactNode, Reducer } from 'react';
-import { createContext, useEffect, useReducer } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
 
 import type { Snap } from '../types';
-import { detectSnaps, getSnap, isFlask } from '../utils';
+import { getSnapsProvider, getSnap, isFlask } from '../utils';
+import type { MetaMaskInpageProvider } from '@metamask/providers';
 
 export type MetamaskState = {
   snapsDetected: boolean;
@@ -18,14 +19,17 @@ const initialState: MetamaskState = {
 
 type MetamaskDispatch = { type: MetamaskActions; payload: any };
 
-export const MetaMaskContext = createContext<
-  [MetamaskState, Dispatch<MetamaskDispatch>]
->([
-  initialState,
-  () => {
+export const MetaMaskContext = createContext<{
+  state: MetamaskState;
+  dispatch: Dispatch<MetamaskDispatch>;
+  provider: MetaMaskInpageProvider | null;
+}>({
+  state: initialState,
+  dispatch: () => {
     /* no op */
   },
-]);
+  provider: null,
+});
 
 export enum MetamaskActions {
   SetInstalled = 'SetInstalled',
@@ -74,45 +78,40 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
     return <>{children}</>;
   }
 
+  const [provider, setProvider] = useState<MetaMaskInpageProvider | null>(null);
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    getSnapsProvider().then(setProvider).catch(console.error);
+  }, []);
 
   // Find MetaMask Provider and search for Snaps
   // Also checks if MetaMask version is Flask
   useEffect(() => {
-    const setSnapsCompatibility = async () => {
-      dispatch({
-        type: MetamaskActions.SetSnapsDetected,
-        payload: await detectSnaps(),
-      });
-    };
-
-    setSnapsCompatibility().catch(console.error);
-  }, [window.ethereum]);
-
-  // Set installed snaps
-  useEffect(() => {
-    /**
-     * Detect if a snap is installed and set it in the state.
-     */
     async function detectSnapInstalled() {
       dispatch({
         type: MetamaskActions.SetInstalled,
-        payload: await getSnap(),
+        payload: await getSnap(provider!),
       });
     }
 
-    const checkIfFlask = async () => {
+    async function checkIfFlask() {
       dispatch({
         type: MetamaskActions.SetIsFlask,
-        payload: await isFlask(),
+        payload: await isFlask(provider!),
       });
-    };
+    }
 
-    if (state.snapsDetected) {
+    dispatch({
+      type: MetamaskActions.SetSnapsDetected,
+      payload: provider !== null,
+    });
+
+    if (provider) {
       detectSnapInstalled().catch(console.error);
       checkIfFlask().catch(console.error);
     }
-  }, [state.snapsDetected]);
+  }, [provider]);
 
   useEffect(() => {
     let timeoutId: number;
@@ -134,7 +133,7 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
   }, [state.error]);
 
   return (
-    <MetaMaskContext.Provider value={[state, dispatch]}>
+    <MetaMaskContext.Provider value={{ state, dispatch, provider }}>
       {children}
     </MetaMaskContext.Provider>
   );

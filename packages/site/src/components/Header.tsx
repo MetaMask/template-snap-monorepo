@@ -44,12 +44,12 @@ export const Header = ({
   handleToggleClick(): void;
 }) => {
   const theme = useTheme();
-  const [state, dispatch] = useContext(MetaMaskContext);
+  const { state, dispatch, provider } = useContext(MetaMaskContext);
 
   const handleConnectClick = async () => {
     try {
-      await connectSnap();
-      const installedSnap = await getSnap();
+      await connectSnap(provider!);
+      const installedSnap = await getSnap(provider!);
 
       dispatch({
         type: MetamaskActions.SetInstalled,
