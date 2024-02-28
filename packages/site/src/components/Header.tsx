@@ -1,8 +1,6 @@
-import { useContext } from 'react';
 import styled, { useTheme } from 'styled-components';
 
-import { MetamaskActions, MetaMaskContext } from '../hooks';
-import { connectSnap, getThemePreference, getSnap } from '../utils';
+import { getThemePreference } from '../utils';
 import { HeaderButtons } from './Buttons';
 import { SnapLogo } from './SnapLogo';
 import { Toggle } from './Toggle';
@@ -44,25 +42,7 @@ export const Header = ({
   handleToggleClick(): void;
 }) => {
   const theme = useTheme();
-  const { state, dispatch, provider } = useContext(MetaMaskContext);
 
-  const handleConnectClick = async () => {
-    try {
-      // This function will only be triggerable if a provider is available
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      await connectSnap(provider!);
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const installedSnap = await getSnap(provider!);
-
-      dispatch({
-        type: MetamaskActions.SetInstalled,
-        payload: installedSnap,
-      });
-    } catch (error) {
-      console.error(error);
-      dispatch({ type: MetamaskActions.SetError, payload: error });
-    }
-  };
   return (
     <HeaderWrapper>
       <LogoWrapper>
@@ -74,7 +54,7 @@ export const Header = ({
           onToggle={handleToggleClick}
           defaultChecked={getThemePreference()}
         />
-        <HeaderButtons state={state} onConnectClick={handleConnectClick} />
+        <HeaderButtons />
       </RightContainer>
     </HeaderWrapper>
   );
