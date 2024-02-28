@@ -44,12 +44,15 @@ export const Header = ({
   handleToggleClick(): void;
 }) => {
   const theme = useTheme();
-  const [state, dispatch] = useContext(MetaMaskContext);
+  const { state, dispatch, provider } = useContext(MetaMaskContext);
 
   const handleConnectClick = async () => {
     try {
-      await connectSnap();
-      const installedSnap = await getSnap();
+      // This function will only be triggerable if a provider is available
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      await connectSnap(provider!);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const installedSnap = await getSnap(provider!);
 
       dispatch({
         type: MetamaskActions.SetInstalled,
