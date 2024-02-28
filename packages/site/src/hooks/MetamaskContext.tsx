@@ -10,7 +10,13 @@ type MetaMaskContextType = {
   setError: (error: Error) => void;
 };
 
-export const MetaMaskContext = createContext<MetaMaskContextType | null>(null);
+export const MetaMaskContext = createContext<MetaMaskContextType>({
+  provider: null,
+  error: undefined,
+  setError: () => {
+    /* no-op */
+  },
+});
 
 /**
  * MetaMask context provider to handle MetaMask and snap status.
@@ -59,5 +65,5 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
  * @returns The MetaMask context.
  */
 export function useMetaMaskContext() {
-  return useContext(MetaMaskContext) as MetaMaskContextType;
+  return useContext(MetaMaskContext);
 }
