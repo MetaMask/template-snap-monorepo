@@ -44,7 +44,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "prettier": "^2.7.1",
     "prettier-plugin-packagejson": "^2.2.18",
-    "sharp": "^0.30.7",
+    "sharp": "^0.32.6",
     "typescript": "^4.7.4"
   },
   "packageManager": "yarn@3.2.1",
