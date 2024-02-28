@@ -6,7 +6,7 @@ import { useRequest } from './useRequest';
  * Utility hook to wrap the `wallet_requestSnaps` method.
  * @param snapId - The requested Snap ID.
  * @param version - The requested version.
- * @returns The `wallet_requestSnaps` wrapper
+ * @returns The `wallet_requestSnaps` wrapper.
  */
 export const useRequestSnap = (
   snapId = defaultSnapOrigin,
