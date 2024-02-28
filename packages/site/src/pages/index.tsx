@@ -111,7 +111,10 @@ const Index = () => {
 
   const handleConnectClick = async () => {
     try {
+      // This function will only be triggerable if a provider is available
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       await connectSnap(provider!);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const installedSnap = await getSnap(provider!);
 
       dispatch({
@@ -126,6 +129,8 @@ const Index = () => {
 
   const handleSendHelloClick = async () => {
     try {
+      // This function will only be triggerable if a provider is available
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       await sendHello(provider!);
     } catch (error) {
       console.error(error);

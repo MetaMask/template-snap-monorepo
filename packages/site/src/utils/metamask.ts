@@ -58,9 +58,10 @@ export async function getMetaMaskEIP6963Provider() {
      * Resolves the promise if a MetaMask provider is found.
      *
      * @param event - The EIP6963 announceProvider event.
+     * @param event.detail - The details of the EIP6963 announceProvider event.
      */
-    function onAnnounceProvider(event: EIP6963AnnounceProviderEvent) {
-      const { info, provider } = event.detail;
+    function onAnnounceProvider({ detail }: EIP6963AnnounceProviderEvent) {
+      const { info, provider } = detail;
 
       if (info.rdns.includes('io.metamask')) {
         resolve(provider);
@@ -116,6 +117,7 @@ export async function getSnapsProvider() {
 /**
  * Detect if the wallet injecting the ethereum object is MetaMask Flask.
  *
+ * @param provider - The MetaMask inpage provider.
  * @returns True if the MetaMask version is Flask, false otherwise.
  */
 export const isFlask = async (provider = window.ethereum) => {

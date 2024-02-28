@@ -38,6 +38,7 @@ export const connectSnap = async (
 /**
  * Get the snap from MetaMask.
  *
+ * @param provider - The MetaMask inpage provider.
  * @param version - The version of the snap to install (optional).
  * @returns The snap object returned by the extension.
  */
