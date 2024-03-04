@@ -28,6 +28,7 @@ export const useRequestSnap = (
       },
     });
 
+    // Updates the `installedSnap` context variable since we just installed the Snap.
     await getSnap();
   };
 

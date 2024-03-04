@@ -33,10 +33,6 @@ export const MetaMaskContext = createContext<MetaMaskContextType>({
  * @returns JSX.
  */
 export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
-  if (typeof window === 'undefined') {
-    return <>{children}</>;
-  }
-
   const [provider, setProvider] = useState<MetaMaskInpageProvider | null>(null);
   const [installedSnap, setInstalledSnap] = useState<Snap | null>(null);
   const [error, setError] = useState<Error | null>(null);
