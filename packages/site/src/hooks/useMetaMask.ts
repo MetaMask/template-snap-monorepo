@@ -38,11 +38,7 @@ export const useMetaMask = () => {
       method: 'wallet_getSnaps',
     })) as GetSnapsResponse;
 
-    const value =
-      Object.values(snaps).find((snap) => snap.id === defaultSnapOrigin) ??
-      null;
-
-    setInstalledSnap(value);
+    setInstalledSnap(snaps[defaultSnapOrigin] ?? null);
   };
 
   useEffect(() => {
