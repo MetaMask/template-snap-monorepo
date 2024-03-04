@@ -1,10 +1,11 @@
 import { defaultSnapOrigin } from '../config';
-import { useMetaMask } from './useMetaMask';
 import { useRequest } from './useRequest';
 
 /**
  * Utility hook to wrap the `wallet_requestSnaps` method.
- * @param snapId - The requested Snap ID.
+ *
+ * @param snapId - The requested Snap ID. Defaults to the snap ID specified in the
+ * config.
  * @param version - The requested version.
  * @returns The `wallet_requestSnaps` wrapper.
  */
@@ -13,7 +14,6 @@ export const useRequestSnap = (
   version?: string,
 ) => {
   const request = useRequest();
-  const { getSnap } = useMetaMask();
 
   /**
    * Request the Snap.
@@ -25,8 +25,6 @@ export const useRequestSnap = (
         [snapId]: { version },
       },
     });
-
-    await getSnap();
   };
 
   return requestSnap;

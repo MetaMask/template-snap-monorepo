@@ -2,17 +2,24 @@ import type { MetaMaskInpageProvider } from '@metamask/providers';
 import type { ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
 
+import type { Snap } from '../types';
 import { getSnapsProvider } from '../utils';
 
 type MetaMaskContextType = {
   provider: MetaMaskInpageProvider | null;
-  error: Error | undefined;
+  installedSnap: Snap | null;
+  error: Error | null;
+  setInstalledSnap: (snap: Snap | null) => void;
   setError: (error: Error) => void;
 };
 
 export const MetaMaskContext = createContext<MetaMaskContextType>({
   provider: null,
-  error: undefined,
+  installedSnap: null,
+  error: null,
+  setInstalledSnap: () => {
+    /* no-op */
+  },
   setError: () => {
     /* no-op */
   },
@@ -31,30 +38,31 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const [provider, setProvider] = useState<MetaMaskInpageProvider | null>(null);
-  const [error, setError] = useState<Error | undefined>();
+  const [installedSnap, setInstalledSnap] = useState<Snap | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     getSnapsProvider().then(setProvider).catch(console.error);
   }, []);
 
   useEffect(() => {
-    let timeoutId: number;
-
     if (error) {
-      timeoutId = window.setTimeout(() => {
-        setError(undefined);
+      const timeout = setTimeout(() => {
+        setError(null);
       }, 10000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
     }
 
-    return () => {
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-      }
-    };
+    return undefined;
   }, [error]);
 
   return (
-    <MetaMaskContext.Provider value={{ provider, error, setError }}>
+    <MetaMaskContext.Provider
+      value={{ provider, error, setError, installedSnap, setInstalledSnap }}
+    >
       {children}
     </MetaMaskContext.Provider>
   );
@@ -62,6 +70,7 @@ export const MetaMaskProvider = ({ children }: { children: ReactNode }) => {
 
 /**
  * Utility hook to consume the MetaMask context.
+ *
  * @returns The MetaMask context.
  */
 export function useMetaMaskContext() {

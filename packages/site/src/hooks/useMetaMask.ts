@@ -1,23 +1,21 @@
 import { useEffect, useState } from 'react';
 
 import { defaultSnapOrigin } from '../config';
-import type { GetSnapsResponse, Snap } from '../types';
+import type { GetSnapsResponse } from '../types';
 import { useMetaMaskContext } from './MetamaskContext';
 import { useRequest } from './useRequest';
 
 /**
- * A Hook to retrieve usefull data from MetaMask.
+ * A Hook to retrieve useful data from MetaMask.
  * @returns The informations.
  */
 export const useMetaMask = () => {
-  const { provider } = useMetaMaskContext();
+  const { provider, setInstalledSnap, installedSnap } = useMetaMaskContext();
   const request = useRequest();
 
   const [isFlask, setIsFlask] = useState(false);
-  const [snapsDetected, setSnapsDetected] = useState(false);
-  const [installedSnap, setInstalledSnap] = useState<Snap | undefined>(
-    undefined,
-  );
+
+  const snapsDetected = provider !== null;
 
   /**
    * Detect if the version of MetaMask is Flask.
@@ -33,31 +31,22 @@ export const useMetaMask = () => {
   };
 
   /**
-   * Detect if Snaps is available in MetaMask.
-   */
-  const detectSnaps = () => {
-    setSnapsDetected(provider !== null);
-  };
-
-  /**
    * Get the Snap informations from MetaMask.
    */
   const getSnap = async () => {
-    const snaps = (await provider?.request({
+    const snaps = (await request({
       method: 'wallet_getSnaps',
-    })) as unknown as GetSnapsResponse;
+    })) as GetSnapsResponse;
 
-    const value = Object.values(snaps).find(
-      (snap) => snap.id === defaultSnapOrigin,
-    );
+    const value =
+      Object.values(snaps).find((snap) => snap.id === defaultSnapOrigin) ??
+      null;
 
     setInstalledSnap(value);
   };
 
   useEffect(() => {
     const detect = async () => {
-      detectSnaps();
-
       if (provider) {
         await detectFlask();
         await getSnap();
