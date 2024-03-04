@@ -1,5 +1,6 @@
 import { defaultSnapOrigin } from '../config';
-import { useMetaMask } from './useMetaMask';
+import type { Snap } from '../types';
+import { useMetaMaskContext } from './MetamaskContext';
 import { useRequest } from './useRequest';
 
 /**
@@ -15,21 +16,21 @@ export const useRequestSnap = (
   version?: string,
 ) => {
   const request = useRequest();
-  const { getSnap } = useMetaMask();
+  const { setInstalledSnap } = useMetaMaskContext();
 
   /**
    * Request the Snap.
    */
   const requestSnap = async () => {
-    await request({
+    const snaps = (await request({
       method: 'wallet_requestSnaps',
       params: {
         [snapId]: { version },
       },
-    });
+    })) as Record<string, Snap>;
 
     // Updates the `installedSnap` context variable since we just installed the Snap.
-    await getSnap();
+    setInstalledSnap(snaps[snapId] ?? null);
   };
 
   return requestSnap;
