@@ -101,23 +101,18 @@ export const SendHelloButton = (props: ComponentProps<typeof Button>) => {
 
 export const HeaderButtons = () => {
   const requestSnap = useRequestSnap();
-  const { isFlask, installedSnap, getSnap } = useMetaMask();
-
-  const handleRequestSnap = async () => {
-    await requestSnap();
-    await getSnap();
-  };
+  const { isFlask, installedSnap } = useMetaMask();
 
   if (!isFlask && !installedSnap) {
     return <InstallFlaskButton />;
   }
 
   if (!installedSnap) {
-    return <ConnectButton onClick={handleRequestSnap} />;
+    return <ConnectButton onClick={requestSnap} />;
   }
 
   if (shouldDisplayReconnectButton(installedSnap)) {
-    return <ReconnectButton onClick={handleRequestSnap} />;
+    return <ReconnectButton onClick={requestSnap} />;
   }
 
   return (

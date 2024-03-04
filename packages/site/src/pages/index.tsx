@@ -102,7 +102,7 @@ const ErrorMessage = styled.div`
 
 const Index = () => {
   const { error } = useMetaMaskContext();
-  const { isFlask, snapsDetected, installedSnap, getSnap } = useMetaMask();
+  const { isFlask, snapsDetected, installedSnap } = useMetaMask();
   const requestSnap = useRequestSnap();
   const invokeSnap = useInvokeSnap();
 
@@ -112,11 +112,6 @@ const Index = () => {
 
   const handleSendHelloClick = async () => {
     await invokeSnap({ method: 'hello' });
-  };
-
-  const handleRequestSnap = async () => {
-    await requestSnap();
-    await getSnap();
   };
 
   return (
@@ -152,7 +147,7 @@ const Index = () => {
                 'Get started by connecting to and installing the example snap.',
               button: (
                 <ConnectButton
-                  onClick={handleRequestSnap}
+                  onClick={requestSnap}
                   disabled={!isMetaMaskReady}
                 />
               ),
@@ -168,7 +163,7 @@ const Index = () => {
                 'While connected to a local running snap this button will always be displayed in order to update the snap if a change is made.',
               button: (
                 <ReconnectButton
-                  onClick={handleRequestSnap}
+                  onClick={requestSnap}
                   disabled={!installedSnap}
                 />
               ),

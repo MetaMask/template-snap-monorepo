@@ -1,4 +1,5 @@
 import { defaultSnapOrigin } from '../config';
+import { useMetaMask } from './useMetaMask';
 import { useRequest } from './useRequest';
 
 /**
@@ -14,6 +15,7 @@ export const useRequestSnap = (
   version?: string,
 ) => {
   const request = useRequest();
+  const { getSnap } = useMetaMask();
 
   /**
    * Request the Snap.
@@ -25,6 +27,8 @@ export const useRequestSnap = (
         [snapId]: { version },
       },
     });
+
+    await getSnap();
   };
 
   return requestSnap;
