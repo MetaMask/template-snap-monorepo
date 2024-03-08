@@ -3110,7 +3110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/snaps-sdk@npm:^3.0.1":
+"@metamask/snaps-sdk@npm:^3.0.1, @metamask/snaps-sdk@npm:^3.1.0":
   version: 3.1.0
   resolution: "@metamask/snaps-sdk@npm:3.1.0"
   dependencies:
@@ -3125,8 +3125,8 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-utils@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "@metamask/snaps-utils@npm:7.0.1"
+  version: 7.0.2
+  resolution: "@metamask/snaps-utils@npm:7.0.2"
   dependencies:
     "@babel/core": ^7.23.2
     "@babel/types": ^7.23.0
@@ -3136,7 +3136,7 @@ __metadata:
     "@metamask/rpc-errors": ^6.2.1
     "@metamask/slip44": ^3.1.0
     "@metamask/snaps-registry": ^3.0.0
-    "@metamask/snaps-sdk": ^3.0.1
+    "@metamask/snaps-sdk": ^3.1.0
     "@metamask/utils": ^8.3.0
     "@noble/hashes": ^1.3.1
     "@scure/base": ^1.1.1
@@ -3149,7 +3149,7 @@ __metadata:
     ses: ^1.1.0
     superstruct: ^1.0.3
     validate-npm-package-name: ^5.0.0
-  checksum: f4d00488963e530384eded380a8086acfb051609a4548c9b57b67abd8fd47d33e21bc8858d735441748778158753c28d9bac9f2ce621e01892010211c6a7db1e
+  checksum: 2a9ce9fa2ba8551b1fb97df57d8352f4c98a8267c7cb8970bcfb2ff508de0a6798c2184767c0c7a5d454c712be0fdc5a5a7b90f96ae7cdbb5cb9a1d1c8b14f03
   languageName: node
   linkType: hard
 
