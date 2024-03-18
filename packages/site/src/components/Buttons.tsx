@@ -2,7 +2,7 @@ import type { ComponentProps } from 'react';
 import styled from 'styled-components';
 
 import { ReactComponent as FlaskFox } from '../assets/flask_fox.svg';
-import type { MetamaskState } from '../hooks';
+import { useMetaMask, useRequestSnap } from '../hooks';
 import { shouldDisplayReconnectButton } from '../utils';
 
 const Link = styled.a`
@@ -99,23 +99,20 @@ export const SendHelloButton = (props: ComponentProps<typeof Button>) => {
   return <Button {...props}>Send message</Button>;
 };
 
-export const HeaderButtons = ({
-  state,
-  onConnectClick,
-}: {
-  state: MetamaskState;
-  onConnectClick(): unknown;
-}) => {
-  if (!state.isFlask && !state.installedSnap) {
+export const HeaderButtons = () => {
+  const requestSnap = useRequestSnap();
+  const { isFlask, installedSnap } = useMetaMask();
+
+  if (!isFlask && !installedSnap) {
     return <InstallFlaskButton />;
   }
 
-  if (!state.installedSnap) {
-    return <ConnectButton onClick={onConnectClick} />;
+  if (!installedSnap) {
+    return <ConnectButton onClick={requestSnap} />;
   }
 
-  if (shouldDisplayReconnectButton(state.installedSnap)) {
-    return <ReconnectButton onClick={onConnectClick} />;
+  if (shouldDisplayReconnectButton(installedSnap)) {
+    return <ReconnectButton onClick={requestSnap} />;
   }
 
   return (

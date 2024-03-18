@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -9,14 +8,13 @@ import {
   Card,
 } from '../components';
 import { defaultSnapOrigin } from '../config';
-import { MetamaskActions, MetaMaskContext } from '../hooks';
 import {
-  connectSnap,
-  getSnap,
-  isLocalSnap,
-  sendHello,
-  shouldDisplayReconnectButton,
-} from '../utils';
+  useMetaMask,
+  useInvokeSnap,
+  useMetaMaskContext,
+  useRequestSnap,
+} from '../hooks';
+import { isLocalSnap, shouldDisplayReconnectButton } from '../utils';
 
 const Container = styled.div`
   display: flex;
@@ -103,34 +101,17 @@ const ErrorMessage = styled.div`
 `;
 
 const Index = () => {
-  const [state, dispatch] = useContext(MetaMaskContext);
+  const { error } = useMetaMaskContext();
+  const { isFlask, snapsDetected, installedSnap } = useMetaMask();
+  const requestSnap = useRequestSnap();
+  const invokeSnap = useInvokeSnap();
 
   const isMetaMaskReady = isLocalSnap(defaultSnapOrigin)
-    ? state.isFlask
-    : state.snapsDetected;
-
-  const handleConnectClick = async () => {
-    try {
-      await connectSnap();
-      const installedSnap = await getSnap();
-
-      dispatch({
-        type: MetamaskActions.SetInstalled,
-        payload: installedSnap,
-      });
-    } catch (error) {
-      console.error(error);
-      dispatch({ type: MetamaskActions.SetError, payload: error });
-    }
-  };
+    ? isFlask
+    : snapsDetected;
 
   const handleSendHelloClick = async () => {
-    try {
-      await sendHello();
-    } catch (error) {
-      console.error(error);
-      dispatch({ type: MetamaskActions.SetError, payload: error });
-    }
+    await invokeSnap({ method: 'hello' });
   };
 
   return (
@@ -142,9 +123,9 @@ const Index = () => {
         Get started by editing <code>src/index.ts</code>
       </Subtitle>
       <CardContainer>
-        {state.error && (
+        {error && (
           <ErrorMessage>
-            <b>An error happened:</b> {state.error.message}
+            <b>An error happened:</b> {error.message}
           </ErrorMessage>
         )}
         {!isMetaMaskReady && (
@@ -158,7 +139,7 @@ const Index = () => {
             fullWidth
           />
         )}
-        {!state.installedSnap && (
+        {!installedSnap && (
           <Card
             content={{
               title: 'Connect',
@@ -166,7 +147,7 @@ const Index = () => {
                 'Get started by connecting to and installing the example snap.',
               button: (
                 <ConnectButton
-                  onClick={handleConnectClick}
+                  onClick={requestSnap}
                   disabled={!isMetaMaskReady}
                 />
               ),
@@ -174,7 +155,7 @@ const Index = () => {
             disabled={!isMetaMaskReady}
           />
         )}
-        {shouldDisplayReconnectButton(state.installedSnap) && (
+        {shouldDisplayReconnectButton(installedSnap) && (
           <Card
             content={{
               title: 'Reconnect',
@@ -182,12 +163,12 @@ const Index = () => {
                 'While connected to a local running snap this button will always be displayed in order to update the snap if a change is made.',
               button: (
                 <ReconnectButton
-                  onClick={handleConnectClick}
-                  disabled={!state.installedSnap}
+                  onClick={requestSnap}
+                  disabled={!installedSnap}
                 />
               ),
             }}
-            disabled={!state.installedSnap}
+            disabled={!installedSnap}
           />
         )}
         <Card
@@ -198,15 +179,15 @@ const Index = () => {
             button: (
               <SendHelloButton
                 onClick={handleSendHelloClick}
-                disabled={!state.installedSnap}
+                disabled={!installedSnap}
               />
             ),
           }}
-          disabled={!state.installedSnap}
+          disabled={!installedSnap}
           fullWidth={
             isMetaMaskReady &&
-            Boolean(state.installedSnap) &&
-            !shouldDisplayReconnectButton(state.installedSnap)
+            Boolean(installedSnap) &&
+            !shouldDisplayReconnectButton(installedSnap)
           }
         />
         <Notice>
