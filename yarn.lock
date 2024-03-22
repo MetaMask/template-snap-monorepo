@@ -3015,8 +3015,8 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-cli@npm:^6.0.2":
-  version: 6.0.2
-  resolution: "@metamask/snaps-cli@npm:6.0.2"
+  version: 6.1.0
+  resolution: "@metamask/snaps-cli@npm:6.1.0"
   dependencies:
     "@babel/core": ^7.23.2
     "@babel/plugin-transform-class-properties": ^7.22.5
@@ -3026,8 +3026,8 @@ __metadata:
     "@babel/plugin-transform-runtime": ^7.13.2
     "@babel/preset-env": ^7.23.2
     "@babel/preset-typescript": ^7.23.2
-    "@metamask/snaps-sdk": ^3.0.1
-    "@metamask/snaps-utils": ^7.0.1
+    "@metamask/snaps-sdk": ^3.2.0
+    "@metamask/snaps-utils": ^7.0.4
     "@metamask/snaps-webpack-plugin": ^4.0.1
     "@metamask/utils": ^8.3.0
     "@swc/core": 1.3.78
@@ -3069,7 +3069,7 @@ __metadata:
     yargs: ^17.7.1
   bin:
     mm-snap: ./dist/main.js
-  checksum: 0a86991f0b668d8ec461c2fdd61dc755f4c747e9900cf07ace1ee44d07e937e4f4d7fe5585dfc9523c1091a4ef7c78020d604a2ef11ed17a568a8a8109bb46d0
+  checksum: 0b8e32e442118d7bc29b566d3f0f8834cc6ec6d73471d5719969f97b102a41c78be3232f92ac0cda8c068c58c83aaba8f10959b60000cdd65d111c0968ecdb8a
   languageName: node
   linkType: hard
 
@@ -3227,7 +3227,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/snaps-utils@npm:^7.0.1":
+"@metamask/snaps-utils@npm:^7.0.1, @metamask/snaps-utils@npm:^7.0.4":
   version: 7.0.4
   resolution: "@metamask/snaps-utils@npm:7.0.4"
   dependencies:
