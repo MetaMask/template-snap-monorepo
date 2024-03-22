@@ -27,18 +27,18 @@
     "test": "jest"
   },
   "dependencies": {
-    "@metamask/snaps-sdk": "^3.0.1",
+    "@metamask/snaps-sdk": "^3.2.0",
     "buffer": "^6.0.3"
   },
   "devDependencies": {
     "@jest/globals": "^29.5.0",
-    "@metamask/auto-changelog": "^3.4.2",
-    "@metamask/eslint-config": "^12.0.0",
-    "@metamask/eslint-config-jest": "^12.0.0",
-    "@metamask/eslint-config-nodejs": "^12.0.0",
-    "@metamask/eslint-config-typescript": "^12.0.0",
-    "@metamask/snaps-cli": "^6.0.2",
-    "@metamask/snaps-jest": "^6.0.1",
+    "@metamask/auto-changelog": "^3.4.4",
+    "@metamask/eslint-config": "^12.2.0",
+    "@metamask/eslint-config-jest": "^12.1.0",
+    "@metamask/eslint-config-nodejs": "^12.1.0",
+    "@metamask/eslint-config-typescript": "^12.1.0",
+    "@metamask/snaps-cli": "^6.1.0",
+    "@metamask/snaps-jest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.45.0",
