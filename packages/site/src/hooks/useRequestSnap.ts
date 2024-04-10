@@ -25,12 +25,12 @@ export const useRequestSnap = (
     const snaps = (await request({
       method: 'wallet_requestSnaps',
       params: {
-        [snapId]: { version },
+        [snapId]: version ? { version } : {},
       },
     })) as Record<string, Snap>;
 
     // Updates the `installedSnap` context variable since we just installed the Snap.
-    setInstalledSnap(snaps[snapId] ?? null);
+    setInstalledSnap(snaps?.[snapId] ?? null);
   };
 
   return requestSnap;
