@@ -32,7 +32,7 @@ describe('onRpcRequest', () => {
   });
 
   it('throws an error if the requested method does not exist', async () => {
-    const { request, close } = await installSnap();
+    const { request } = await installSnap();
 
     const response = await request({
       method: 'foo',
@@ -43,7 +43,5 @@ describe('onRpcRequest', () => {
       message: 'Method not found.',
       stack: expect.any(String),
     });
-
-    await close();
   });
 });
