@@ -3038,21 +3038,21 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-execution-environments@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@metamask/snaps-execution-environments@npm:6.0.0"
+  version: 6.0.1
+  resolution: "@metamask/snaps-execution-environments@npm:6.0.1"
   dependencies:
     "@metamask/json-rpc-engine": ^8.0.1
     "@metamask/object-multiplex": ^2.0.0
     "@metamask/post-message-stream": ^8.0.0
     "@metamask/providers": ^16.0.0
     "@metamask/rpc-errors": ^6.2.1
-    "@metamask/snaps-sdk": ^4.0.0
+    "@metamask/snaps-sdk": ^4.0.1
     "@metamask/snaps-utils": ^7.1.0
     "@metamask/utils": ^8.3.0
     nanoid: ^3.1.31
     readable-stream: ^3.6.2
     superstruct: ^1.0.3
-  checksum: 367e8f09843f36a74969ea09ba724ff66cea66ecadbd1306bbd1c43937cf51a22cf342f81a56f8f45abe2a2a914f9316dec3e9a9c64a8bb215957563c963ab51
+  checksum: 47e24c70f9d98c178f7a21467fdd5bc3f65b8d587155a742d61ad9d0b36cdc6d0332e37852274d66f7c556424b92d076f0ee9a90ca9b197a5ef96fef37667277
   languageName: node
   linkType: hard
 
@@ -3140,6 +3140,20 @@ __metadata:
     fast-xml-parser: ^4.3.4
     superstruct: ^1.0.3
   checksum: 01b485b05715f7fff3527b8cac5be180f2443797b05839f615c59ac2c95860b68509c7e7c0eec0d921b04b099f5e7bc99bcb2447373e866649b8bc8f29b738ec
+  languageName: node
+  linkType: hard
+
+"@metamask/snaps-sdk@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@metamask/snaps-sdk@npm:4.0.1"
+  dependencies:
+    "@metamask/key-tree": ^9.0.0
+    "@metamask/providers": ^16.0.0
+    "@metamask/rpc-errors": ^6.2.1
+    "@metamask/utils": ^8.3.0
+    fast-xml-parser: ^4.3.4
+    superstruct: ^1.0.3
+  checksum: 21a2985258216c362f521c36ec2e63963268177ac0d811c6bf7409c489209e341f383db891e5051d0510e7a967565ed0fb5825be3232181fa46ccee79642e3d7
   languageName: node
   linkType: hard
 
