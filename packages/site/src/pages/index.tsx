@@ -120,7 +120,7 @@ const Index = () => {
         Welcome to <Span>template-snap</Span>
       </Heading>
       <Subtitle>
-        Get started by editing <code>src/index.ts</code>
+        Get started by editing <code>src/index.tsx</code>
       </Subtitle>
       <CardContainer>
         {error && (
