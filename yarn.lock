@@ -2826,6 +2826,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/key-tree@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "@metamask/key-tree@npm:9.1.1"
+  dependencies:
+    "@metamask/scure-bip39": ^2.1.1
+    "@metamask/utils": ^8.3.0
+    "@noble/curves": ^1.2.0
+    "@noble/hashes": ^1.3.2
+    "@scure/base": ^1.0.0
+  checksum: 4de5f92e4d9408829552bb569b998613ed940f289613fe86f9a5f0a66e392ec386d70b2365943c216b83c9ff249877fd731f2f791240a622ff186fd047d81f9e
+  languageName: node
+  linkType: hard
+
 "@metamask/number-to-bn@npm:^1.7.1":
   version: 1.7.1
   resolution: "@metamask/number-to-bn@npm:1.7.1"
@@ -2908,6 +2921,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/providers@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "@metamask/providers@npm:17.0.0"
+  dependencies:
+    "@metamask/json-rpc-engine": ^8.0.1
+    "@metamask/json-rpc-middleware-stream": ^7.0.1
+    "@metamask/object-multiplex": ^2.0.0
+    "@metamask/rpc-errors": ^6.2.1
+    "@metamask/safe-event-emitter": ^3.1.1
+    "@metamask/utils": ^8.3.0
+    detect-browser: ^5.2.0
+    extension-port-stream: ^3.0.0
+    fast-deep-equal: ^3.1.3
+    is-stream: ^2.0.0
+    readable-stream: ^3.6.2
+  peerDependencies:
+    webextension-polyfill: ^0.10.0 || ^0.11.0 || ^0.12.0
+  checksum: 330e369458edc68d743d87b8b2597cdacac58df01b5fc31f565ae5dacee2390ee23693fb10fa451c6146665e87475a4c8f54163407eb05fceeb698900e34f9e6
+  languageName: node
+  linkType: hard
+
 "@metamask/rpc-errors@npm:^6.0.0, @metamask/rpc-errors@npm:^6.2.1":
   version: 6.2.1
   resolution: "@metamask/rpc-errors@npm:6.2.1"
@@ -2918,14 +2952,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/safe-event-emitter@npm:^3.0.0":
+"@metamask/safe-event-emitter@npm:^3.0.0, @metamask/safe-event-emitter@npm:^3.1.1":
   version: 3.1.1
   resolution: "@metamask/safe-event-emitter@npm:3.1.1"
   checksum: e24db4d7c20764bfc5b025065f92518c805f0ffb1da4820078b8cff7dcae964c0f354cf053fcb7ac659de015d5ffdf21aae5e8d44e191ee8faa9066855f22653
   languageName: node
   linkType: hard
 
-"@metamask/scure-bip39@npm:^2.1.0":
+"@metamask/scure-bip39@npm:^2.1.0, @metamask/scure-bip39@npm:^2.1.1":
   version: 2.1.1
   resolution: "@metamask/scure-bip39@npm:2.1.1"
   dependencies:
@@ -3140,6 +3174,19 @@ __metadata:
     fast-xml-parser: ^4.3.4
     superstruct: ^1.0.3
   checksum: 01b485b05715f7fff3527b8cac5be180f2443797b05839f615c59ac2c95860b68509c7e7c0eec0d921b04b099f5e7bc99bcb2447373e866649b8bc8f29b738ec
+  languageName: node
+  linkType: hard
+
+"@metamask/snaps-sdk@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@metamask/snaps-sdk@npm:6.0.0"
+  dependencies:
+    "@metamask/key-tree": ^9.1.1
+    "@metamask/providers": ^17.0.0
+    "@metamask/rpc-errors": ^6.2.1
+    "@metamask/utils": ^8.3.0
+    superstruct: ^1.0.3
+  checksum: 0a3b7a034028a7583b4e1a5414a67470b2ed70cc411fc4877a79f95803c64d99eafb785cbffaf827c3f3138a065e439480b9628456a8a5fa8d39c9c8dd9bd5db
   languageName: node
   linkType: hard
 
@@ -16953,7 +17000,7 @@ __metadata:
     "@metamask/eslint-config-typescript": ^12.1.0
     "@metamask/snaps-cli": ^6.1.0
     "@metamask/snaps-jest": ^7.0.0
-    "@metamask/snaps-sdk": ^4.0.0
+    "@metamask/snaps-sdk": ^6.0.0
     "@typescript-eslint/eslint-plugin": ^5.42.1
     "@typescript-eslint/parser": ^5.42.1
     buffer: ^6.0.3
