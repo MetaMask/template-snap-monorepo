@@ -111,7 +111,7 @@ const Index = () => {
     : snapsDetected;
 
   const handleSendHelloClick = async () => {
-    await invokeSnap({ method: 'hello' });
+    await invokeSnap({ method: 'hello', params: {} });
   };
 
   return (
