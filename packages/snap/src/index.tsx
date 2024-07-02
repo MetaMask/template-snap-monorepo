@@ -1,5 +1,5 @@
 import type { OnRpcRequestHandler } from '@metamask/snaps-sdk';
-import { panel, text } from '@metamask/snaps-sdk';
+import { Box, Text, Bold } from '@metamask/snaps-sdk/jsx';
 
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
@@ -21,13 +21,20 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         method: 'snap_dialog',
         params: {
           type: 'confirmation',
-          content: panel([
-            text(`Hello, **${origin}**!`),
-            text('This custom confirmation is just for display purposes.'),
-            text(
-              'But you can edit the snap source code to make it do something, if you want to!',
-            ),
-          ]),
+          content: (
+            <Box>
+              <Text>
+                Hello, <Bold>{origin}</Bold>!
+              </Text>
+              <Text>
+                This custom confirmation is just for display purposes.
+              </Text>
+              <Text>
+                But you can edit the snap source code to make it do something,
+                if you want to!
+              </Text>
+            </Box>
+          ),
         },
       });
     default:

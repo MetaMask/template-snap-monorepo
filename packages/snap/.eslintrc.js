@@ -12,6 +12,20 @@ module.exports = {
     },
 
     {
+      files: ['**/*.ts', '**/*.tsx'],
+      extends: ['@metamask/eslint-config-typescript'],
+      rules: {
+        // This allows importing the `Text` JSX component.
+        '@typescript-eslint/no-shadow': [
+          'error',
+          {
+            allow: ['Text'],
+          },
+        ],
+      },
+    },
+
+    {
       files: ['*.test.ts'],
       rules: {
         '@typescript-eslint/unbound-method': 'off',
