@@ -29,10 +29,7 @@ export const useInvokeSnap = (snapId = defaultSnapOrigin) => {
       method: 'wallet_invokeSnap',
       params: {
         snapId,
-        request: {
-          method,
-          params,
-        },
+        request: params ? { method, params } : { method },
       },
     });
 
