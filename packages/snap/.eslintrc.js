@@ -26,7 +26,7 @@ module.exports = {
     },
 
     {
-      files: ['*.test.ts'],
+      files: ['*.test.ts', '*.test.tsx'],
       rules: {
         '@typescript-eslint/unbound-method': 'off',
       },
