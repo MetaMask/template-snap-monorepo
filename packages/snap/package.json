@@ -27,8 +27,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@metamask/snaps-sdk": "^6.1.1",
-    "buffer": "^6.0.3"
+    "@metamask/snaps-sdk": "^6.10.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.5.0",
@@ -37,8 +36,8 @@
     "@metamask/eslint-config-jest": "^12.1.0",
     "@metamask/eslint-config-nodejs": "^12.1.0",
     "@metamask/eslint-config-typescript": "^12.1.0",
-    "@metamask/snaps-cli": "^6.2.1",
-    "@metamask/snaps-jest": "^8.2.0",
+    "@metamask/snaps-cli": "^6.5.2",
+    "@metamask/snaps-jest": "^8.7.0",
     "@types/react": "18.2.4",
     "@types/react-dom": "18.2.4",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
