@@ -1,5 +1,6 @@
 import { expect } from '@jest/globals';
-import { SnapConfirmationInterface, installSnap } from '@metamask/snaps-jest';
+import type { SnapConfirmationInterface } from '@metamask/snaps-jest';
+import { installSnap } from '@metamask/snaps-jest';
 import { Box, Text, Bold } from '@metamask/snaps-sdk/jsx';
 
 describe('onRpcRequest', () => {
@@ -13,7 +14,7 @@ describe('onRpcRequest', () => {
         origin,
       });
 
-      const ui = await response.getInterface() as SnapConfirmationInterface;
+      const ui = (await response.getInterface()) as SnapConfirmationInterface;
       expect(ui.type).toBe('confirmation');
       expect(ui).toRender(
         <Box>
