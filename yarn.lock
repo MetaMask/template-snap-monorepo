@@ -3133,14 +3133,14 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-registry@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@metamask/snaps-registry@npm:3.1.0"
+  version: 3.2.2
+  resolution: "@metamask/snaps-registry@npm:3.2.2"
   dependencies:
-    "@metamask/utils": ^8.3.0
+    "@metamask/superstruct": ^3.1.0
+    "@metamask/utils": ^10.0.0
     "@noble/curves": ^1.2.0
     "@noble/hashes": ^1.3.2
-    superstruct: ^1.0.3
-  checksum: 019cb47134c2ad4724f4f392385d4e81ab61dfefb12e66a88a2480a178502190e2d5d99cf269b906e4acda1b88de3fe356c80e71dc32c6c3f0fada9461c9bc49
+  checksum: 5f92d1e4196f9980c54c616508f10196aafe4734ccb9058654f080b2964549fd916c7ffc57d02ad05ba7d89a110709f9ad716dcbebc28fdd29c1d75f1edc4e66
   languageName: node
   linkType: hard
 
@@ -3234,6 +3234,23 @@ __metadata:
   version: 3.1.0
   resolution: "@metamask/superstruct@npm:3.1.0"
   checksum: 00e4d0c0aae8b25ccc1885c1db0bb4ed1590010570140c255e4deee3bf8a10c859c8fce5e475b4ae09c8a56316207af87585b91f7f5a5c028d668ccd111f19e3
+  languageName: node
+  linkType: hard
+
+"@metamask/utils@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "@metamask/utils@npm:10.0.0"
+  dependencies:
+    "@ethereumjs/tx": ^4.2.0
+    "@metamask/superstruct": ^3.1.0
+    "@noble/hashes": ^1.3.1
+    "@scure/base": ^1.1.3
+    "@types/debug": ^4.1.7
+    debug: ^4.3.4
+    pony-cause: ^2.1.10
+    semver: ^7.5.4
+    uuid: ^9.0.1
+  checksum: b75679b78d3e084ed486d767fd5532b09527eb40e0cc5b080f5f0f1a620c68674cb662b1b3aa05eed8e1f024c08f8b7ae3c499a5185a32bea4c342874c529ba5
   languageName: node
   linkType: hard
 
