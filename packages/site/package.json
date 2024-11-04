@@ -33,7 +33,7 @@
     "styled-components": "5.3.3"
   },
   "devDependencies": {
-    "@metamask/eslint-config": "^12.2.0",
+    "@metamask/eslint-config": "^14.0.0",
     "@metamask/eslint-config-browser": "^12.1.0",
     "@metamask/eslint-config-jest": "^12.1.0",
     "@metamask/eslint-config-nodejs": "^12.1.0",
