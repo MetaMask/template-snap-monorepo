@@ -37,7 +37,7 @@
     "@metamask/eslint-config-browser": "^12.1.0",
     "@metamask/eslint-config-jest": "^12.1.0",
     "@metamask/eslint-config-nodejs": "^12.1.0",
-    "@metamask/eslint-config-typescript": "^12.1.0",
+    "@metamask/eslint-config-typescript": "^14.0.0",
     "@svgr/webpack": "^6.4.0",
     "@testing-library/dom": "^8.17.1",
     "@testing-library/jest-dom": "^5.16.4",
