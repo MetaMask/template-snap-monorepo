@@ -32,10 +32,10 @@ export async function hasSnapsSupport(
  * @returns A MetaMask provider if found, otherwise null.
  */
 export async function getMetaMaskEIP6963Provider() {
-  return new Promise<MetaMaskInpageProvider | null>((rawResolve) => {
+  return new Promise<MetaMaskInpageProvider | null>((resolve) => {
     // Timeout looking for providers after 500ms
     const timeout = setTimeout(() => {
-      resolve(null);
+      resolveWithCleanup(null);
     }, 500);
 
     /**
@@ -43,13 +43,14 @@ export async function getMetaMaskEIP6963Provider() {
      *
      * @param provider - A MetaMask provider if found, otherwise null.
      */
-    function resolve(provider: MetaMaskInpageProvider | null) {
+    function resolveWithCleanup(provider: MetaMaskInpageProvider | null) {
       window.removeEventListener(
         'eip6963:announceProvider',
         onAnnounceProvider,
       );
+
       clearTimeout(timeout);
-      rawResolve(provider);
+      resolve(provider);
     }
 
     /**
@@ -68,7 +69,7 @@ export async function getMetaMaskEIP6963Provider() {
       const { info, provider } = detail;
 
       if (info.rdns.includes('io.metamask')) {
-        resolve(provider);
+        resolveWithCleanup(provider);
       }
     }
 

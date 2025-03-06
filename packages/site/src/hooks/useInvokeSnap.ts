@@ -1,5 +1,5 @@
-import { defaultSnapOrigin } from '../config';
 import { useRequest } from './useRequest';
+import { defaultSnapOrigin } from '../config';
 
 export type InvokeSnapParams = {
   method: string;

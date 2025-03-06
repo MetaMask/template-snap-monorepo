@@ -1,9 +1,9 @@
 import styled, { useTheme } from 'styled-components';
 
-import { getThemePreference } from '../utils';
 import { HeaderButtons } from './Buttons';
 import { SnapLogo } from './SnapLogo';
 import { Toggle } from './Toggle';
+import { getThemePreference } from '../utils';
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -39,7 +39,7 @@ const RightContainer = styled.div`
 export const Header = ({
   handleToggleClick,
 }: {
-  handleToggleClick(): void;
+  handleToggleClick: () => void;
 }) => {
   const theme = useTheme();
 
