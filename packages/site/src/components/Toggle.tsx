@@ -75,6 +75,7 @@ const ToggleContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background?.alternative};
   transition: all 0.2s ease;
 `;
+
 const ToggleCircle = styled.div<CheckedProps>`
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   position: absolute;
@@ -93,7 +94,7 @@ export const Toggle = ({
   onToggle,
   defaultChecked = false,
 }: {
-  onToggle(): void;
+  onToggle: () => void;
   defaultChecked?: boolean;
 }) => {
   const [checked, setChecked] = useState(defaultChecked);
