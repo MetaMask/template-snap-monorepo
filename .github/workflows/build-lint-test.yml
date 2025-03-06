@@ -26,11 +26,12 @@ jobs:
           is-high-risk-environment: false
       - name: Build
         run: yarn build
-      - name: Cache Snap build
-        uses: actions/cache@v3
+      - name: Upload Snap build artifact
+        uses: actions/upload-artifact@v4
         with:
+          name: snap-${{ runner.os }}-${{ github.sha }}
           path: ./packages/snap/dist
-          key: snap-${{ runner.os }}-${{ github.sha }}
+          retention-days: 1
       - name: Require clean working directory
         shell: bash
         run: |
@@ -70,11 +71,11 @@ jobs:
         uses: MetaMask/action-checkout-and-setup@v1
         with:
           is-high-risk-environment: false
-      - name: Restore Snap build cache
-        uses: actions/cache@v3
+      - name: Download Snap build artifact
+        uses: actions/download-artifact@v4
         with:
+          name: snap-${{ runner.os }}-${{ github.sha }}
           path: ./packages/snap/dist
-          key: snap-${{ runner.os }}-${{ github.sha }}
       - name: Run e2e tests
         run: yarn workspace snap run test
       - name: Require clean working directory
