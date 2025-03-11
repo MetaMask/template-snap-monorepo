@@ -3202,7 +3202,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/snaps-sdk@npm:^6.15.0, @metamask/snaps-sdk@npm:^6.17.0, @metamask/snaps-sdk@npm:^6.17.1, @metamask/snaps-sdk@npm:^6.18.0, @metamask/snaps-sdk@npm:^6.19.0":
+"@metamask/snaps-sdk@npm:^6.15.0, @metamask/snaps-sdk@npm:^6.17.0, @metamask/snaps-sdk@npm:^6.17.1, @metamask/snaps-sdk@npm:^6.18.0, @metamask/snaps-sdk@npm:^6.19.0, @metamask/snaps-sdk@npm:~6.19.0":
   version: 6.19.0
   resolution: "@metamask/snaps-sdk@npm:6.19.0"
   dependencies:
@@ -3212,19 +3212,6 @@ __metadata:
     "@metamask/superstruct": ^3.1.0
     "@metamask/utils": ^11.2.0
   checksum: efe9e2064ae98bc8b33b973b4fd14c8706d57573e0919cd017e9e1e1f88e2c228841fe1515125641f2b0a1ab8b189ec9dbbb607e45120a5232757ee4c1c36507
-  languageName: node
-  linkType: hard
-
-"@metamask/snaps-sdk@npm:~6.18.0":
-  version: 6.18.0
-  resolution: "@metamask/snaps-sdk@npm:6.18.0"
-  dependencies:
-    "@metamask/key-tree": ^10.0.2
-    "@metamask/providers": ^20.0.0
-    "@metamask/rpc-errors": ^7.0.2
-    "@metamask/superstruct": ^3.1.0
-    "@metamask/utils": ^11.2.0
-  checksum: 13f1a16675fd869f7d34664ede6cc11a990cb785edf940e9e9b14fabcde70edd97b9cf40a4b7053f64bf35958fd3c61d5f803de85fdef0fa89a5033f7f31adb2
   languageName: node
   linkType: hard
 
@@ -17641,7 +17628,7 @@ __metadata:
     "@jest/globals": ^29.5.0
     "@metamask/snaps-cli": ^6.6.0
     "@metamask/snaps-jest": ^8.9.0
-    "@metamask/snaps-sdk": ~6.18.0
+    "@metamask/snaps-sdk": ~6.19.0
     "@types/react": 18.2.4
     "@types/react-dom": 18.2.4
     eslint: ^9.11.0
