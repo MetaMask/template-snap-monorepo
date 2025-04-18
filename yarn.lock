@@ -3051,9 +3051,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/providers@npm:^21.0.0":
-  version: 21.0.0
-  resolution: "@metamask/providers@npm:21.0.0"
+"@metamask/providers@npm:^22.0.0":
+  version: 22.0.0
+  resolution: "@metamask/providers@npm:22.0.0"
   dependencies:
     "@metamask/json-rpc-engine": ^10.0.2
     "@metamask/json-rpc-middleware-stream": ^8.0.6
@@ -3068,7 +3068,7 @@ __metadata:
     readable-stream: ^3.6.2
   peerDependencies:
     webextension-polyfill: ^0.10.0 || ^0.11.0 || ^0.12.0
-  checksum: 99a38a066c72209c06244197cd96ee1dda1cff47f6a4b0fb45bd4bb559ae15ab40fb959e9d1e2387ee6de9b6c9906bca582db0e0fdbf9bf239a0b6ecc764e9ce
+  checksum: be7d1fbe01d2bed505378139afaf4f507fd876ea50b7dc5f89ecd8a31f4ad1ac867b2ad02877be5dd1b6d9bc1df6d1772eceec569933a920497e00c7c15ba052
   languageName: node
   linkType: hard
 
@@ -17693,7 +17693,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "site@workspace:packages/site"
   dependencies:
-    "@metamask/providers": ^21.0.0
+    "@metamask/providers": ^22.0.0
     "@svgr/webpack": ^6.4.0
     "@testing-library/dom": ^8.17.1
     "@testing-library/jest-dom": ^5.16.4
