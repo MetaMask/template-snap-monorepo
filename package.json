@@ -16,6 +16,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "resolutions": {
+    "sharp": "^0.33.5"
+  },
   "scripts": {
     "build": "yarn workspaces foreach --parallel --topological --verbose run build",
     "lint": "yarn lint:eslint && yarn lint:misc --check",
