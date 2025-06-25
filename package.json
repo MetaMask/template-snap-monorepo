@@ -25,6 +25,9 @@
     "start": "yarn workspaces foreach --parallel --interlaced --verbose run start",
     "test": "yarn workspace snap run test"
   },
+  "resolutions": {
+    "sharp": "^0.33.5"
+  },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^3.0.0",
     "@lavamoat/preinstall-always-fail": "^2.0.0",
