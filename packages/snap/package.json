@@ -27,12 +27,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@metamask/snaps-sdk": "~6.24.0"
+    "@metamask/snaps-sdk": "~9.3.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.5.0",
-    "@metamask/snaps-cli": "^8.0.0",
-    "@metamask/snaps-jest": "^9.1.0",
+    "@metamask/snaps-cli": "^8.3.0",
+    "@metamask/snaps-jest": "^9.4.0",
     "@types/react": "18.2.4",
     "@types/react-dom": "18.2.4",
     "eslint": "^9.11.0",
