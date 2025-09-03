@@ -3218,9 +3218,9 @@ __metadata:
   linkType: hard
 
 "@metamask/slip44@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "@metamask/slip44@npm:4.2.0"
-  checksum: 19d7b731421eddb02d8f741d562195d085c97611d0469d050a0367c56b96cebd05e861745c643fce6e755675bad4615d0f2ce566fec4d93f66923004caf6b683
+  version: 4.3.0
+  resolution: "@metamask/slip44@npm:4.3.0"
+  checksum: 1bc957133fa23ad92c3e2f76c2520a2dd88a5e7036791bd4878c3f1b7074ad57b7aef060d82796388e17f066831d79513d707775a83c1d793bb9c4fd0b1623fb
   languageName: node
   linkType: hard
 
