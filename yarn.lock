@@ -3344,18 +3344,18 @@ __metadata:
   linkType: hard
 
 "@metamask/snaps-rpc-methods@npm:^13.5.0":
-  version: 13.5.1
-  resolution: "@metamask/snaps-rpc-methods@npm:13.5.1"
+  version: 13.5.3
+  resolution: "@metamask/snaps-rpc-methods@npm:13.5.3"
   dependencies:
     "@metamask/key-tree": ^10.1.1
     "@metamask/permission-controller": ^11.0.6
     "@metamask/rpc-errors": ^7.0.3
-    "@metamask/snaps-sdk": ^9.3.0
-    "@metamask/snaps-utils": ^11.5.0
+    "@metamask/snaps-sdk": ^10.0.0
+    "@metamask/snaps-utils": ^11.6.0
     "@metamask/superstruct": ^3.2.1
-    "@metamask/utils": ^11.4.2
+    "@metamask/utils": ^11.8.1
     "@noble/hashes": ^1.7.1
-  checksum: 620fa4c714641bf1ffd9e4547280246ba45e0cbe0dbb0b19b968bae85a1aa0acde91c8eba2263efc5f48e4dd08ad802c8aa9ae559a1dbafa0096fb3e40b8cff5
+  checksum: 57598d48989905c6f5a742331d6d8f157852532a0598bd817c259f446ab03804390ad18bf5770b947595cfebe2bd6c2553d30ca16d9f18a880b8539555d60747
   languageName: node
   linkType: hard
 
@@ -3380,6 +3380,20 @@ __metadata:
   version: 1.0.0
   resolution: "@metamask/snaps-sandbox@npm:1.0.0"
   checksum: b3da192c379a1431c88bc203b8b1fc45f1cb26ae693a0aae1f0a898d4a2fad46728244667c293f106209c0b25a9ab8c6621b1aefba7a4217ea205a420df00534
+  languageName: node
+  linkType: hard
+
+"@metamask/snaps-sdk@npm:^10.0.0":
+  version: 10.4.0
+  resolution: "@metamask/snaps-sdk@npm:10.4.0"
+  dependencies:
+    "@metamask/key-tree": ^10.1.1
+    "@metamask/providers": ^22.1.1
+    "@metamask/rpc-errors": ^7.0.3
+    "@metamask/superstruct": ^3.2.1
+    "@metamask/utils": ^11.9.0
+    luxon: ^3.5.0
+  checksum: 100d23439a0001c2d19e10f8f85b1230ce173921b7fec888b299d3413bade641aa822034f51b93d8e77873f694f06fa17bdb71a0b6d4584b23a6d8b9ea5cf766
   languageName: node
   linkType: hard
 
@@ -3439,7 +3453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/snaps-utils@npm:^11.4.0, @metamask/snaps-utils@npm:^11.5.0, @metamask/snaps-utils@npm:^11.6.1, @metamask/snaps-utils@npm:^11.6.2, @metamask/snaps-utils@npm:^11.7.1":
+"@metamask/snaps-utils@npm:^11.4.0, @metamask/snaps-utils@npm:^11.5.0, @metamask/snaps-utils@npm:^11.6.0, @metamask/snaps-utils@npm:^11.6.1, @metamask/snaps-utils@npm:^11.6.2, @metamask/snaps-utils@npm:^11.7.1":
   version: 11.7.1
   resolution: "@metamask/snaps-utils@npm:11.7.1"
   dependencies:
