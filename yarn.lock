@@ -2925,17 +2925,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/eslint-config-jest@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "@metamask/eslint-config-jest@npm:14.0.0"
+"@metamask/eslint-config-jest@npm:^15.0.0":
+  version: 15.0.0
+  resolution: "@metamask/eslint-config-jest@npm:15.0.0"
   dependencies:
     "@eslint/js": ^9.11.0
     globals: ^15.9.0
   peerDependencies:
-    "@metamask/eslint-config": ^14.0.0
+    "@metamask/eslint-config": ^15.0.0
     eslint: ^9.11.0
     eslint-plugin-jest: ^28.8.3
-  checksum: e7c4f14ff8eae8c1311cd1a941217c39bacf249650b1953138a958472af609a8396722e7b1a0c86386d07f92d7570c3e29754335fe4ef8608a9abf03c7aff6fb
+  checksum: 9f77ac980e447e5254d733ee7c54585a2f0c51425863cb791d197281273f2bac9ec3178e7eab5b1b714ebbafe62d41d15b687ba5a10982edd659f0bf0273eb8f
   languageName: node
   linkType: hard
 
@@ -17030,7 +17030,7 @@ __metadata:
     "@lavamoat/preinstall-always-fail": ^2.0.0
     "@metamask/eslint-config": ^14.0.0
     "@metamask/eslint-config-browser": ^14.0.0
-    "@metamask/eslint-config-jest": ^14.0.0
+    "@metamask/eslint-config-jest": ^15.0.0
     "@metamask/eslint-config-nodejs": ^14.0.0
     "@metamask/eslint-config-typescript": ^14.0.0
     eslint: ^9.11.0
